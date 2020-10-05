@@ -1,0 +1,21 @@
+# Visual Studio settings folder
+.vs/
+
+# Build results
+bin/
+obj/
+
+# The packages folder can be ignored because of Package Restore
+packages/
+
+# MSTest test Results
+TestResults/
+
+# Nuget packages
+*.nupkg
+
+*.jar
+*.class
+
+# Ignore SDK folders 
+**/sdk/
