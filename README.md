@@ -10,7 +10,7 @@ Follow the below links for generated language specific SDK repositories.
 
 * [Python](https://github.com/factset/analyticsapi-engines-python-sdk)
 * [Dotnet](https://github.com/factset/analyticsapi-engines-dotnet-sdk)
-* Java (WIP)
+* [Java](https://github.com/factset/analyticsapi-engines-java-sdk)
 
 ## Contents
 
