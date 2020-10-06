@@ -1,0 +1,23 @@
+{{! This file is picked from the v4.3.1 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v4.3.1/modules/openapi-generator/src/main/resources/r/description.mustache) }}
+{{! Changes made: 1) Fixed a CRAN submission issue. 2) Added dependency for factset.protobuf.stach. }}
+Package: {{{packageName}}}
+Title: 'FactSet' Engines API Client
+Version: {{packageVersion}}
+Authors@R: c(
+    person("{{#infoName}}{{infoName}}{{/infoName}}{{^infoName}}OpenAPI Generator community{{/infoName}}", email = "{{#infoEmail}}{{infoEmail}}{{/infoEmail}}{{^infoEmail}}team@openapitools.org{{/infoEmail}}", role = "aut"),
+    person("Akshay Sheth", email = "asheth@factset.com", role = "cre"))
+Description: Allow clients to fetch 'analytics' through API for Portfolio 
+    'Analytics'('PA'), Style Performance Risk('SPAR') and 'Vault' products of 
+    'FactSet'. Visit 
+    <https://github.com/factset/analyticsapi-engines-r-sdk/tree/master/Engines>
+    for more information on the usage of package. Visit 
+    <https://developer.factset.com/> for more information on products.
+URL: https://{{gitHost}}/{{{gitUserId}}}/{{{gitRepoId}}}
+BugReports: https://{{gitHost}}/{{{gitUserId}}}/{{{gitRepoId}}}/issues
+Depends: R (>= 3.3)
+Encoding: UTF-8
+License: {{#licenseInfo}}{{licenseInfo}}{{/licenseInfo}}{{^licenseInfo}}Unlicense{{/licenseInfo}}
+LazyData: true
+Suggests: testthat
+Imports: jsonlite, httr, R6, base64enc{{#useRlangExceptionHandling}}, rlang{{/useRlangExceptionHandling}}, factset.protobuf.stach (< 2.0.0)
+RoxygenNote: 6.0.1.9000
