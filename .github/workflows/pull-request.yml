@@ -5,14 +5,14 @@ env:
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
   USER: ${{ secrets.USER }}
   OPENAPI_GENERATOR_VERSION: 4.3.1
-  GITHUB_DOTNET_SDK_REPO: afernandes85/analyticsapi-engines-dotnet-sdk
-  GITHUB_PYTHON_SDK_REPO: afernandes85/analyticsapi-engines-python-sdk
-  GITHUB_JAVA_SDK_REPO: afernandes85/analyticsapi-engines-java-sdk
-  GITHUB_R_SDK_REPO: afernandes85/analyticsapi-engines-r-sdk
-  
+  GITHUB_DOTNET_SDK_REPO: factset/analyticsapi-engines-dotnet-sdk
+  GITHUB_PYTHON_SDK_REPO: factset/analyticsapi-engines-python-sdk
+  GITHUB_JAVA_SDK_REPO: factset/analyticsapi-engines-java-sdk
+  GITHUB_R_SDK_REPO: factset/analyticsapi-engines-r-sdk
+
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   dotnet:
@@ -41,7 +41,7 @@ jobs:
       - name: Raise pull request on SDK repository
         if: env.GITHUB_DOTNET_SDK_REPO
         run: generator/.github/scripts/raise-pull-request.sh dotnet
-  
+
   python:
     runs-on: ubuntu-latest
 
@@ -64,7 +64,7 @@ jobs:
       - name: Generate SDK
         if: env.GITHUB_PYTHON_SDK_REPO
         run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION python CustomPythonClientCodegen
-      
+
       - name: Raise pull request on SDK repository
         if: env.GITHUB_PYTHON_SDK_REPO
         run: generator/.github/scripts/raise-pull-request.sh python
@@ -91,7 +91,7 @@ jobs:
       - name: Generate SDK
         if: env.GITHUB_JAVA_SDK_REPO
         run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION java CustomJavaClientCodegen
-      
+
       - name: Raise pull request on SDK repository
         if: env.GITHUB_JAVA_SDK_REPO
         run: generator/.github/scripts/raise-pull-request.sh java
@@ -122,13 +122,13 @@ jobs:
       - name: Generate SDK
         if: env.GITHUB_R_SDK_REPO
         run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen
-      
+
       - name: Set up R
         if: env.GITHUB_R_SDK_REPO
         uses: r-lib/actions/setup-r@v1
         with:
-          r-version: '3.5.3'
-      
+          r-version: "3.5.3"
+
       - name: Generate docs
         if: env.GITHUB_R_SDK_REPO
         run: |
@@ -140,7 +140,7 @@ jobs:
           sudo Rscript -e "install.packages('factset.protobuf.stach', repos = 'http://cran.us.r-project.org')"
           sudo Rscript -e "install.packages('roxygen2', repos = 'http://cran.us.r-project.org')"
           sudo Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'namespace'), package.dir = '${GITHUB_WORKSPACE}/generator/languages/r/sdk')"
-      
+
       - name: Raise pull request on SDK repository
         if: env.GITHUB_R_SDK_REPO
         run: generator/.github/scripts/raise-pull-request.sh r
