@@ -36,11 +36,11 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_DOTNET_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION dotnet CustomCSharpNetCoreClientCodegen
+        run: sudo generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION dotnet CustomCSharpNetCoreClientCodegen
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_DOTNET_SDK_REPO
-        run: generator/.github/scripts/raise-pull-request.sh dotnet
+        run: sudo generator/.github/scripts/raise-pull-request.sh dotnet
 
   python:
     runs-on: ubuntu-latest
@@ -63,11 +63,11 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_PYTHON_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION python CustomPythonClientCodegen
+        run: sudo generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION python CustomPythonClientCodegen
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_PYTHON_SDK_REPO
-        run: generator/.github/scripts/raise-pull-request.sh python
+        run: sudo generator/.github/scripts/raise-pull-request.sh python
 
   java:
     runs-on: ubuntu-latest
@@ -90,11 +90,11 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_JAVA_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION java CustomJavaClientCodegen
+        run: sudo generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION java CustomJavaClientCodegen
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_JAVA_SDK_REPO
-        run: generator/.github/scripts/raise-pull-request.sh java
+        run: sudo generator/.github/scripts/raise-pull-request.sh java
 
   r:
     runs-on: ubuntu-latest
@@ -121,7 +121,7 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_R_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen
+        run: sudo generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen
 
       - name: Set up R
         if: env.GITHUB_R_SDK_REPO
@@ -143,4 +143,4 @@ jobs:
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_R_SDK_REPO
-        run: generator/.github/scripts/raise-pull-request.sh r
+        run: sudo generator/.github/scripts/raise-pull-request.sh r
