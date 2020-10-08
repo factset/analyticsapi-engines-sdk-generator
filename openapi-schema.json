@@ -325,7 +325,7 @@
           "Calculations"
         ],
         "summary": "Run calculation",
-        "description": "This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.\nThis must be used first before get status or cancelling endpoints with a calculation id. \nA successful response will contain the URL to check the status of the calculation request.\n\nRemarks:\n*\tMaximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)\n            \n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.",
+        "description": "This endpoint creates a new calculation and runs the set of calculation units specified in the POST body.\\nThis must be used first before get status or cancelling endpoints with a calculation id. \\nA successful response will contain the URL to check the status of the calculation request.\\n\\nRemarks:\\n*\tMaximum 500 units allowed across all simultaneous calculations. (Refer API documentation for more information)\\n            \\n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA/SPAR/Vault template.",
         "operationId": "runCalculation",
         "requestBody": {
           "description": "",
@@ -1088,7 +1088,7 @@
           "Calculations"
         ],
         "summary": "Get calculation status by id",
-        "description": "This is the endpoint to check on the progress of a previous calculation request.\nResponse body contains status information of the entire request and each individual calculation unit.",
+        "description": "This is the endpoint to check on the progress of a previous calculation request.\\nResponse body contains status information of the entire request and each individual calculation unit.",
         "operationId": "getCalculationStatusById",
         "parameters": [
           {
@@ -1447,7 +1447,7 @@
           "Calculations"
         ],
         "summary": "Cancel calculation by id",
-        "description": "This is the endpoint to cancel a previously submitted calculation request.\nInstead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.\nAll individual calculation units within the calculation will be canceled if they have not already finished.",
+        "description": "This is the endpoint to cancel a previously submitted calculation request.\\nInstead of doing a GET on the getCalculationById URL, cancel the calculation by doing a DELETE.\\nAll individual calculation units within the calculation will be canceled if they have not already finished.",
         "operationId": "cancelCalculationById",
         "parameters": [
           {
@@ -7645,7 +7645,7 @@
           "PACalculations"
         ],
         "summary": "Run PA Calculation",
-        "description": "This endpoint runs the PA calculation specified in the POST body parameters.\nIt must be used first before polling or cancelling endpoints.\nA successful response will contain the URL to poll for the result of the calculation.\n\nRemarks:\n\n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA template.",
+        "description": "This endpoint runs the PA calculation specified in the POST body parameters.\\nIt must be used first before polling or cancelling endpoints.\\nA successful response will contain the URL to poll for the result of the calculation.\\n\\nRemarks:\\n\\n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA template.",
         "operationId": "runPACalculation",
         "requestBody": {
           "content": {
@@ -8065,7 +8065,7 @@
           "PACalculations"
         ],
         "summary": "Get PA calculation by id",
-        "description": "This is the endpoint to check on the progress of a previously requested calculation.\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.\nOtherwise, the calculation is still running and the X-FactSet-Api-PickUp-Progress header will contain a progress percentage.",
+        "description": "This is the endpoint to check on the progress of a previously requested calculation.\\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.\\nOtherwise, the calculation is still running and the X-FactSet-Api-PickUp-Progress header will contain a progress percentage.",
         "operationId": "getPACalculationById",
         "parameters": [
           {
@@ -9143,7 +9143,7 @@
           "SPARCalculations"
         ],
         "summary": "Run SPAR Calculation",
-        "description": "This endpoint runs the SPAR calculation specified in the POST body parameters.\nIt must be used first before polling or cancelling endpoints. \nA successful response will contain the URL to poll for the result of the calculation.\n\nRemarks:\n\n*\tAny settings in POST body will act as a one-time override over the settings saved in the SPAR template.",
+        "description": "This endpoint runs the SPAR calculation specified in the POST body parameters.\\nIt must be used first before polling or cancelling endpoints. \\nA successful response will contain the URL to poll for the result of the calculation.\\n\\nRemarks:\\n\\n*\tAny settings in POST body will act as a one-time override over the settings saved in the SPAR template.",
         "operationId": "runSPARCalculation",
         "requestBody": {
           "content": {
@@ -9493,7 +9493,7 @@
           "SPARCalculations"
         ],
         "summary": "Get SPAR calculation by id",
-        "description": "This is the endpoint to check on the progress of a previously requested calculation.\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.",
+        "description": "This is the endpoint to check on the progress of a previously requested calculation.\\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.",
         "operationId": "getSPARCalculationById",
         "parameters": [
           {
@@ -10217,7 +10217,7 @@
           "VaultCalculations"
         ],
         "summary": "Run Vault Calculation",
-        "description": "This endpoint runs the Vault calculation specified in the POST body parameters.\nIt must be used first before polling or cancelling endpoints.\nA successful response will contain the URL to poll for the result of the calculation.\n\nRemarks:\n\n*   Start and and end date must be within the configuration's min and max date range",
+        "description": "This endpoint runs the Vault calculation specified in the POST body parameters.\\nIt must be used first before polling or cancelling endpoints.\\nA successful response will contain the URL to poll for the result of the calculation.\\n\\nRemarks:\\n\\n*   Start and and end date must be within the configuration's min and max date range",
         "operationId": "runVaultCalculation",
         "requestBody": {
           "content": {
@@ -10847,7 +10847,7 @@
           "VaultCalculations"
         ],
         "summary": "Get Vault calculation by id",
-        "description": "This is the endpoint to check on the progress of a previously requested calculation.\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.",
+        "description": "This is the endpoint to check on the progress of a previously requested calculation.\\nIf the calculation has finished computing, the body of the response will contain the requested document in JSON.",
         "operationId": "getVaultCalculationById",
         "parameters": [
           {
