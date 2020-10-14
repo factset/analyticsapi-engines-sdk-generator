@@ -26,12 +26,9 @@ then
   git checkout -b $branch_name
   rm -r auto-generated-sdk
   cp -r ../generator/languages/$language/sdk auto-generated-sdk
-  git status
-  if git diff-index --quiet HEAD -- 
+  git add -A .
+  if [[ `git status --porcelain` ]] 
   then 
-    echo "No changes to commit" 
-  else
-    git add -A .
     git commit -m "feat(sdk): Auto-commit from '$generator_repo_name' repository PR $pr_number for SDK version v$version"
     echo "Committed all the changes"
     
@@ -41,6 +38,8 @@ then
     export GITHUB_USER=$USER
     export GITHUB_TOKEN=$USER_API_KEY
     hub pull-request -m "feat(sdk): Auto-created from '$generator_repo_name' repository PR $pr_number for SDK version v$version" -h $branch_name
+  else
+    echo "No changes to commit" 
   fi
 else
   echo "Switching to existing branch '$branch_name'"
