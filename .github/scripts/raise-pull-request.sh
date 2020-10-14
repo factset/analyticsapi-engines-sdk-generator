@@ -15,7 +15,7 @@ cd sdk
 
 git config user.email $USER_EMAIL
 git config user.name $USER
-git config --global core.autocrlf true
+git config --global core.autocrlf input
 
 branch_name="feat/sdk/$generator_repo_name-pr-$pr_number"
 remote_branch_check=$(git ls-remote --heads origin $branch_name)
