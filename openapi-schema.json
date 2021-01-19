@@ -14837,7 +14837,7 @@
           }
         }
       },
-      "StrategyOverrides": {
+      "OptimizerStrategyOverrides": {
         "type": "object",
         "properties": {
           "objective": {
@@ -14869,7 +14869,7 @@
           }
         }
       },
-      "Strategy": {
+      "OptimizerStrategy": {
         "required": [
           "id"
         ],
@@ -14877,14 +14877,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "Strategy document path"
+            "description": "OptimizerStrategy document path"
           },
           "overrides": {
-            "$ref": "#/components/schemas/StrategyOverrides"
+            "$ref": "#/components/schemas/OptimizerStrategyOverrides"
           }
         }
       },
-      "AccountOverrides": {
+      "OptimizerAccountOverrides": {
         "type": "object",
         "properties": {
           "portfolio": {
@@ -14905,7 +14905,7 @@
           }
         }
       },
-      "Account": {
+      "OptimizerAccount": {
         "type": "object",
         "properties": {
           "id": {
@@ -14913,7 +14913,7 @@
             "description": "Account path"
           },
           "overrides": {
-            "$ref": "#/components/schemas/AccountOverrides"
+            "$ref": "#/components/schemas/OptimizerAccountOverrides"
           }
         }
       },
@@ -14934,7 +14934,7 @@
           }
         }
       },
-      "TradesList": {
+      "OptimizerTradesList": {
         "type": "object",
         "properties": {
           "identifiertype": {
@@ -14959,7 +14959,7 @@
           }
         }
       },
-      "OptimalHoldings": {
+      "OptimizerOptimalHoldings": {
         "type": "object",
         "properties": {
           "identifiertype": {
@@ -15014,14 +15014,14 @@
           }
         }
       },
-      "OutputTypes": {
+      "OptimizerOutputTypes": {
         "type": "object",
         "properties": {
           "trades": {
-            "$ref": "#/components/schemas/TradesList"
+            "$ref": "#/components/schemas/OptimizerTradesList"
           },
           "optimal": {
-            "$ref": "#/components/schemas/OptimalHoldings"
+            "$ref": "#/components/schemas/OptimizerOptimalHoldings"
           },
           "account": {
             "$ref": "#/components/schemas/OptimalPortfolio"
@@ -15036,16 +15036,16 @@
         "type": "object",
         "properties": {
           "strategy": {
-            "$ref": "#/components/schemas/Strategy"
+            "$ref": "#/components/schemas/OptimizerStrategy"
           },
           "account": {
-            "$ref": "#/components/schemas/Account"
+            "$ref": "#/components/schemas/OptimizerAccount"
           },
           "optimization": {
             "$ref": "#/components/schemas/Optimization"
           },
           "outputtypes": {
-            "$ref": "#/components/schemas/OutputTypes"
+            "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
         }
       },
@@ -15800,7 +15800,7 @@
           },
           "msl": {
             "type": "string",
-            "description": "Master Security List. Analytics results will be written to the selected MSL. Expects a GUI-style path (Client:/foo/bar)"
+            "description": "Master FISecurity List. Analytics results will be written to the selected MSL. Expects a GUI-style path (Client:/foo/bar)"
           },
           "fisettingsdocument": {
             "type": "string",
@@ -15876,7 +15876,7 @@
           }
         }
       },
-      "Security": {
+      "FISecurity": {
         "required": [
           "calcFromMethod",
           "calcFromValue",
@@ -15909,7 +15909,7 @@
           }
         }
       },
-      "JobSettings": {
+      "FIJobSettings": {
         "required": [
           "yieldCurveDate"
         ],
@@ -15938,7 +15938,7 @@
           "securities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Security"
+              "$ref": "#/components/schemas/FISecurity"
             }
           },
           "calculations": {
@@ -15948,7 +15948,7 @@
             }
           },
           "jobSettings": {
-            "$ref": "#/components/schemas/JobSettings"
+            "$ref": "#/components/schemas/FIJobSettings"
           }
         }
       },
