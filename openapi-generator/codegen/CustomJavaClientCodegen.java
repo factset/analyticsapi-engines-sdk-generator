@@ -21,7 +21,7 @@ public class CustomJavaClientCodegen extends JavaClientCodegen {
         File[] files = folder.listFiles();
         if (files != null) {
             for (File file : files) {
-                if(supportingFiles.stream().filter(f -> f.templateFile.equals(file.getName())).findFirst().isPresent()) {
+                if(supportingFiles.stream().filter(f -> f.getTemplateFile().equals(file.getName())).findFirst().isPresent()) {
                     continue;
                 }
                 LOGGER.info("adding custom template file {}", file.getName());
