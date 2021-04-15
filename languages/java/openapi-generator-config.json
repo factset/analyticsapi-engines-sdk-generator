@@ -24,6 +24,5 @@
     "caseInsensitiveResponseHeaders": true,
     "library": "jersey2",
     "servers":  false,
-    "httpUserAgent": "engines-api/5.0.0/java",
-    "dateLibrary": "Java8"
+    "httpUserAgent": "engines-api/5.0.0/java"
 }
