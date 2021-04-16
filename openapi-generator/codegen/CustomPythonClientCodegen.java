@@ -20,7 +20,8 @@ public class CustomPythonClientCodegen extends PythonClientCodegen {
         File[] files = folder.listFiles();
         if (files != null) {
             for (File file : files) {
-                if(supportingFiles.stream().filter(f -> f.getTemplateFile().equals(file.getName())).findFirst().isPresent()) {
+                if(supportingFiles.stream().filter(f -> f.getTemplateFile().equals(file.getName())).findFirst().isPresent()
+                    || apiTemplateFiles.containsKey(file.getName())) {                
                     continue;
                 }
                 if(file.getName().equals("common_README.mustache")) {
