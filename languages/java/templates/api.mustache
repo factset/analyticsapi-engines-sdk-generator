@@ -61,7 +61,7 @@ public class {{classname}} {
    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
    {{#returnType}}
-   * @return {{returnType}}
+   * @return {{#responses}}{{#schema}}({{code}} - {{{dataType}}}){{/schema}}{{/responses}}
    {{/returnType}}
    * @throws ApiException if fails to make API call
    {{#responses.0}}
@@ -96,7 +96,7 @@ public class {{classname}} {
    {{#allParams}}
    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
-   * @return ApiResponse&lt;{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}Void{{/returnType}}&gt;
+  * @return {{#returnType}}{{#responses}}{{#schema}}({{code}} - ApiResponse&lt;{{{dataType}}}&gt;){{/schema}}{{/responses}}{{/returnType}}{{^returnType}}ApiResponse&lt;Void&gt;{{/returnType}}
    * @throws ApiException if fails to make API call
    {{#responses.0}}
    * @http.response.details
