@@ -21,7 +21,7 @@ public class CustomRClientCodegen extends RClientCodegen {
         if (files != null) {
             for (File file : files) {
                 if(supportingFiles.stream().filter(f -> f.getTemplateFile().equals(file.getName())).findFirst().isPresent()
-                    || apiTemplateFiles.containsKey(file.getName()) || apiDocTemplateFiles.containsKey(file.getName()) {
+                    || apiTemplateFiles.containsKey(file.getName()) || apiDocTemplateFiles.containsKey(file.getName())) {
                     continue;
                 }
                 LOGGER.info("adding custom template file {}", file.getName());
