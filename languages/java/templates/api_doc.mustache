@@ -103,7 +103,6 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{returnType}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
 {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}[**{{response-type}}**]({{response-type}}.md){{/response-type}}{{^response-type}}null (empty response body){{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}[**{{returnType}}**]({{returnType}}.md){{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
 
 ### Authorization
