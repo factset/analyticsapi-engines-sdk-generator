@@ -9,6 +9,13 @@
     <version>{{artifactVersion}}</version>
     <url>{{artifactUrl}}</url>
     <description>{{artifactDescription}}</description>
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
     <scm>
         <connection>{{scmConnection}}</connection>
         <developerConnection>{{scmDeveloperConnection}}</developerConnection>
@@ -225,6 +232,13 @@
                                     <goal>sign</goal>
                                 </goals>
                             </execution>
+                            <configuration>
+                                <!-- Prevent gpg from using pinentry programs -->
+                                <gpgArguments>
+                                    <arg>--pinentry-mode</arg>
+                                    <arg>loopback</arg>
+                                </gpgArguments>
+                            </configuration>
                         </executions>
                     </plugin>
                 </plugins>
