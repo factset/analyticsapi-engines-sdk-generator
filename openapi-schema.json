@@ -467,7 +467,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -743,7 +743,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -885,7 +885,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -1205,7 +1205,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -1814,7 +1814,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -2057,7 +2057,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           },
           {
             "status-code": "202",
@@ -2147,7 +2147,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -2339,7 +2339,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -2790,7 +2790,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -3066,7 +3066,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -3208,7 +3208,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -3528,7 +3528,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -4137,7 +4137,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -4380,7 +4380,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           },
           {
             "status-code": "202",
@@ -4470,7 +4470,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -4662,7 +4662,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -11042,12 +11042,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -11445,7 +11445,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -11592,12 +11592,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -11932,7 +11932,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -12541,12 +12541,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -12799,7 +12799,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           },
           {
             "status-code": "202",
@@ -12889,12 +12889,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13096,7 +13096,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -13228,7 +13228,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13504,7 +13504,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -13646,7 +13646,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13966,7 +13966,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -14575,7 +14575,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -14818,7 +14818,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           },
           {
             "status-code": "202",
@@ -14916,7 +14916,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -15108,7 +15108,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -16128,12 +16128,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -16468,7 +16468,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           },
           {
             "status-code": "200",
@@ -16668,12 +16668,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -17012,7 +17012,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -17992,12 +17992,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -18199,7 +18199,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -20746,12 +20746,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -21041,7 +21041,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -21237,12 +21237,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -21581,7 +21581,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -22561,12 +22561,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -22768,7 +22768,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -24554,12 +24554,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -24849,7 +24849,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -25045,12 +25045,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -25389,7 +25389,7 @@
           },
           {
             "status-code": "201",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       },
@@ -26369,12 +26369,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringRoot"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -26576,7 +26576,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "StringRoot"
+            "response-type": "ObjectRoot"
           }
         ]
       }
@@ -26905,14 +26905,14 @@
           }
         }
       },
-      "StringRoot": {
+      "ObjectRoot": {
         "required": [
           "data"
         ],
         "type": "object",
         "properties": {
           "data": {
-            "type": "string"
+            "type": "object"
           }
         }
       },
