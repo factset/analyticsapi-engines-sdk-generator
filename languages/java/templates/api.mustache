@@ -14,6 +14,8 @@ import javax.ws.rs.core.GenericType;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.io.File;
+
 {{#imports}}import {{import}};
 {{/imports}}
 
@@ -63,7 +65,7 @@ public class {{classname}} {
    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
    {{#returnType}}
-    @return {{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}Void{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}
+    @return {{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}
    {{/returnType}}
    * @throws ApiException if fails to make API call
    {{#responses.0}}
@@ -98,7 +100,7 @@ public class {{classname}} {
    {{#allParams}}
    * @param {{paramName}} {{description}}{{#required}} (required){{/required}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}
    {{/allParams}}
-    * @return {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - ApiResponse&lt;{{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}Void{{/response-type}}&gt;){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}ApiResponse&lt;{{{returnType}}}&gt;{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}ApiResponse&lt;Void&gt;{{/returnType}}
+    * @return {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}ApiResponse&lt;Object&gt;{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}ApiResponse&lt;{{{returnType}}}&gt;{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}ApiResponse&lt;Void&gt;{{/returnType}}
    * @throws ApiException if fails to make API call
    {{#responses.0}}
    * @http.response.details
