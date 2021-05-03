@@ -105,7 +105,7 @@ jobs:
 1. Build the Docker image
 
     ```sh
-    docker build --build-arg VERSION=4.3.1 \
+    docker build --build-arg VERSION=5.1.0 \
         -t openapi-generator-cli-custom \
         -f ./openapi-generator/Dockerfile \
         ./openapi-generator
