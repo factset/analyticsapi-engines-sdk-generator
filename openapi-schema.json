@@ -10031,6 +10031,98 @@
                   "type": "string"
                 }
               }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
             }
           },
           "401": {
@@ -10334,14 +10426,14 @@
             }
           }
         },
-        "x-are-multiple-success-responses-different": false,
-        "x-success-response-types": [
-          {
-            "status-code": "202",
-            "response-type": null
-          }
-        ]
-      },
+            "x-are-multiple-success-responses-different": false,
+            "x-success-response-types": [
+              {
+                "status-code": "202",
+                "response-type": null
+              }
+            ]
+          },
       "get": {
         "tags": [
           "FIAB Calculations"
@@ -10735,29 +10827,17 @@
                   "type": "string"
                 }
               }
-            }
-          },
-          "401": {
-            "description": "Missing or invalid authentication.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
+            },
+            "content": {
+              "application/json": {
                 "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                  "$ref": "#/components/schemas/ClientErrorResponse"
                 }
               }
             }
           },
-          "403": {
-            "description": "User is forbidden with current credentials",
+          "404": {
+            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -10791,10 +10871,36 @@
                   "type": "string"
                 }
               }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
             }
           },
-          "404": {
-            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -10869,18 +10975,18 @@
             }
           }
         },
-        "x-are-multiple-success-responses-different": false,
-        "x-success-response-types": [
-          {
-            "status-code": "200",
-            "response-type": "FIABCalculationStatus"
-          },
-          {
-            "status-code": "202",
-            "response-type": "FIABCalculationStatus"
+            "x-are-multiple-success-responses-different": false,
+            "x-success-response-types": [
+              {
+                "status-code": "200",
+                "response-type": "FIABCalculationStatus"
+              },
+              {
+                "status-code": "202",
+                "response-type": "FIABCalculationStatus"
+              }
+            ]
           }
-        ]
-      }
     },
     "/analytics/engines/fi/v3/calculations": {
       "post": {
@@ -28316,7 +28422,7 @@
   },
   "security": [
     {
-      "Basic": []
+      "Basic": [ ]
     }
   ]
 }
