@@ -351,9 +351,14 @@ class ApiClient(object):
             {{/tornado}}
             return return_data
 
-        # deserialize response data
-        # response code to type serialization mapping goes here
-        if response_type:
+        # deserialize response data with response code to type serialization mapping
+
+        # check for responses that shouldn't include a body
+        if return_data.status in (204, 304) or 100 <= return_data.status < 200:
+            return_data = None
+
+        if response_type_dict[return_data.status]:
+            response_type = response_type_dict[return_data.status]
             if response_type != (file_type,):
                 encoding = "utf-8"
                 content_type = response_data.getheader('content-type')
@@ -653,20 +658,20 @@ class ApiClient(object):
             then the method will return the response directly.
         """
         if not async_req:
-            return self.__call_api(resource_path, method,
+            return self.__call_api_with_return_dict(resource_path, method,
                                    path_params, query_params, header_params,
                                    body, post_params, files,
-                                   response_type, auth_settings,
+                                   response_type_dict, auth_settings,
                                    _return_http_data_only, collection_formats,
                                    _preload_content, _request_timeout, _host,
                                    _check_type)
 
-        return self.pool.apply_async(self.__call_api, (resource_path,
+        return self.pool.apply_async(self.__call_api_with_return_dict, (resource_path,
                                                        method, path_params,
                                                        query_params,
                                                        header_params, body,
                                                        post_params, files,
-                                                       response_type,
+                                                       response_type_dict,
                                                        auth_settings,
                                                        _return_http_data_only,
                                                        collection_formats,
