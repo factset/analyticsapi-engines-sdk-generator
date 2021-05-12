@@ -371,21 +371,21 @@ class ApiClient(object):
         else:
             return_data = None
 
-		{{^tornado}}
+        {{^tornado}}
         if _return_http_data_only:
             return (return_data)
         else:
             return (return_data, response_data.status,
                     response_data.getheaders())
-		{{/tornado}}
+        {{/tornado}}
 
-		{{#tornado}}
+        {{#tornado}}
         if _return_http_data_only:
             raise tornado.gen.Return(return_data)
         else:
             raise tornado.gen.Return((return_data, response_data.status,
                                       response_data.getheaders()))
-		{{/tornado}}
+        {{/tornado}}
 
     def parameters_to_multipart(self, params, collection_types):
         """Get parameters as list of tuples, formatting as json if value is collection_types
