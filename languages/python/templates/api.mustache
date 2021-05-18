@@ -129,7 +129,7 @@ class {{classname}}(object):
 
         self.{{operationId}} = _Endpoint(
             settings={
-                'response_type': {{#returnType}}({{{returnType}}},){{/returnType}}{{^returnType}}None{{/returnType}},
+                'response_type': {{#returnType}}{ {{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}{{status-code}}:{{#response-type}}{{{response-type}}}{{/response-type}}, {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{#returnType}}{{{returnType}}}{{/returnType}}{{/vendorExtensions.x-are-multiple-success-responses-different}} }{{/returnType}}{{^returnType}}None{{/returnType}},
 {{#authMethods}}
 {{#-first}}
                 'auth': [
