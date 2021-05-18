@@ -1,5 +1,7 @@
-{{>partial_header}}
+{{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/python/exceptions.mustache) }}
+{{! Changes made: 1) Added get_client_error_response() method which can contain multiple errors to ApiException class. }}
 
+{{>partial_header}}
 
 class OpenApiException(Exception):
     """The base exception class for all OpenAPIExceptions"""
@@ -88,12 +90,8 @@ class ApiKeyError(OpenApiException, KeyError):
         super(ApiKeyError, self).__init__(full_msg)
 
 
-{{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/python/exceptions.mustache) }}
-{{! Changes made: 1) Added getClientErrorResponse() method which can contain multiple errors. }}
-
 class ApiException(OpenApiException):
-
-    def __init__(self, status=None, reason=None, http_resp=None):
+    def __init__(self, status=None, reason=None, http_resp=None, client_error_response=None):
         if http_resp:
             self.status = http_resp.status
             self.reason = http_resp.reason
@@ -104,6 +102,8 @@ class ApiException(OpenApiException):
             self.reason = reason
             self.body = None
             self.headers = None
+
+        self.client_error_response = client_error_response
 
     def __str__(self):
         """Custom error messages for exception"""
@@ -117,6 +117,14 @@ class ApiException(OpenApiException):
             error_message += "HTTP response body: {0}\n".format(self.body)
 
         return error_message
+
+    def get_client_error_response(self):
+        """
+        Get the detailed client error response. This can contain multiple error reasons.
+
+        Returns: ClientErrorResponse
+        """
+        return self.client_error_response
 
 
 class NotFoundException(ApiException):
