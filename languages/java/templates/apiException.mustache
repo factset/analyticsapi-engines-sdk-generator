@@ -1,3 +1,6 @@
+{{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/Java/libraries/jersey2/apiException.mustache) }}
+{{! Changes made: 1) Added getClientErrorResponse() method which can contain multiple errors. }}
+
 {{>licenseInfo}}
 
 package {{invokerPackage}};
@@ -9,6 +12,8 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 {{/caseInsensitiveResponseHeaders}}
 
+import {{modelPackage}}.ClientErrorResponse;
+
 /**
  * API Exception
  */
@@ -17,6 +22,8 @@ public class ApiException extends{{#useRuntimeException}} RuntimeException {{/us
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
+    private ClientErrorResponse clientErrorResponse = null;
+
     public ApiException() {}
 
     public ApiException(Throwable throwable) {
@@ -69,6 +76,11 @@ public class ApiException extends{{#useRuntimeException}} RuntimeException {{/us
         this.responseBody = responseBody;
     }
 
+    public ApiException(int code, String message, Map<String, List<String>> responseHeaders, String responseBody, ClientErrorResponse clientErrorResponse) {
+        this(code, message, responseHeaders, responseBody);
+        this.clientErrorResponse = clientErrorResponse;
+    }
+
     /**
      * Get the HTTP status code.
      *
@@ -94,5 +106,14 @@ public class ApiException extends{{#useRuntimeException}} RuntimeException {{/us
      */
     public String getResponseBody() {
         return responseBody;
+    }
+   
+    /**
+     * Get the detailed client error response. This can contain multiple error reasons.
+     *
+     * @return ClientErrorResponse
+     */
+     public ClientErrorResponse getClientErrorResponse() {
+         return clientErrorResponse;
     }
 } 

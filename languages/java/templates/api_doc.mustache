@@ -1,3 +1,6 @@
+{{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/Java/libraries/jersey2/api_doc.mustache) }}
+{{! Changes made: 1) Updated example snippet with correct response types and exception details. 2) Updated the return type section with correct details }}
+
 # {{classname}}{{#description}}
 
 {{description}}{{/description}}
@@ -69,10 +72,10 @@ public class Example {
         {{/allParams}}
         try {
             {{^vendorExtensions.x-group-parameters}}
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});
+            {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}Object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}} result = {{/returnType}}apiInstance.{{{operationId}}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}});
             {{/vendorExtensions.x-group-parameters}}
             {{#vendorExtensions.x-group-parameters}}
-            {{#returnType}}{{{returnType}}} result = {{/returnType}}api.{{operationId}}({{#pathParams}}{{paramName}}{{^-last}}, {{/-last}}{{/pathParams}}){{#allParams}}{{^isPathParam}}
+            {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}Object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}} result = {{/returnType}}api.{{operationId}}({{#pathParams}}{{paramName}}{{^-last}}, {{/-last}}{{/pathParams}}){{#allParams}}{{^isPathParam}}
                 .{{paramName}}({{paramName}}){{/isPathParam}}{{/allParams}}
                 .execute();
             {{/vendorExtensions.x-group-parameters}}
@@ -82,7 +85,7 @@ public class Example {
         } catch (ApiException e) {
             System.err.println("Exception when calling {{{classname}}}#{{{operationId}}}");
             System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Reason: " + e.getClientErrorResponse());
             System.err.println("Response headers: " + e.getResponseHeaders());
             e.printStackTrace();
         }
@@ -100,7 +103,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{returnType}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{returnType}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
+{{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}[**{{response-type}}**]({{response-type}}.md){{/response-type}}{{^response-type}}{{#is-file}} File {{/is-file}}{{^is-file}} null (empty response body) {{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}[**{{returnType}}**]({{returnType}}.md){{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
 
 ### Authorization
 
