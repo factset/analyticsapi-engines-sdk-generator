@@ -33279,7 +33279,7 @@
       "CalculationInfo": {
         "type": "object",
         "properties": {
-          "id": {
+          "calculationId": {
             "type": "string",
             "description": "Calculation identifier"
           }
