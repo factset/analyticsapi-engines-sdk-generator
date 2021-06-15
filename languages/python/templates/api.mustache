@@ -1,3 +1,5 @@
+{{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/python/api.mustache) }}
+{{! Changes made: 1) Updated returns section in the documentation of each method. 2) Added way to express multiple success scenarios that can return different response types. }}
 {{>partial_header}}
 
 import re  # noqa: F401
@@ -96,7 +98,7 @@ class {{classname}}(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                {{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}
+                {{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}None{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{#returnType}}{{returnType}}{{/returnType}}{{^returnType}}None{{/returnType}}{{/vendorExtensions.x-are-multiple-success-responses-different}}
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -127,7 +129,7 @@ class {{classname}}(object):
 
         self.{{operationId}} = _Endpoint(
             settings={
-                'response_type': {{#returnType}}({{{returnType}}},){{/returnType}}{{^returnType}}None{{/returnType}},
+                'response_type': {{#returnType}}dict({ {{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}{{status-code}}:{{#response-type}}({{{response-type}}},){{/response-type}}{{^response-type}}{{#is-file}}(file_type,){{/is-file}}{{^is-file}}None{{/is-file}}{{/response-type}}, {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}{{status-code}}:{{#response-type}}({{{response-type}}},), {{/response-type}}{{^response-type}}{{#is-file}}(file_type,), {{/is-file}}{{^is-file}}None, {{/is-file}}{{/response-type}}{{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}} }){{/returnType}}{{^returnType}}None{{/returnType}},
 {{#authMethods}}
 {{#-first}}
                 'auth': [
