@@ -481,6 +481,14 @@ namespace {{packageName}}.{{apiPackage}}
                 {{/produces}}
             };
 
+            localVarRequestOptions.ResponseReturnTypes = new Dictionary<string, Type>
+            {
+            {{#responses}}
+            {{#schema}}
+                { "{{code}}", typeof({{{dataType}}}) },
+            {{/schema}}
+            {{/responses}}
+            };
 
             var localVarContentType = {{packageName}}.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
             if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
