@@ -388,10 +388,10 @@
                 }
               },
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -432,10 +432,10 @@
             "description": "Expected response, returns json if optimization is completed in a short span.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -476,10 +476,10 @@
             "description": "Invalid optimization parameters.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -520,10 +520,10 @@
             "description": "One or more optimization settings were unavailable.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -564,10 +564,10 @@
             "description": "Missing or invalid authentication.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -583,10 +583,10 @@
             "description": "User is forbidden with current credentials",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -620,10 +620,10 @@
             "description": "Missing/Invalid Content-Type header. Header needs to be set to application/json.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -657,10 +657,10 @@
             "description": "Rate limit reached. Cancel older requests using Cancel optimization endpoint or wait for older requests to finish/expire.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -700,10 +700,10 @@
             "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -719,10 +719,10 @@
             "description": "Request timed out. Retry the request in sometime.",
             "headers": {
               "X-DataDirect-Request-Key": {
-                "description": "FactSet’s request key header.",
+                "description": "FactSet's request key header.",
                 "schema": {
                   "type": "string",
-                  "description": "FactSet’s request key header."
+                  "description": "FactSet's request key header."
                 }
               },
               "X-FactSet-Api-Request-Key": {
@@ -34290,6 +34290,17 @@
               "SimplifiedRow"
             ],
             "type": "string",
+            "default": "SimplifiedRow",
+            "deprecated": true
+          },
+          "stachContentOrganization": {
+            "enum": [
+              "None",
+              "Row",
+              "Column",
+              "SimplifiedRow"
+            ],
+            "type": "string",
             "default": "SimplifiedRow"
           },
           "contenttype": {
@@ -34298,7 +34309,23 @@
               "Binary"
             ],
             "type": "string",
-            "default": "Json"
+            "default": "Json",
+            "deprecated": true
+          },
+          "format": {
+            "enum": [
+              "JsonStach",
+              "Table",
+              "Tableau",
+              "BinaryStach",
+              "Bison",
+              "Binary",
+              "Pdf",
+              "Pptx",
+              "Feather"
+            ],
+            "type": "string",
+            "default": "JsonStach"
           }
         }
       },
@@ -35004,24 +35031,21 @@
       "QuantCalculationMeta": {
         "type": "object",
         "properties": {
-          "format": {
-            "enum": [
-              "JsonStach",
-              "Table",
-              "Tableau",
-              "BinaryStach",
-              "Bison",
-              "Binary",
-              "Pdf",
-              "Pptx",
-              "Feather"
-            ],
-            "type": "string"
-          },
           "allowArrayData": {
             "type": "boolean"
           },
           "contentorganization": {
+            "enum": [
+              "None",
+              "Row",
+              "Column",
+              "SimplifiedRow"
+            ],
+            "type": "string",
+            "default": "SimplifiedRow",
+            "deprecated": true
+          },
+          "stachContentOrganization": {
             "enum": [
               "None",
               "Row",
@@ -35037,7 +35061,23 @@
               "Binary"
             ],
             "type": "string",
-            "default": "Json"
+            "default": "Json",
+            "deprecated": true
+          },
+          "format": {
+            "enum": [
+              "JsonStach",
+              "Table",
+              "Tableau",
+              "BinaryStach",
+              "Bison",
+              "Binary",
+              "Pdf",
+              "Pptx",
+              "Feather"
+            ],
+            "type": "string",
+            "default": "JsonStach"
           }
         }
       },
