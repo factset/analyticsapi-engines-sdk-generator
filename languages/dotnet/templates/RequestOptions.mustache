@@ -1,4 +1,5 @@
 {{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/csharp-netcore/RequestOptions.mustache) }}
+{{! Changes made: 1) Added ResponseReturnTypes map for different status code and return type combinations. }}
 {{>partial_header}}
 
 using System;
@@ -49,7 +50,7 @@ namespace {{packageName}}.Client
         /// <summary>
         /// Response return types for each status code.
         /// </summary>
-        public Dictionary<String, Type> ResponseReturnTypes { get; set; }
+        public Dictionary<int, Type> ResponseReturnTypes { get; set; }
 
         /// <summary>
         /// Any data associated with a request body.

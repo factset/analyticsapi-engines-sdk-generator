@@ -1,4 +1,5 @@
 {{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/csharp-netcore/api.mustache) }}
+{{! Changes made: 1) Updated return types for methods that return different responses. 2. Updated returns section in the documentation of each method. 3. Pass in ResponseReturnTypes map for each method. }}
 {{>partial_header}}
 
 using System;
@@ -226,7 +227,8 @@ namespace {{packageName}}.{{apiPackage}}
         /// </summary>
         /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
         {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
-        {{/allParams}}/// <returns>{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}</returns>
+        {{/allParams}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}/// <returns>{{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}} for {{status-code}} status</returns>
+        {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}/// <returns>{{{returnType}}}</returns>{{/vendorExtensions.x-are-multiple-success-responses-different}}
         public {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}void{{/returnType}} {{operationId}}({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         {
             {{#returnType}}{{packageName}}.Client.ApiResponse<{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}> localVarResponse = {{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}});
@@ -238,7 +240,8 @@ namespace {{packageName}}.{{apiPackage}}
         /// </summary>
         /// <exception cref="{{packageName}}.Client.ApiException">Thrown when fails to make API call</exception>
         {{#allParams}}/// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
-        {{/allParams}}/// <returns>ApiResponse of {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}Object(void){{/returnType}}</returns>
+        {{/allParams}}{{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}/// <returns>ApiResponse of {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}} for {{status-code}} status</returns>
+        {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}/// <returns>ApiResponse of {{{returnType}}}</returns>{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}/// <returns>ApiResponse of Object(null)</returns>{{/returnType}}
         public {{packageName}}.Client.ApiResponse<{{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}object{{/returnType}}> {{operationId}}WithHttpInfo({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}})
         {
             {{#allParams}}
@@ -264,6 +267,15 @@ namespace {{packageName}}.{{apiPackage}}
                 {{#produces}}
                 "{{{mediaType}}}"{{^-last}},{{/-last}}
                 {{/produces}}
+            };
+
+            localVarRequestOptions.ResponseReturnTypes = new Dictionary<int, Type>
+            {
+            {{#responses}}
+            {{#schema}}
+                { {{code}}, typeof({{{dataType}}}) },
+            {{/schema}}
+            {{/responses}}
             };
 
             var localVarContentType = {{packageName}}.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -437,7 +449,8 @@ namespace {{packageName}}.{{apiPackage}}
         /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
         {{/allParams}}
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}void{{/returnType}}</returns>
+        {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}/// <returns>Task of {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}} for {{status-code}} status</returns>
+        {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}/// <returns>Task of {{{returnType}}}</returns>{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}/// <returns>Task of void</returns>{{/returnType}}
         public async {{#returnType}}System.Threading.Tasks.Task<{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}>{{/returnType}}{{^returnType}}System.Threading.Tasks.Task{{/returnType}} {{operationId}}Async({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams.0}}, {{/allParams.0}}System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             {{#returnType}}{{packageName}}.Client.ApiResponse<{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}> localVarResponse = await {{operationId}}WithHttpInfoAsync({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams.0}}, {{/allParams.0}}cancellationToken).ConfigureAwait(false);
@@ -452,7 +465,8 @@ namespace {{packageName}}.{{apiPackage}}
         /// <param name="{{paramName}}">{{description}}{{^required}} (optional{{#defaultValue}}, default to {{.}}{{/defaultValue}}){{/required}}</param>
         {{/allParams}}
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse of {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}Object(void){{/returnType}}</returns>
+        {{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}/// <returns>Task of ApiResponse of {{#response-type}}{{{response-type}}}{{/response-type}}{{^response-type}}{{#is-file}}File{{/is-file}}{{^is-file}}null{{/is-file}}{{/response-type}} for {{status-code}} status</returns>
+        {{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}/// <returns>Task of ApiResponse of {{{returnType}}}</returns>{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}/// <returns>Task of ApiResponse of Object(null)</returns>{{/returnType}}
         public async System.Threading.Tasks.Task<{{packageName}}.Client.ApiResponse<{{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}object{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}{{{returnType}}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}}object{{/returnType}}>> {{operationId}}WithHttpInfoAsync({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams.0}}, {{/allParams.0}}System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             {{#allParams}}
@@ -481,11 +495,11 @@ namespace {{packageName}}.{{apiPackage}}
                 {{/produces}}
             };
 
-            localVarRequestOptions.ResponseReturnTypes = new Dictionary<string, Type>
+            localVarRequestOptions.ResponseReturnTypes = new Dictionary<int, Type>
             {
             {{#responses}}
             {{#schema}}
-                { "{{code}}", typeof({{{dataType}}}) },
+                { {{code}}, typeof({{{dataType}}}) },
             {{/schema}}
             {{/responses}}
             };
