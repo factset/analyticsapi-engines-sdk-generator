@@ -52,7 +52,8 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-{{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}}void (empty response body){{/returnType}}
+A tuple with response data, HTTP status code and response headers.
+{{#returnType}}{{#vendorExtensions.x-are-multiple-success-responses-different}}{{#vendorExtensions.x-success-response-types}}(For {{status-code}} status - {{#response-type}}[**{{response-type}}**]({{response-type}}.md){{/response-type}}{{^response-type}}{{#is-file}} File {{/is-file}}{{^is-file}} None (empty response body) {{/is-file}}{{/response-type}}){{/vendorExtensions.x-success-response-types}}{{/vendorExtensions.x-are-multiple-success-responses-different}}{{^vendorExtensions.x-are-multiple-success-responses-different}}[**{{returnType}}**]({{returnType}}.md){{/vendorExtensions.x-are-multiple-success-responses-different}}{{/returnType}}{{^returnType}} None (empty response body){{/returnType}}
 
 ### Authorization
 
