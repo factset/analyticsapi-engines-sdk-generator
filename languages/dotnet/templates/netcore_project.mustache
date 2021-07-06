@@ -1,5 +1,3 @@
-{{! This file is picked from the v5.1.1 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/csharp-netcore/netcore_project.mustache) }}
-{{! Changes made: 1) Added Dependency for FactSet.Protobuf.Stach.Extensions. }}
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -38,7 +36,6 @@
     {{#validatable}}
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     {{/validatable}}
-    <PackageReference Include="FactSet.Protobuf.Stach.Extensions" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
