@@ -1,5 +1,5 @@
 {{! This file is picked from the v5.1.0 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/Java/libraries/jersey2/JSON.mustache) }}
-{{! Changes made: 1) Updated FAIL_ON_UNKNOWN_PROPERTIES to true. }}
+{{! Changes made: 1) Updated FAIL_ON_UNKNOWN_PROPERTIES to false. }}
 
 package {{invokerPackage}};
 
@@ -40,7 +40,7 @@ public class JSON implements ContextResolver<ObjectMapper> {
     mapper = new ObjectMapper();
     mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     mapper.configure(MapperFeature.ALLOW_COERCION_OF_SCALARS, false);
-    mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
+    mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     mapper.configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, true);
     mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     mapper.enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);
