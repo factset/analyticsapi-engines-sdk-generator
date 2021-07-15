@@ -33227,6 +33227,9 @@
           }
         }
       },
+      "OptimizerStats": {
+        "type": "object"
+      },
       "OptimizerOutputTypes": {
         "type": "object",
         "properties": {
@@ -33238,6 +33241,9 @@
           },
           "account": {
             "$ref": "#/components/schemas/OptimalPortfolio"
+          },
+          "stats": {
+            "$ref": "#/components/schemas/OptimizerStats"
           }
         }
       },
