@@ -40247,7 +40247,8 @@
       },
       "QuantUniverse": {
         "required": [
-          "$type"
+          "$type",
+          "source"
         ],
         "type": "object",
         "properties": {
@@ -40274,7 +40275,8 @@
           },
           {
             "required": [
-              "screen"
+              "screen",
+              "source"
             ],
             "type": "object",
             "properties": {
@@ -40292,6 +40294,7 @@
           },
           {
             "required": [
+              "source",
               "universeExpr",
               "universeType"
             ],
@@ -40323,6 +40326,7 @@
           {
             "required": [
               "identifiers",
+              "source",
               "universeType"
             ],
             "type": "object",
@@ -40348,7 +40352,8 @@
         "required": [
           "$type",
           "calendar",
-          "frequency"
+          "frequency",
+          "source"
         ],
         "type": "object",
         "properties": {
@@ -40383,6 +40388,7 @@
               "calendar",
               "endDate",
               "frequency",
+              "source",
               "startDate"
             ],
             "type": "object",
@@ -40405,7 +40411,8 @@
           {
             "required": [
               "calendar",
-              "frequency"
+              "frequency",
+              "source"
             ],
             "type": "object",
             "properties": {
@@ -40422,7 +40429,8 @@
       },
       "QuantFormula": {
         "required": [
-          "$type"
+          "$type",
+          "source"
         ],
         "type": "object",
         "properties": {
@@ -40451,7 +40459,8 @@
           {
             "required": [
               "expr",
-              "name"
+              "name",
+              "source"
             ],
             "type": "object",
             "properties": {
@@ -40473,7 +40482,8 @@
           {
             "required": [
               "expr",
-              "name"
+              "name",
+              "source"
             ],
             "type": "object",
             "properties": {
@@ -40495,7 +40505,8 @@
           {
             "required": [
               "name",
-              "referenceName"
+              "referenceName",
+              "source"
             ],
             "type": "object",
             "properties": {
@@ -40515,6 +40526,9 @@
             "$ref": "#/components/schemas/QuantFormula"
           },
           {
+            "required": [
+              "source"
+            ],
             "type": "object"
           }
         ]
@@ -40691,6 +40705,10 @@
         "type": "object"
       },
       "QuantCalculationParameters": {
+        "required": [
+          "dates",
+          "universe"
+        ],
         "type": "object",
         "properties": {
           "universe": {
@@ -40706,7 +40724,7 @@
               }
             ]
           },
-          "quantDate": {
+          "dates": {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QuantFdsDate"
@@ -40716,21 +40734,24 @@
               }
             ]
           },
-          "quantFormula": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/QuantScreeningExpression"
-              },
-              {
-                "$ref": "#/components/schemas/QuantFqlExpression"
-              },
-              {
-                "$ref": "#/components/schemas/QuantUniversalScreenParameter"
-              },
-              {
-                "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
-              }
-            ]
+          "formulas": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/QuantScreeningExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantFqlExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantUniversalScreenParameter"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              ]
+            }
           },
           "screeningExpressionUniverse": {
             "$ref": "#/components/schemas/QuantScreeningExpressionUniverse1"
