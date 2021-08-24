@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Engines API",
-    "description": "Allow clients to fetch Engines Analytics through APIs.",
+    "description": "Allow clients to fetch Analytics through APIs.",
     "contact": {
       "name": "Analytics API Support",
       "url": "https://developer.factset.com/contact",
@@ -12,8 +12,13 @@
       "name": "Apache License 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
     },
-    "version": "3"
+    "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]"
   },
+  "servers": [
+    {
+      "url": "https://api.factset.com"
+    }
+  ],
   "paths": {
     "/analytics/engines/spar/v3/accounts/{accountPath}/returns-type": {
       "get": {
@@ -75,7 +80,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SPARAccountsObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/SPARAccountsRoot"
                 }
               }
             }
@@ -324,7 +329,334 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "SPARAccountsRoot"
+          }
+        ]
+      }
+    },
+    "/analytics/lookups/v3/accounts/{path}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get accounts and sub-directories in a directory",
+        "description": "This endpoint looks up all ACCT and ACTM files and sub-directories in a given directory.",
+        "operationId": "getAccounts",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "path",
+            "description": "The directory to get the accounts and sub-directories in",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The directory to get the accounts and sub-directories in",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response, returns a list of accounts and directories",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDirectoriesRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query parameter or value provided",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Path not found",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header.  Header needs to be set to application/json",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in some time",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "AccountDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/afi/v3/optimizations": {
@@ -358,7 +690,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/AFIOptimizationParametersRoot"
               }
             }
           }
@@ -410,7 +742,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -454,7 +786,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -721,7 +1053,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/afi/v3/optimizations/{id}": {
@@ -765,7 +1108,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/AFIOptimizationParametersRoot"
               }
             }
           }
@@ -817,7 +1160,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -861,7 +1204,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -1172,7 +1515,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -1254,7 +1608,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/AFIOptimizationParametersRoot"
                 }
               }
             }
@@ -1441,7 +1795,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "AFIOptimizationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -1702,7 +2063,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/afi/v3/optimizations/{id}/status": {
@@ -1765,7 +2133,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -2003,7 +2371,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/afi/v3/optimizations/{id}/result": {
@@ -2087,7 +2466,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -2274,7 +2653,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/axp/v3/optimizations": {
@@ -2308,7 +2694,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersRoot"
               }
             }
           }
@@ -2360,7 +2746,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -2404,7 +2790,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -2671,7 +3057,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/axp/v3/optimizations/{id}": {
@@ -2715,7 +3112,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersRoot"
               }
             }
           }
@@ -2767,7 +3164,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -2811,7 +3208,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -3122,7 +3519,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -3204,7 +3612,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/AxiomaEquityOptimizationParametersRoot"
                 }
               }
             }
@@ -3391,7 +3799,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "AxiomaEquityOptimizationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -3652,7 +4067,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/axp/v3/optimizations/{id}/status": {
@@ -3715,7 +4137,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -3953,7 +4375,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/axp/v3/optimizations/{id}/result": {
@@ -4037,7 +4470,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -4224,7 +4657,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/benchmarks": {
@@ -4287,7 +4727,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SPARBenchmarkObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/SPARBenchmarkRoot"
                 }
               }
             }
@@ -4536,7 +4976,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "SPARBenchmarkRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/bpm/v3/optimizations": {
@@ -4570,7 +5017,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BPMOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/BPMOptimizationParametersRoot"
               }
             }
           }
@@ -4622,7 +5069,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -4666,7 +5113,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -4933,7 +5380,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/bpm/v3/optimizations/{id}": {
@@ -4977,7 +5435,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BPMOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/BPMOptimizationParametersRoot"
               }
             }
           }
@@ -5029,7 +5487,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -5073,7 +5531,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -5384,7 +5842,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -5466,7 +5935,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BPMOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/BPMOptimizationParametersRoot"
                 }
               }
             }
@@ -5653,7 +6122,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "BPMOptimizationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -5914,7 +6390,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/bpm/v3/optimizations/{id}/status": {
@@ -5977,7 +6460,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -6215,7 +6698,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/bpm/v3/optimizations/{id}/result": {
@@ -6299,7 +6793,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -6486,7 +6980,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/columns": {
@@ -6576,7 +7077,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringColumnSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ColumnSummaryRoot"
                 }
               }
             }
@@ -6737,7 +7238,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ColumnSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/columns/{id}": {
@@ -6807,7 +7315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ColumnObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ColumnRoot"
                 }
               }
             }
@@ -7056,7 +7564,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ColumnRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/columnstatistics": {
@@ -7107,7 +7622,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringColumnStatisticDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ColumnStatisticRoot"
                 }
               }
             }
@@ -7268,7 +7783,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ColumnStatisticRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/components": {
@@ -7339,7 +7861,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ComponentSummaryRoot"
                 }
               }
             }
@@ -7588,7 +8110,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ComponentSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/components/{id}": {
@@ -7651,7 +8180,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PAComponentObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/PAComponentRoot"
                 }
               }
             }
@@ -7900,7 +8429,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "PAComponentRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/components": {
@@ -7963,7 +8499,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ComponentSummaryRoot"
                 }
               }
             }
@@ -8212,7 +8748,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ComponentSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/components": {
@@ -8275,7 +8818,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ComponentSummaryRoot"
                 }
               }
             }
@@ -8524,7 +9067,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ComponentSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/components/{id}": {
@@ -8587,7 +9137,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VaultComponentObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/VaultComponentRoot"
                 }
               }
             }
@@ -8836,7 +9386,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultComponentRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/configurations": {
@@ -8899,7 +9456,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/VaultConfigurationSummaryRoot"
                 }
               }
             }
@@ -9148,7 +9705,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultConfigurationSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/configurations/{id}": {
@@ -9211,7 +9775,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VaultConfigurationObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/VaultConfigurationRoot"
                 }
               }
             }
@@ -9460,7 +10024,233 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultConfigurationRoot"
+          }
+        ]
+      }
+    },
+    "/analytics/lookups/v3/currencies": {
+      "get": {
+        "tags": [
+          "Currencies"
+        ],
+        "summary": "Get currencies",
+        "description": "This endpoint lists all the currencies that can be applied to any calculation.",
+        "operationId": "getCurrencies",
+        "responses": {
+          "200": {
+            "description": "Expected response, returns a list of currencies.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrencyRoot"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CurrencyRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/dates": {
@@ -9552,7 +10342,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DateParametersSummaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DateParametersSummaryRoot"
                 }
               }
             }
@@ -9801,7 +10591,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DateParametersSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/dates": {
@@ -9893,7 +10690,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DateParametersSummaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DateParametersSummaryRoot"
                 }
               }
             }
@@ -10142,7 +10939,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DateParametersSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/documents/{path}": {
@@ -10206,7 +11010,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -10455,7 +11259,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/documents/{path}": {
@@ -10519,7 +11330,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -10768,7 +11579,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/documents/{path}": {
@@ -10832,7 +11650,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -11081,7 +11899,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pub/v3/documents/{path}": {
@@ -11145,7 +11970,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -11394,7 +12219,998 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
+      }
+    },
+    "/analytics/engines/fiab/v1/calculations": {
+      "post": {
+        "tags": [
+          "FIAB Calculations"
+        ],
+        "summary": "Run FIAB calculation",
+        "description": "This endpoint creates a new FIAB calculation.\r\nThis must be used first before get status or cancelling endpoints with a calculation id.\r\nA successful response will contain the URL to check the status of the calculation request.\r\n\r\nRemarks:\r\n*\tAny settings in POST body will act as a one-time override over the settings saved in the FIAB template.",
+        "operationId": "runCalculation",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FIABCalculationParameters"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Expected response, contains the URL in the Location header to check the status of the calculation.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid POST body.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Missing/Invalid Content-Type header. Header needs to be set to application/json.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Cancel older requests using Cancel FIAB Calculation endpoint or wait for older requests to finish / expire.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "Location": {
+                "description": "URL to check status of the request.",
+                "schema": {
+                  "type": "string",
+                  "description": "URL to check status of the request."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-Calculations-Limit": {
+                "description": "Maximum FIAB request limit.",
+                "schema": {
+                  "type": "string",
+                  "description": "Maximum FIAB request limit."
+                }
+              },
+              "X-FactSet-Api-Calculations-Remaining": {
+                "description": "Number of FIAB requests remaining till request limit reached.",
+                "schema": {
+                  "type": "string",
+                  "description": "Number of FIAB requests remaining till request limit reached."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "FIAB Calculations"
+        ],
+        "summary": "Get all FIAB calculation summaries",
+        "description": "This endpoints returns all FIAB calculation requests.",
+        "operationId": "getCalculationStatusSummaries",
+        "responses": {
+          "200": {
+            "description": "List of active FIAB calculation requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/FIABCalculationStatusSummary"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": null
+          }
+        ]
+      }
+    },
+    "/analytics/engines/fiab/v1/calculations/{id}": {
+      "get": {
+        "tags": [
+          "FIAB Calculations"
+        ],
+        "summary": "Get FIAB calculation by id",
+        "description": "This is the endpoint to check on the progress of a previously requested calculation.",
+        "operationId": "getCalculationById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "from url, provided from the location header in the Run FIAB Calculation endpoint",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "from url, provided from the location header in the Run FIAB Calculation endpoint"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response, returns status information of the entire calculation if it is complete.",
+            "headers": {
+              "Content-Encoding": {
+                "description": "Standard HTTP header. Header value based on Accept-Encoding Request header.",
+                "schema": {
+                  "type": "string",
+                  "description": "Standard HTTP header. Header value based on Accept-Encoding Request header."
+                }
+              },
+              "Content-Type": {
+                "description": "Standard HTTP header.",
+                "schema": {
+                  "type": "string",
+                  "description": "Standard HTTP header."
+                }
+              },
+              "Transfer-Encoding": {
+                "description": "Standard HTTP header. Header value will be set to Chunked if Accept-Encoding header is specified.",
+                "schema": {
+                  "type": "string",
+                  "description": "Standard HTTP header. Header value will be set to Chunked if Accept-Encoding header is specified."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FIABCalculationStatus"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Expected response, returns status information of the entire calculation if it is not complete.",
+            "headers": {
+              "Cache-Control": {
+                "description": "Standard HTTP header. Header will specify max-age in seconds. Polling can be adjusted based on the max-age value.",
+                "schema": {
+                  "type": "integer",
+                  "description": "Standard HTTP header. Header will specify max-age in seconds. Polling can be adjusted based on the max-age value."
+                }
+              },
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FIABCalculationStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid identifier provided.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FIABCalculationStatus"
+          },
+          {
+            "status-code": "202",
+            "response-type": "FIABCalculationStatus"
+          }
+        ]
       }
     },
     "/analytics/engines/fi/v3/calculations": {
@@ -11428,7 +13244,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FICalculationParametersCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/FICalculationParametersRoot"
               }
             }
           }
@@ -11494,12 +13310,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -11557,12 +13373,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -11951,7 +13767,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/fi/v3/calculations/{id}": {
@@ -11995,7 +13822,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FICalculationParametersCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/FICalculationParametersRoot"
               }
             }
           }
@@ -12047,12 +13874,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -12096,12 +13923,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -12427,7 +14254,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -12509,7 +14347,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FICalculationParametersCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/FICalculationParametersRoot"
                 }
               }
             }
@@ -12696,7 +14534,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FICalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -12957,7 +14802,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/fi/v3/calculations/{id}/status": {
@@ -13020,12 +14872,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13273,7 +15125,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/fi/v3/calculations/{id}/result": {
@@ -13357,12 +15220,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13559,7 +15422,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/fpo/v3/optimizations": {
@@ -13593,7 +15463,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/FPOOptimizationParametersRoot"
               }
             }
           }
@@ -13645,7 +15515,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -13689,7 +15559,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -13956,7 +15826,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/fpo/v3/optimizations/{id}": {
@@ -14000,7 +15881,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/FPOOptimizationParametersRoot"
               }
             }
           }
@@ -14052,7 +15933,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -14096,7 +15977,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -14407,7 +16288,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -14489,7 +16381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/FPOOptimizationParametersRoot"
                 }
               }
             }
@@ -14676,7 +16568,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FPOOptimizationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -14937,7 +16836,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/fpo/v3/optimizations/{id}/status": {
@@ -15000,7 +16906,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -15238,7 +17144,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/fpo/v3/optimizations/{id}/result": {
@@ -15330,7 +17247,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -15517,7 +17434,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/frequencies": {
@@ -15568,7 +17492,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringFrequencyDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/FrequencyRoot"
                 }
               }
             }
@@ -15729,7 +17653,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FrequencyRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/frequencies": {
@@ -15780,7 +17711,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringFrequencyDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/FrequencyRoot"
                 }
               }
             }
@@ -15941,7 +17872,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FrequencyRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/frequencies": {
@@ -15992,7 +17930,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringFrequencyDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/FrequencyRoot"
                 }
               }
             }
@@ -16153,7 +18091,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "FrequencyRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/groups": {
@@ -16211,7 +18156,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringGroupDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/GroupRoot"
                 }
               }
             }
@@ -16372,7 +18317,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "GroupRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/linked-templates": {
@@ -16388,7 +18340,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LinkedPATemplateParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/LinkedPATemplateParametersRoot"
               }
             }
           },
@@ -16434,7 +18386,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringLinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/LinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -16676,7 +18628,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "LinkedPATemplateSummaryRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -16754,7 +18713,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringLinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/LinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -17003,7 +18962,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "LinkedPATemplateSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/linked-templates/{id}": {
@@ -17031,7 +18997,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LinkedPATemplateUpdateParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/LinkedPATemplateUpdateParametersRoot"
               }
             }
           },
@@ -17077,7 +19043,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringLinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/LinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -17326,7 +19292,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "LinkedPATemplateSummaryRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -17649,7 +19622,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -17710,7 +19690,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LinkedPATemplateObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/LinkedPATemplateRoot"
                 }
               }
             }
@@ -17959,7 +19939,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "LinkedPATemplateRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/npo/v3/optimizations": {
@@ -17993,7 +19980,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/NPOOptimizationParametersRoot"
               }
             }
           }
@@ -18045,7 +20032,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -18089,7 +20076,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -18356,7 +20343,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/npo/v3/optimizations/{id}": {
@@ -18400,7 +20398,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                "$ref": "#/components/schemas/NPOOptimizationParametersRoot"
               }
             }
           }
@@ -18452,7 +20450,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PersistedCalculationInfoObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationInfoRoot"
                 }
               }
             }
@@ -18496,7 +20494,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -18807,7 +20805,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationInfoRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -18889,7 +20898,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters"
+                  "$ref": "#/components/schemas/NPOOptimizationParametersRoot"
                 }
               }
             }
@@ -19076,7 +21085,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "NPOOptimizationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -19337,7 +21353,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/npo/v3/optimizations/{id}/status": {
@@ -19400,7 +21423,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -19638,7 +21661,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/npo/v3/optimizations/{id}/result": {
@@ -19722,7 +21756,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -19909,7 +21943,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/calculations": {
@@ -19943,7 +21984,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PACalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/PACalculationParametersRoot"
               }
             }
           }
@@ -19995,12 +22036,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -20044,12 +22085,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -20093,12 +22134,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -20375,7 +22416,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/calculations/{id}": {
@@ -20419,7 +22475,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PACalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/PACalculationParametersRoot"
               }
             }
           }
@@ -20471,12 +22527,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -20520,12 +22576,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -20569,12 +22625,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -20900,7 +22956,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -20982,7 +23053,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PACalculationParametersCalculationMetaCalculationParameters"
+                  "$ref": "#/components/schemas/PACalculationParametersRoot"
                 }
               }
             }
@@ -21169,7 +23240,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "PACalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -21430,7 +23508,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/calculations/{id}/status": {
@@ -21514,7 +23599,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -21572,7 +23657,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -21759,7 +23844,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/calculations/{id}/units/{unitId}/result": {
@@ -21853,12 +23949,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -22055,7 +24151,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pub/v3/calculations": {
@@ -22089,7 +24192,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PubCalculationParametersPubCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/PubCalculationParametersRoot"
               }
             }
           }
@@ -22141,12 +24244,12 @@
             "content": {
               "application/pdf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/vnd.openxmlformats-officedocument.presentationml.presentation": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -22190,12 +24293,12 @@
             "content": {
               "application/pdf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/vnd.openxmlformats-officedocument.presentationml.presentation": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -22523,7 +24626,23 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": null,
+            "is-file": true
+          }
+        ]
       }
     },
     "/analytics/engines/pub/v3/calculations/{id}": {
@@ -22567,7 +24686,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PubCalculationParametersPubCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/PubCalculationParametersRoot"
               }
             }
           }
@@ -22633,7 +24752,7 @@
             "content": {
               "application/pdf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -22691,7 +24810,7 @@
             "content": {
               "application/pdf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -23187,7 +25306,23 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": null,
+            "is-file": true
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -23269,7 +25404,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PubCalculationParametersPubCalculationMetaCalculationParameters"
+                  "$ref": "#/components/schemas/PubCalculationParametersRoot"
                 }
               }
             }
@@ -23456,7 +25591,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "PubCalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -23717,7 +25859,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/pub/v3/calculations/{id}/status": {
@@ -23801,7 +25950,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -23859,7 +26008,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -24046,7 +26195,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pub/v3/calculations/{id}/units/{unitId}/result": {
@@ -24360,7 +26520,15 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": null,
+            "is-file": true
+          }
+        ]
       }
     },
     "/analytics/engines/quant/v3/calculations": {
@@ -24386,7 +26554,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuantCalculationParametersQuantCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/QuantCalculationParametersRoot"
               }
             }
           }
@@ -24438,12 +26606,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -24487,12 +26655,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -24536,12 +26704,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -24818,7 +26986,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/quant/v3/calculations/{id}": {
@@ -24854,7 +27037,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/QuantCalculationParametersQuantCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/QuantCalculationParametersRoot"
               }
             }
           }
@@ -24906,12 +27089,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -24955,12 +27138,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -25004,12 +27187,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -25335,7 +27518,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -25417,7 +27615,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/QuantCalculationParametersQuantCalculationMetaCalculationParameters"
+                  "$ref": "#/components/schemas/QuantCalculationParametersRoot"
                 }
               }
             }
@@ -25604,7 +27802,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "QuantCalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -25865,7 +28070,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/quant/v3/calculations/{id}/status": {
@@ -25949,7 +28161,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -26007,7 +28219,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -26194,7 +28406,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/quant/v3/calculations/{id}/units/{unitId}/result": {
@@ -26508,7 +28731,15 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": null,
+            "is-file": true
+          }
+        ]
       }
     },
     "/analytics/engines/quant/v3/calculations/{id}/units/{unitId}/info": {
@@ -26822,7 +29053,15 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": null,
+            "is-file": true
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/calculations": {
@@ -26856,7 +29095,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SPARCalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/SPARCalculationParametersRoot"
               }
             }
           }
@@ -26908,12 +29147,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -26957,12 +29196,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -27006,12 +29245,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -27288,7 +29527,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/calculations/{id}": {
@@ -27332,7 +29586,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SPARCalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/SPARCalculationParametersRoot"
               }
             }
           }
@@ -27384,12 +29638,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -27433,12 +29687,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -27482,12 +29736,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -27813,7 +30067,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -27895,7 +30164,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SPARCalculationParametersCalculationMetaCalculationParameters"
+                  "$ref": "#/components/schemas/SPARCalculationParametersRoot"
                 }
               }
             }
@@ -28082,7 +30351,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "SPARCalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -28343,7 +30619,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/calculations/{id}/status": {
@@ -28427,7 +30710,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -28485,7 +30768,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -28672,7 +30955,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/spar/v3/calculations/{id}/units/{unitId}/result": {
@@ -28766,12 +31060,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -28968,7 +31262,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/axp/v3/strategies/{path}": {
@@ -29032,7 +31333,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -29281,7 +31582,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/afi/v3/strategies/{path}": {
@@ -29345,7 +31653,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -29594,7 +31902,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/bpm/v3/strategies/{path}": {
@@ -29658,7 +31973,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -29907,7 +32222,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/npo/v3/strategies/{path}": {
@@ -29971,7 +32293,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -30220,7 +32542,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/fpo/v3/strategies/{path}": {
@@ -30284,7 +32613,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDirectoriesObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/DocumentDirectoriesRoot"
                 }
               }
             }
@@ -30533,7 +32862,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "DocumentDirectoriesRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/templated-components": {
@@ -30549,7 +32885,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TemplatedPAComponentParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/TemplatedPAComponentParametersRoot"
               }
             }
           },
@@ -30595,17 +32931,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
                 }
               }
             }
@@ -30857,7 +33193,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "TemplatedPAComponentSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/templated-components/{id}": {
@@ -30885,7 +33228,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TemplatedPAComponentUpdateParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/TemplatedPAComponentUpdateParametersRoot"
               }
             }
           },
@@ -30931,7 +33274,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
                 }
               }
             }
@@ -31180,7 +33523,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "TemplatedPAComponentSummaryRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -31503,7 +33853,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/unlinked-templates": {
@@ -31519,7 +33876,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UnlinkedPATemplateParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/UnlinkedPATemplateParametersRoot"
               }
             }
           },
@@ -31565,7 +33922,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -31770,7 +34127,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "201",
+            "response-type": "UnlinkedPATemplateSummaryRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -31839,7 +34203,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -32044,7 +34408,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "UnlinkedPATemplateSummaryRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/unlinked-templates/{id}": {
@@ -32072,7 +34443,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel"
+                "$ref": "#/components/schemas/UnlinkedPATemplateUpdateParametersRoot"
               }
             }
           },
@@ -32118,7 +34489,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateSummaryRoot"
                 }
               }
             }
@@ -32367,7 +34738,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "UnlinkedPATemplateSummaryRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -32670,7 +35048,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -32731,7 +35116,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnlinkedPATemplateObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateRoot"
                 }
               }
             }
@@ -32980,7 +35365,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "UnlinkedPATemplateRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/unlinked-templates/template-types": {
@@ -33031,7 +35423,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeRoot"
                 }
               }
             }
@@ -33192,7 +35584,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "UnlinkedPATemplateCategoryAndTypeRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/pa/v3/unlinked-templates/template-types/{id}": {
@@ -33255,7 +35654,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetailsRoot"
                 }
               }
             }
@@ -33504,7 +35903,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "UnlinkedPATemplateCategoryAndTypeDetailsRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/calculations": {
@@ -33538,7 +35944,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VaultCalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/VaultCalculationParametersRoot"
               }
             }
           }
@@ -33590,12 +35996,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -33639,12 +36045,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -33688,12 +36094,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -33970,7 +36376,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/calculations/{id}": {
@@ -34014,7 +36435,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VaultCalculationParametersCalculationMetaCalculationParameters"
+                "$ref": "#/components/schemas/VaultCalculationParametersRoot"
               }
             }
           }
@@ -34066,12 +36487,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -34115,12 +36536,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -34164,12 +36585,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -34495,7 +36916,22 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": true,
+        "x-success-response-types": [
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "201",
+            "response-type": "ObjectRoot"
+          }
+        ]
       },
       "get": {
         "tags": [
@@ -34577,7 +37013,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VaultCalculationParametersCalculationMetaCalculationParameters"
+                  "$ref": "#/components/schemas/VaultCalculationParametersRoot"
                 }
               }
             }
@@ -34764,7 +37200,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultCalculationParametersRoot"
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -35025,7 +37468,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "204",
+            "response-type": null
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/calculations/{id}/status": {
@@ -35109,7 +37559,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -35167,7 +37617,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusCalculationStatusMetaDataAndMetaModel"
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
               }
             }
@@ -35354,7 +37804,18 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "CalculationStatusRoot"
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
+          }
+        ]
       }
     },
     "/analytics/engines/vault/v3/calculations/{id}/units/{unitId}/result": {
@@ -35448,12 +37909,12 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               },
               "application/x-protobuf": {
                 "schema": {
-                  "$ref": "#/components/schemas/ObjectObjectDataAndMetaModel"
+                  "$ref": "#/components/schemas/ObjectRoot"
                 }
               }
             }
@@ -35650,7 +38111,14 @@
               }
             }
           }
-        }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "ObjectRoot"
+          }
+        ]
       }
     }
   },
@@ -35681,7 +38149,7 @@
         },
         "additionalProperties": false
       },
-      "SPARAccountsObjectDataAndMetaModel": {
+      "SPARAccountsRoot": {
         "required": [
           "data"
         ],
@@ -35730,6 +38198,39 @@
               "$ref": "#/components/schemas/Error"
             }
           }
+        },
+        "additionalProperties": false
+      },
+      "AccountDirectories": {
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of account and composite files."
+          },
+          "directories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of directories."
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccountDirectoriesRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AccountDirectories"
+          },
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -35975,7 +38476,7 @@
         "type": "object",
         "additionalProperties": false
       },
-      "AFIOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters": {
+      "AFIOptimizationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -35987,7 +38488,7 @@
         },
         "additionalProperties": false
       },
-      "PersistedCalculationInfo": {
+      "CalculationInfo": {
         "type": "object",
         "properties": {
           "calculationId": {
@@ -35997,20 +38498,20 @@
         },
         "additionalProperties": false
       },
-      "PersistedCalculationInfoObjectDataAndMetaModel": {
+      "CalculationInfoRoot": {
         "required": [
           "data"
         ],
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/PersistedCalculationInfo"
+            "$ref": "#/components/schemas/CalculationInfo"
           },
           "meta": { }
         },
         "additionalProperties": false
       },
-      "ObjectObjectDataAndMetaModel": {
+      "ObjectRoot": {
         "required": [
           "data"
         ],
@@ -36092,7 +38593,7 @@
         },
         "additionalProperties": false
       },
-      "AxiomaEquityOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters": {
+      "AxiomaEquityOptimizationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -36147,7 +38648,7 @@
         },
         "additionalProperties": false
       },
-      "SPARBenchmarkObjectDataAndMetaModel": {
+      "SPARBenchmarkRoot": {
         "required": [
           "data"
         ],
@@ -36160,7 +38661,7 @@
         },
         "additionalProperties": false
       },
-      "StringConstraintActionTuple": {
+      "ConstraintAction": {
         "type": "object",
         "properties": {
           "item1": {
@@ -36204,7 +38705,7 @@
           "constraints": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/StringConstraintActionTuple"
+              "$ref": "#/components/schemas/ConstraintAction"
             },
             "description": "List of constraints"
           },
@@ -36286,7 +38787,7 @@
         },
         "additionalProperties": false
       },
-      "BPMOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters": {
+      "BPMOptimizationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -36317,7 +38818,7 @@
         "additionalProperties": false,
         "description": "Column settings (name, directory, category)"
       },
-      "StringColumnSummaryDictionaryObjectDataAndMetaModel": {
+      "ColumnSummaryRoot": {
         "required": [
           "data"
         ],
@@ -36358,7 +38859,7 @@
         },
         "additionalProperties": false
       },
-      "ColumnObjectDataAndMetaModel": {
+      "ColumnRoot": {
         "required": [
           "data"
         ],
@@ -36381,7 +38882,7 @@
         },
         "additionalProperties": false
       },
-      "StringColumnStatisticDictionaryObjectDataAndMetaModel": {
+      "ColumnStatisticRoot": {
         "required": [
           "data"
         ],
@@ -36415,7 +38916,7 @@
         },
         "additionalProperties": false
       },
-      "StringComponentSummaryDictionaryObjectDataAndMetaModel": {
+      "ComponentSummaryRoot": {
         "required": [
           "data"
         ],
@@ -36517,7 +39018,7 @@
         },
         "additionalProperties": false
       },
-      "PAComponentObjectDataAndMetaModel": {
+      "PAComponentRoot": {
         "required": [
           "data"
         ],
@@ -36606,7 +39107,7 @@
         },
         "additionalProperties": false
       },
-      "VaultComponentObjectDataAndMetaModel": {
+      "VaultComponentRoot": {
         "required": [
           "data"
         ],
@@ -36629,7 +39130,7 @@
         },
         "additionalProperties": false
       },
-      "StringVaultConfigurationSummaryDictionaryObjectDataAndMetaModel": {
+      "VaultConfigurationSummaryRoot": {
         "required": [
           "data"
         ],
@@ -36691,7 +39192,7 @@
         },
         "additionalProperties": false
       },
-      "VaultConfigurationObjectDataAndMetaModel": {
+      "VaultConfigurationRoot": {
         "required": [
           "data"
         ],
@@ -36699,6 +39200,32 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/VaultConfiguration"
+          },
+          "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "Currency": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of currency."
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrencyRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Currency"
+            }
           },
           "meta": { }
         },
@@ -36718,7 +39245,7 @@
         },
         "additionalProperties": false
       },
-      "DateParametersSummaryObjectDataAndMetaModel": {
+      "DateParametersSummaryRoot": {
         "required": [
           "data"
         ],
@@ -36751,7 +39278,7 @@
         },
         "additionalProperties": false
       },
-      "DocumentDirectoriesObjectDataAndMetaModel": {
+      "DocumentDirectoriesRoot": {
         "required": [
           "data"
         ],
@@ -36761,6 +39288,145 @@
             "$ref": "#/components/schemas/DocumentDirectories"
           },
           "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "FIABIdentifier": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "User's FactSet account path."
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIABDateParameters": {
+        "required": [
+          "enddate",
+          "startdate"
+        ],
+        "type": "object",
+        "properties": {
+          "startdate": {
+            "type": "string",
+            "description": "Calculation's start date."
+          },
+          "enddate": {
+            "type": "string",
+            "description": "Calculation's end date."
+          }
+        },
+        "additionalProperties": false,
+        "description": "The date parameters for FIAB calculations."
+      },
+      "FIABCalculationParameters": {
+        "required": [
+          "account",
+          "dates"
+        ],
+        "type": "object",
+        "properties": {
+          "fiabdocument": {
+            "type": "string",
+            "description": "FiabDocument (optional) - FIAB document to use as a template. Should\r\nbe a path to a FIAB document. Expects a GUI-style path (Client:/foo/bar)"
+          },
+          "account": {
+            "$ref": "#/components/schemas/FIABIdentifier"
+          },
+          "dates": {
+            "$ref": "#/components/schemas/FIABDateParameters"
+          },
+          "msl": {
+            "type": "string",
+            "description": "Master FISecurity List. Analytics results will be written to the selected MSL. Expects a GUI-style path (Client:/foo/bar)"
+          },
+          "fisettingsdocument": {
+            "type": "string",
+            "description": "FISettingsDocument (optional) - The given @FIS document will be used to\r\nconfigure analytics assumptions and settings. Expects a GUI-style path (Client:/foo/bar)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIABCalculationStatusSummary": {
+        "type": "object",
+        "properties": {
+          "requesttime": {
+            "type": "string",
+            "description": "Request time of calculation.",
+            "format": "date-time"
+          },
+          "lastpolltime": {
+            "type": "string",
+            "description": "Last poll time of calculation.",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EventSummary": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Event's message"
+          },
+          "submissiondatetime": {
+            "type": "string",
+            "description": "Event's submission time",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "description": "Event's type"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIABCalculationStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Calculation's identifier"
+          },
+          "status": {
+            "enum": [
+              "Pending",
+              "InProgress",
+              "Done",
+              "Paused",
+              "Cancelled",
+              "Error"
+            ],
+            "type": "string",
+            "description": "Calculation's status"
+          },
+          "startdatetime": {
+            "type": "string",
+            "description": "Start time",
+            "format": "date-time"
+          },
+          "completiondatetime": {
+            "type": "string",
+            "description": "Completion time",
+            "format": "date-time"
+          },
+          "progress": {
+            "type": "integer",
+            "description": "Calculation's progress",
+            "format": "int32"
+          },
+          "batchevents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventSummary"
+            },
+            "description": "List of batch events"
+          }
         },
         "additionalProperties": false
       },
@@ -36938,7 +39604,7 @@
         },
         "additionalProperties": false
       },
-      "FICalculationParametersCalculationMetaInteractiveCalculationParameters": {
+      "FICalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -37049,7 +39715,7 @@
         },
         "additionalProperties": false
       },
-      "FPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters": {
+      "FPOOptimizationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -37071,7 +39737,7 @@
         },
         "additionalProperties": false
       },
-      "StringFrequencyDictionaryObjectDataAndMetaModel": {
+      "FrequencyRoot": {
         "required": [
           "data"
         ],
@@ -37105,7 +39771,7 @@
         },
         "additionalProperties": false
       },
-      "StringGroupDictionaryObjectDataAndMetaModel": {
+      "GroupRoot": {
         "required": [
           "data"
         ],
@@ -37173,7 +39839,7 @@
         },
         "additionalProperties": false
       },
-      "LinkedPATemplateParametersObjectDataAndMetaModel": {
+      "LinkedPATemplateParametersRoot": {
         "required": [
           "data"
         ],
@@ -37204,7 +39870,7 @@
         },
         "additionalProperties": false
       },
-      "StringLinkedPATemplateSummaryDictionaryObjectDataAndMetaModel": {
+      "LinkedPATemplateSummaryRoot": {
         "required": [
           "data"
         ],
@@ -37237,7 +39903,7 @@
         },
         "additionalProperties": false
       },
-      "LinkedPATemplateUpdateParametersObjectDataAndMetaModel": {
+      "LinkedPATemplateUpdateParametersRoot": {
         "required": [
           "data"
         ],
@@ -37283,7 +39949,7 @@
         },
         "additionalProperties": false
       },
-      "LinkedPATemplateObjectDataAndMetaModel": {
+      "LinkedPATemplateRoot": {
         "required": [
           "data"
         ],
@@ -37307,7 +39973,7 @@
           "constraints": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/StringConstraintActionTuple"
+              "$ref": "#/components/schemas/ConstraintAction"
             },
             "description": "List of constraints"
           },
@@ -37364,7 +40030,7 @@
         },
         "additionalProperties": false
       },
-      "NPOOptimizationParametersOptimizerCalculationMetaInteractiveCalculationParameters": {
+      "NPOOptimizationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -37455,7 +40121,7 @@
         },
         "additionalProperties": false
       },
-      "PACalculationParametersCalculationMetaCalculationParameters": {
+      "PACalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -37553,7 +40219,7 @@
         },
         "additionalProperties": false
       },
-      "CalculationStatusCalculationStatusMetaDataAndMetaModel": {
+      "CalculationStatusRoot": {
         "required": [
           "data"
         ],
@@ -37628,7 +40294,7 @@
         "type": "object",
         "additionalProperties": false
       },
-      "PubCalculationParametersPubCalculationMetaCalculationParameters": {
+      "PubCalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -38245,7 +40911,7 @@
         },
         "additionalProperties": false
       },
-      "QuantCalculationParametersQuantCalculationMetaCalculationParameters": {
+      "QuantCalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -38315,7 +40981,7 @@
         },
         "additionalProperties": false
       },
-      "SPARCalculationParametersCalculationMetaCalculationParameters": {
+      "SPARCalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
@@ -38401,7 +41067,7 @@
         },
         "additionalProperties": false
       },
-      "TemplatedPAComponentParametersObjectDataAndMetaModel": {
+      "TemplatedPAComponentParametersRoot": {
         "required": [
           "data"
         ],
@@ -38432,7 +41098,7 @@
         },
         "additionalProperties": false
       },
-      "StringTemplatedPAComponentSummaryDictionaryObjectDataAndMetaModel": {
+      "TemplatedPAComponentSummaryRoot": {
         "required": [
           "data"
         ],
@@ -38465,7 +41131,7 @@
         },
         "additionalProperties": false
       },
-      "TemplatedPAComponentUpdateParametersObjectDataAndMetaModel": {
+      "TemplatedPAComponentUpdateParametersRoot": {
         "required": [
           "data"
         ],
@@ -38542,7 +41208,7 @@
         },
         "additionalProperties": false
       },
-      "UnlinkedPATemplateParametersObjectDataAndMetaModel": {
+      "UnlinkedPATemplateParametersRoot": {
         "required": [
           "data"
         ],
@@ -38570,7 +41236,7 @@
         },
         "additionalProperties": false
       },
-      "StringUnlinkedPATemplateSummaryDictionaryObjectDataAndMetaModel": {
+      "UnlinkedPATemplateSummaryRoot": {
         "required": [
           "data"
         ],
@@ -38638,7 +41304,7 @@
         },
         "additionalProperties": false
       },
-      "UnlinkedPATemplateUpdateParametersObjectDataAndMetaModel": {
+      "UnlinkedPATemplateUpdateParametersRoot": {
         "required": [
           "data"
         ],
@@ -38714,7 +41380,7 @@
         },
         "additionalProperties": false
       },
-      "UnlinkedPATemplateObjectDataAndMetaModel": {
+      "UnlinkedPATemplateRoot": {
         "required": [
           "data"
         ],
@@ -38741,7 +41407,7 @@
         },
         "additionalProperties": false
       },
-      "StringUnlinkedPATemplateCategoryAndTypeDictionaryObjectDataAndMetaModel": {
+      "UnlinkedPATemplateCategoryAndTypeRoot": {
         "required": [
           "data"
         ],
@@ -38775,7 +41441,7 @@
         },
         "additionalProperties": false
       },
-      "UnlinkedPATemplateCategoryAndTypeDetailsObjectDataAndMetaModel": {
+      "UnlinkedPATemplateCategoryAndTypeDetailsRoot": {
         "required": [
           "data"
         ],
@@ -38817,7 +41483,7 @@
         },
         "additionalProperties": false
       },
-      "VaultCalculationParametersCalculationMetaCalculationParameters": {
+      "VaultCalculationParametersRoot": {
         "type": "object",
         "properties": {
           "data": {
