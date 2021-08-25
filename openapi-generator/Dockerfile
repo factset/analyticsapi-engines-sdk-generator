@@ -1,6 +1,6 @@
 FROM openjdk:8
 
-ARG VERSION=5.1.0
+ARG VERSION=5.2.1
 
 ENV GEN_DIR /opt/openapi-generator
 
