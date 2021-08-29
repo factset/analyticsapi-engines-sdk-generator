@@ -1,0 +1,44 @@
+{{! This file is picked from the v5.1.1 release of openapi-generator(https://github.com/OpenAPITools/openapi-generator/blob/v5.1.0/modules/openapi-generator/src/main/resources/csharp-netcore/netcore_project.mustache) }}
+{{! Changes made: 1) Added Dependency for FactSet.Protobuf.Stach.Extensions. }}
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetFramework>{{targetFramework}}</TargetFramework>
+    <AssemblyName>{{packageName}}</AssemblyName>
+    <PackageId>{{packageName}}</PackageId>
+    <OutputType>Library</OutputType>
+    <Authors>{{packageAuthors}}</Authors>
+    <Company>{{packageCompany}}</Company>
+    <AssemblyTitle>{{packageTitle}}</AssemblyTitle>
+    <Description>{{packageDescription}}</Description>
+    <Copyright>{{packageCopyright}}</Copyright>
+    <RootNamespace>{{packageName}}</RootNamespace>
+    <Version>{{packageVersion}}</Version>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\{{packageName}}.xml</DocumentationFile>{{#licenseId}}
+    <PackageLicenseExpression>{{licenseId}}</PackageLicenseExpression>{{/licenseId}}
+    <RepositoryUrl>https://{{{gitHost}}}/{{{gitUserId}}}/{{{gitRepoId}}}.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>{{#releaseNote}}
+    <PackageReleaseNotes>{{releaseNote}}</PackageReleaseNotes>{{/releaseNote}}{{#packageTags}}
+    <PackageTags>{{{packageTags}}}</PackageTags>{{/packageTags}}
+  </PropertyGroup>
+
+  <ItemGroup>
+    {{#useCompareNetObjects}}
+    <PackageReference Include="CompareNETObjects" Version="4.61.0" />
+    {{/useCompareNetObjects}}
+    <PackageReference Include="JsonSubTypes" Version="1.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      {{#useRestSharp}}
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+      {{/useRestSharp}}
+      {{#supportsRetry}}
+    <PackageReference Include="Polly" Version="7.2.1" />
+      {{/supportsRetry}}
+    {{#validatable}}
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    {{/validatable}}
+    <PackageReference Include="FactSet.Protobuf.Stach.Extensions" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
