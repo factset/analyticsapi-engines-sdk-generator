@@ -40400,27 +40400,6 @@
         },
         "additionalProperties": false
       },
-      "QuantFdsDate": {
-        "required": [
-          "endDate",
-          "startDate"
-        ],
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/QuantDate"
-          }
-        ],
-        "properties": {
-          "startDate": {
-            "type": "string"
-          },
-          "endDate": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "QuantDateList": {
         "type": "object",
         "allOf": [
@@ -40462,22 +40441,22 @@
         },
         "additionalProperties": false
       },
-      "QuantScreeningExpression": {
+      "QuantFdsDate": {
         "required": [
-          "expr",
-          "name"
+          "endDate",
+          "startDate"
         ],
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/QuantFormula"
+            "$ref": "#/components/schemas/QuantDate"
           }
         ],
         "properties": {
-          "expr": {
+          "startDate": {
             "type": "string"
           },
-          "name": {
+          "endDate": {
             "type": "string"
           }
         },
@@ -40552,7 +40531,28 @@
         },
         "additionalProperties": false
       },
-      "QuantScreeningExpressionUniverse1": {
+      "QuantScreeningExpression": {
+        "required": [
+          "expr",
+          "name"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantFormula"
+          }
+        ],
+        "properties": {
+          "expr": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantScreeningExpressionUniverseObsolete": {
         "required": [
           "universeExpr",
           "universeType"
@@ -40583,7 +40583,7 @@
         },
         "additionalProperties": false
       },
-      "QuantUniversalScreenUniverse1": {
+      "QuantUniversalScreenUniverseObsolete": {
         "required": [
           "screen"
         ],
@@ -40603,7 +40603,7 @@
         },
         "additionalProperties": false
       },
-      "QuantIdentifierUniverse1": {
+      "QuantIdentifierUniverseObsolete": {
         "required": [
           "identifiers",
           "universeType"
@@ -40634,7 +40634,7 @@
         },
         "additionalProperties": false
       },
-      "QuantFdsDate1": {
+      "QuantFdsDateObsolete": {
         "required": [
           "calendar",
           "endDate",
@@ -40658,7 +40658,7 @@
         },
         "additionalProperties": false
       },
-      "QuantDateList1": {
+      "QuantDateListObsolete": {
         "required": [
           "calendar",
           "frequency"
@@ -40680,7 +40680,7 @@
         },
         "additionalProperties": false
       },
-      "QuantScreeningExpression1": {
+      "QuantScreeningExpressionObsolete": {
         "required": [
           "expr",
           "name"
@@ -40696,7 +40696,7 @@
         },
         "additionalProperties": false
       },
-      "QuantFqlExpression1": {
+      "QuantFqlExpressionObsolete": {
         "required": [
           "expr",
           "name"
@@ -40712,7 +40712,7 @@
         },
         "additionalProperties": false
       },
-      "QuantUniversalScreenParameter1": {
+      "QuantUniversalScreenParameterObsolete": {
         "required": [
           "name",
           "referenceName"
@@ -40728,15 +40728,11 @@
         },
         "additionalProperties": false
       },
-      "QuantAllUniversalScreenParameters1": {
+      "QuantAllUniversalScreenParametersObsolete": {
         "type": "object",
         "additionalProperties": false
       },
       "QuantCalculationParameters": {
-        "required": [
-          "dates",
-          "universe"
-        ],
         "type": "object",
         "properties": {
           "universe": {
@@ -40763,9 +40759,6 @@
           "dates": {
             "oneOf": [
               {
-                "$ref": "#/components/schemas/QuantDate"
-              },
-              {
                 "$ref": "#/components/schemas/QuantFdsDate"
               },
               {
@@ -40784,9 +40777,6 @@
             "type": "array",
             "items": {
               "oneOf": [
-                {
-                  "$ref": "#/components/schemas/QuantFormula"
-                },
                 {
                   "$ref": "#/components/schemas/QuantScreeningExpression"
                 },
@@ -40810,49 +40800,6 @@
                 }
               }
             }
-          },
-          "screeningExpressionUniverse": {
-            "$ref": "#/components/schemas/QuantScreeningExpressionUniverse1"
-          },
-          "universalScreenUniverse": {
-            "$ref": "#/components/schemas/QuantUniversalScreenUniverse1"
-          },
-          "identifierUniverse": {
-            "$ref": "#/components/schemas/QuantIdentifierUniverse1"
-          },
-          "fdsDate": {
-            "$ref": "#/components/schemas/QuantFdsDate1"
-          },
-          "dateList": {
-            "$ref": "#/components/schemas/QuantDateList1"
-          },
-          "screeningExpression": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantScreeningExpression1"
-            },
-            "deprecated": true
-          },
-          "fqlExpression": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantFqlExpression1"
-            },
-            "deprecated": true
-          },
-          "universalScreenParameter": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantUniversalScreenParameter1"
-            },
-            "deprecated": true
-          },
-          "allUniversalScreenParameters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantAllUniversalScreenParameters1"
-            },
-            "deprecated": true
           }
         },
         "additionalProperties": false
