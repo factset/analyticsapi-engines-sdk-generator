@@ -7806,18 +7806,10 @@
             "name": "document",
             "in": "query",
             "description": "Document Name",
+            "required": true,
             "schema": {
               "type": "string",
               "description": "Document Name"
-            }
-          },
-          {
-            "name": "directory",
-            "in": "query",
-            "description": "Directory to get the components",
-            "schema": {
-              "type": "string",
-              "description": "Directory to get the components"
             }
           }
         ],
