@@ -17,3 +17,4 @@ docker run --rm -v ${GITHUB_WORKSPACE}/generator:/generator \
   --config /generator/languages/$language/openapi-generator-config.json \
   --template-dir /generator/languages/$language/templates \
   --skip-validate-spec
+  --verbose
