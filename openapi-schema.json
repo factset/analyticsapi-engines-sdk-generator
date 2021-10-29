@@ -7799,25 +7799,17 @@
           "Components"
         ],
         "summary": "Get PA components",
-        "description": "This endpoint returns  \r\n\r\n1.List of PA components in a given PA document if document name is provided.\r\n\r\n2.List of components in given directory if directory is provided.",
+        "description": "This endpoint returns the list of PA components in a given PA document.",
         "operationId": "getPAComponents",
         "parameters": [
           {
             "name": "document",
             "in": "query",
             "description": "Document Name",
+            "required": true,
             "schema": {
               "type": "string",
               "description": "Document Name"
-            }
-          },
-          {
-            "name": "directory",
-            "in": "query",
-            "description": "Directory to get the components",
-            "schema": {
-              "type": "string",
-              "description": "Directory to get the components"
             }
           }
         ],
@@ -18386,7 +18378,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LinkedPATemplateSummaryRoot"
+                  "$ref": "#/components/schemas/LinkedPATemplatePostSummaryRoot"
                 }
               }
             }
@@ -18633,7 +18625,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "LinkedPATemplateSummaryRoot"
+            "response-type": "LinkedPATemplatePostSummaryRoot"
           }
         ]
       },
@@ -19043,7 +19035,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LinkedPATemplateSummaryRoot"
+                  "$ref": "#/components/schemas/LinkedPATemplatePostSummaryRoot"
                 }
               }
             }
@@ -19297,7 +19289,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "LinkedPATemplateSummaryRoot"
+            "response-type": "LinkedPATemplatePostSummaryRoot"
           }
         ]
       },
@@ -32931,17 +32923,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
+                  "$ref": "#/components/schemas/TemplatedPAComponentPostSummaryRoot"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
+                  "$ref": "#/components/schemas/TemplatedPAComponentPostSummaryRoot"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
+                  "$ref": "#/components/schemas/TemplatedPAComponentPostSummaryRoot"
                 }
               }
             }
@@ -33198,6 +33190,279 @@
         "x-success-response-types": [
           {
             "status-code": "201",
+            "response-type": "TemplatedPAComponentPostSummaryRoot"
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "TemplatedPAComponents"
+        ],
+        "summary": "Get templated PA components in path",
+        "description": "This endpoint returns the list of templated PA components in path.",
+        "operationId": "getTemplatedPAComponentsInPath",
+        "parameters": [
+          {
+            "name": "directory",
+            "in": "query",
+            "description": "Get templated PA components in path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Get templated PA components in path"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response, returns a list templated PA components.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid data provided. Please check the request parameters before attempting again.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
             "response-type": "TemplatedPAComponentSummaryRoot"
           }
         ]
@@ -33274,7 +33539,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TemplatedPAComponentSummaryRoot"
+                  "$ref": "#/components/schemas/TemplatedPAComponentPostSummaryRoot"
                 }
               }
             }
@@ -33528,7 +33793,324 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "TemplatedPAComponentSummaryRoot"
+            "response-type": "TemplatedPAComponentPostSummaryRoot"
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "TemplatedPAComponents"
+        ],
+        "summary": "Get templated PA component by id",
+        "description": "This endpoint fetches the templated PA component settings.",
+        "operationId": "getTemplatedPAComponentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier for a templated PA component",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Unique identifier for a templated PA component"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response, templated PA component details.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TemplatedPAComponentRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid data provided. Please check the request parameters before attempting again.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Templated PA component not found.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "TemplatedPAComponentRoot"
           }
         ]
       },
@@ -33922,7 +34504,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnlinkedPATemplateSummaryRoot"
+                  "$ref": "#/components/schemas/UnlinkedPATemplatePostSummaryRoot"
                 }
               }
             }
@@ -34132,7 +34714,7 @@
         "x-success-response-types": [
           {
             "status-code": "201",
-            "response-type": "UnlinkedPATemplateSummaryRoot"
+            "response-type": "UnlinkedPATemplatePostSummaryRoot"
           }
         ]
       },
@@ -34489,7 +35071,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UnlinkedPATemplateSummaryRoot"
+                  "$ref": "#/components/schemas/UnlinkedPATemplatePostSummaryRoot"
                 }
               }
             }
@@ -34743,7 +35325,7 @@
         "x-success-response-types": [
           {
             "status-code": "200",
-            "response-type": "UnlinkedPATemplateSummaryRoot"
+            "response-type": "UnlinkedPATemplatePostSummaryRoot"
           }
         ]
       },
@@ -38133,7 +38715,8 @@
           "id": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARAccounts": {
         "type": "object",
@@ -38145,7 +38728,8 @@
             },
             "description": "List of SPAR returnsType"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARAccountsRoot": {
         "required": [
@@ -38156,10 +38740,9 @@
           "data": {
             "$ref": "#/components/schemas/SPARAccounts"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ErrorSource": {
         "type": "object",
@@ -38170,7 +38753,8 @@
           "parameter": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Error": {
         "type": "object",
@@ -38184,7 +38768,8 @@
           "source": {
             "$ref": "#/components/schemas/ErrorSource"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ClientErrorResponse": {
         "type": "object",
@@ -38195,7 +38780,8 @@
               "$ref": "#/components/schemas/Error"
             }
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AccountDirectories": {
         "type": "object",
@@ -38214,7 +38800,8 @@
             },
             "description": "List of directories."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AccountDirectoriesRoot": {
         "required": [
@@ -38225,10 +38812,9 @@
           "data": {
             "$ref": "#/components/schemas/AccountDirectories"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "AFIOptimizerStrategyOverrides": {
         "type": "object",
@@ -38260,7 +38846,8 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AFIOptimizerStrategy": {
         "required": [
@@ -38275,7 +38862,8 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerAccountOverrides": {
         "type": "object",
@@ -38296,7 +38884,8 @@
             "type": "string",
             "description": "Currency"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerAccount": {
         "type": "object",
@@ -38308,7 +38897,8 @@
           "overrides": {
             "$ref": "#/components/schemas/OptimizerAccountOverrides"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Optimization": {
         "type": "object",
@@ -38325,7 +38915,8 @@
             "type": "string",
             "description": "Cash flow"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerTradesList": {
         "type": "object",
@@ -38350,7 +38941,8 @@
             "type": "boolean",
             "description": "Include cash"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerOptimalHoldings": {
         "type": "object",
@@ -38379,7 +38971,8 @@
             "type": "boolean",
             "description": "Exclude zero"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimalPortfolio": {
         "type": "object",
@@ -38414,10 +39007,12 @@
             "type": "string",
             "description": "Action if ofdb date exists"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerStats": {
-        "type": "object"
+        "type": "object",
+        "additionalProperties": false
       },
       "OptimizerOutputTypes": {
         "type": "object",
@@ -38434,7 +39029,8 @@
           "stats": {
             "$ref": "#/components/schemas/OptimizerStats"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AFIOptimizationParameters": {
         "required": [
@@ -38455,10 +39051,12 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "OptimizerCalculationMeta": {
-        "type": "object"
+        "type": "object",
+        "additionalProperties": false
       },
       "AFIOptimizationParametersRoot": {
         "type": "object",
@@ -38469,7 +39067,8 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationInfo": {
         "type": "object",
@@ -38478,7 +39077,8 @@
             "type": "string",
             "description": "Calculation identifier"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationInfoRoot": {
         "required": [
@@ -38489,10 +39089,9 @@
           "data": {
             "$ref": "#/components/schemas/CalculationInfo"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ObjectRoot": {
         "required": [
@@ -38500,13 +39099,10 @@
         ],
         "type": "object",
         "properties": {
-          "data": {
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "data": { },
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "AxiomaEquityOptimizerStrategyOverrides": {
         "type": "object",
@@ -38538,7 +39134,8 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AxiomaEquityOptimizerStrategy": {
         "required": [
@@ -38553,7 +39150,8 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AxiomaEquityOptimizationParameters": {
         "required": [
@@ -38574,7 +39172,8 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "AxiomaEquityOptimizationParametersRoot": {
         "type": "object",
@@ -38585,7 +39184,8 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARIdentifier": {
         "required": [
@@ -38606,6 +39206,7 @@
             "description": "Benchmark prefix."
           }
         },
+        "additionalProperties": false,
         "description": "The account/benchmark parameter for SPAR calculation."
       },
       "SPARBenchmark": {
@@ -38626,7 +39227,8 @@
             },
             "description": "List of SPAR identifiers"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARBenchmarkRoot": {
         "required": [
@@ -38637,10 +39239,9 @@
           "data": {
             "$ref": "#/components/schemas/SPARBenchmark"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ConstraintAction": {
         "type": "object",
@@ -38655,7 +39256,8 @@
             ],
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimizerStrategyAlphaOverride": {
         "type": "object",
@@ -38676,7 +39278,8 @@
           "returnMultiplier": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimizerStrategyOverrides": {
         "type": "object",
@@ -38699,7 +39302,8 @@
             "type": "string",
             "description": "Transaction cost\r\nCan be set to \"\" for local"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimizerStrategy": {
         "required": [
@@ -38714,7 +39318,8 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimization": {
         "type": "object",
@@ -38739,7 +39344,8 @@
             "type": "string",
             "description": "Cash flow"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimizationParameters": {
         "required": [
@@ -38760,7 +39366,8 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "BPMOptimizationParametersRoot": {
         "type": "object",
@@ -38771,7 +39378,8 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ColumnSummary": {
         "type": "object",
@@ -38789,6 +39397,7 @@
             "description": "Column Category"
           }
         },
+        "additionalProperties": false,
         "description": "Column settings (name, directory, category)"
       },
       "ColumnSummaryRoot": {
@@ -38803,10 +39412,9 @@
               "$ref": "#/components/schemas/ColumnSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "Column": {
         "type": "object",
@@ -38830,7 +39438,8 @@
             "type": "string",
             "description": "Column Category"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ColumnRoot": {
         "required": [
@@ -38841,10 +39450,9 @@
           "data": {
             "$ref": "#/components/schemas/Column"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ColumnStatistic": {
         "type": "object",
@@ -38853,7 +39461,8 @@
             "type": "string",
             "description": "Column Statistic Name"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ColumnStatisticRoot": {
         "required": [
@@ -38867,10 +39476,9 @@
               "$ref": "#/components/schemas/ColumnStatistic"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ComponentSummary": {
         "type": "object",
@@ -38882,12 +39490,9 @@
           "category": {
             "type": "string",
             "description": "Component category."
-          },
-          "type": {
-            "type": "string",
-            "description": "Component type."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "ComponentSummaryRoot": {
         "required": [
@@ -38901,10 +39506,9 @@
               "$ref": "#/components/schemas/ComponentSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "PAIdentifier": {
         "required": [
@@ -38920,7 +39524,8 @@
             "type": "string",
             "description": "Holdings Mode can be B&H, TBR, OMS or EXT."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PADateParameters": {
         "required": [
@@ -38942,6 +39547,7 @@
             "description": "Calculation's frequency."
           }
         },
+        "additionalProperties": false,
         "description": "The date parameters for PA calculation."
       },
       "PAComponent": {
@@ -38975,6 +39581,10 @@
             "type": "boolean",
             "description": "Is the component type snapshot or subperiod."
           },
+          "path": {
+            "type": "string",
+            "description": "The path to the document"
+          },
           "name": {
             "type": "string",
             "description": "Component name."
@@ -38982,12 +39592,9 @@
           "category": {
             "type": "string",
             "description": "Component category."
-          },
-          "type": {
-            "type": "string",
-            "description": "Component type."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PAComponentRoot": {
         "required": [
@@ -38998,10 +39605,9 @@
           "data": {
             "$ref": "#/components/schemas/PAComponent"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "VaultIdentifier": {
         "required": [
@@ -39014,6 +39620,7 @@
             "description": "User's FactSet account path OR benchmark."
           }
         },
+        "additionalProperties": false,
         "description": "The account/benchmark parameter for Vault calculation."
       },
       "VaultDateParameters": {
@@ -39036,6 +39643,7 @@
             "description": "Calculation's frequency."
           }
         },
+        "additionalProperties": false,
         "description": "The date parameters for Vault calculation"
       },
       "VaultComponent": {
@@ -39062,6 +39670,10 @@
             "type": "boolean",
             "description": "Snapshot"
           },
+          "path": {
+            "type": "string",
+            "description": "The path to the document"
+          },
           "name": {
             "type": "string",
             "description": "Component name."
@@ -39069,12 +39681,9 @@
           "category": {
             "type": "string",
             "description": "Component category."
-          },
-          "type": {
-            "type": "string",
-            "description": "Component type."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VaultComponentRoot": {
         "required": [
@@ -39085,10 +39694,9 @@
           "data": {
             "$ref": "#/components/schemas/VaultComponent"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "VaultConfigurationSummary": {
         "type": "object",
@@ -39097,7 +39705,8 @@
             "type": "string",
             "description": "Configuration name."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VaultConfigurationSummaryRoot": {
         "required": [
@@ -39111,10 +39720,9 @@
               "$ref": "#/components/schemas/VaultConfigurationSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "ConfigurationAccount": {
         "type": "object",
@@ -39143,7 +39751,8 @@
             "type": "string",
             "description": "Account name."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VaultConfiguration": {
         "type": "object",
@@ -39158,7 +39767,8 @@
               "$ref": "#/components/schemas/ConfigurationAccount"
             }
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VaultConfigurationRoot": {
         "required": [
@@ -39169,10 +39779,9 @@
           "data": {
             "$ref": "#/components/schemas/VaultConfiguration"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "Currency": {
         "type": "object",
@@ -39181,7 +39790,8 @@
             "type": "string",
             "description": "Name of currency."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CurrencyRoot": {
         "required": [
@@ -39195,10 +39805,9 @@
               "$ref": "#/components/schemas/Currency"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "DateParametersSummary": {
         "type": "object",
@@ -39211,7 +39820,8 @@
             "type": "string",
             "description": "End date in YYYYMMDD format."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "DateParametersSummaryRoot": {
         "required": [
@@ -39222,10 +39832,9 @@
           "data": {
             "$ref": "#/components/schemas/DateParametersSummary"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "DocumentDirectories": {
         "type": "object",
@@ -39244,7 +39853,8 @@
             },
             "description": "List of directories."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "DocumentDirectoriesRoot": {
         "required": [
@@ -39255,10 +39865,9 @@
           "data": {
             "$ref": "#/components/schemas/DocumentDirectories"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "FIABIdentifier": {
         "required": [
@@ -39270,7 +39879,8 @@
             "type": "string",
             "description": "User's FactSet account path."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FIABDateParameters": {
         "required": [
@@ -39288,6 +39898,7 @@
             "description": "Calculation's end date."
           }
         },
+        "additionalProperties": false,
         "description": "The date parameters for FIAB calculations."
       },
       "FIABCalculationParameters": {
@@ -39315,7 +39926,8 @@
             "type": "string",
             "description": "FISettingsDocument (optional) - The given @FIS document will be used to\r\nconfigure analytics assumptions and settings. Expects a GUI-style path (Client:/foo/bar)"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FIABCalculationStatusSummary": {
         "type": "object",
@@ -39330,7 +39942,8 @@
             "description": "Last poll time of calculation.",
             "format": "date-time"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "EventSummary": {
         "type": "object",
@@ -39348,7 +39961,8 @@
             "type": "string",
             "description": "Event's type"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FIABCalculationStatus": {
         "type": "object",
@@ -39391,7 +40005,68 @@
             },
             "description": "List of batch events"
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "FIReferencePrepay": {
+        "type": "object",
+        "properties": {
+          "prepayName": {
+            "type": "string",
+            "description": "Reference Prepay Name"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIReferenceSecurity": {
+        "type": "object",
+        "properties": {
+          "securityType": {
+            "type": "string",
+            "description": "Reference Security Type"
+          },
+          "securityName": {
+            "type": "string",
+            "description": "Reference Security Name"
+          },
+          "calcFromMethod": {
+            "type": "string",
+            "description": "Reference Calculation Method.\r\nMethods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,\r\nYield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix"
+          },
+          "calcFromValue": {
+            "type": "number",
+            "description": "Reference CalcFromValue",
+            "format": "double"
+          },
+          "prepay": {
+            "$ref": "#/components/schemas/FIReferencePrepay"
+          },
+          "settlement": {
+            "type": "string",
+            "description": "Reference Settlement Date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FILoss": {
+        "type": "object",
+        "properties": {
+          "lossName": {
+            "type": "string",
+            "description": "Loss Name"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIPrepay": {
+        "type": "object",
+        "properties": {
+          "prepayName": {
+            "type": "string",
+            "description": "Prepay Name"
+          }
+        },
+        "additionalProperties": false
       },
       "FISecurity": {
         "required": [
@@ -39414,9 +40089,28 @@
             "type": "string",
             "description": "Call Method"
           },
+          "referenceSecurity": {
+            "$ref": "#/components/schemas/FIReferenceSecurity"
+          },
+          "loss": {
+            "$ref": "#/components/schemas/FILoss"
+          },
+          "prepay": {
+            "$ref": "#/components/schemas/FIPrepay"
+          },
+          "matrixSpreadAdjustment": {
+            "type": "number",
+            "description": "Matrix Spread Adjustment",
+            "format": "double"
+          },
+          "matrixMultiplier": {
+            "type": "number",
+            "description": "Matrix Multiplier",
+            "format": "double"
+          },
           "calcFromMethod": {
             "type": "string",
-            "description": "Calculation from method"
+            "description": "Calculation Method.\r\nMethods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,\r\nYield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix"
           },
           "calcFromValue": {
             "type": "number",
@@ -39446,7 +40140,8 @@
             "type": "string",
             "description": "Discount curve"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FIJobSettings": {
         "required": [
@@ -39482,9 +40177,10 @@
           },
           "calcFromMethod": {
             "type": "string",
-            "description": "Calculation from method"
+            "description": "Calculation Method.\r\nMethods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,\r\nYield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FICalculationParameters": {
         "required": [
@@ -39511,7 +40207,8 @@
           "jobSettings": {
             "$ref": "#/components/schemas/FIJobSettings"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationMeta": {
         "type": "object",
@@ -39561,7 +40258,8 @@
             "type": "string",
             "default": "JsonStach"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FICalculationParametersRoot": {
         "type": "object",
@@ -39572,7 +40270,8 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PaDoc": {
         "required": [
@@ -39584,7 +40283,8 @@
             "type": "string",
             "description": "PA document path"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FPOAccount": {
         "required": [
@@ -39602,14 +40302,33 @@
           "overrides": {
             "$ref": "#/components/schemas/OptimizerAccountOverrides"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "OptimizerStrategyOverrides": {
+      "FPOObjective": {
         "type": "object",
         "properties": {
-          "tax": {
-            "type": "string",
-            "description": "Tax"
+          "active": {
+            "type": "string"
+          },
+          "terms": {
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                "Disable",
+                "Enable"
+              ],
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "FPOOptimizerStrategyOverrides": {
+        "type": "object",
+        "properties": {
+          "objective": {
+            "$ref": "#/components/schemas/FPOObjective"
           },
           "constraints": {
             "type": "object",
@@ -39630,22 +40349,24 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "OptimizerStrategy": {
+      "FPOOptimizerStrategy": {
         "required": [
           "id"
         ],
         "type": "object",
         "properties": {
+          "overrides": {
+            "$ref": "#/components/schemas/FPOOptimizerStrategyOverrides"
+          },
           "id": {
             "type": "string",
             "description": "OptimizerStrategy document path"
-          },
-          "overrides": {
-            "$ref": "#/components/schemas/OptimizerStrategyOverrides"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FPOOptimizationParameters": {
         "required": [
@@ -39658,7 +40379,7 @@
             "$ref": "#/components/schemas/FPOAccount"
           },
           "strategy": {
-            "$ref": "#/components/schemas/OptimizerStrategy"
+            "$ref": "#/components/schemas/FPOOptimizerStrategy"
           },
           "optimization": {
             "$ref": "#/components/schemas/Optimization"
@@ -39666,7 +40387,8 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FPOOptimizationParametersRoot": {
         "type": "object",
@@ -39677,7 +40399,8 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Frequency": {
         "type": "object",
@@ -39686,7 +40409,8 @@
             "type": "string",
             "description": "Frequency name."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "FrequencyRoot": {
         "required": [
@@ -39700,10 +40424,9 @@
               "$ref": "#/components/schemas/Frequency"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "Group": {
         "type": "object",
@@ -39720,7 +40443,8 @@
             "type": "string",
             "description": "Group Category"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "GroupRoot": {
         "required": [
@@ -39734,10 +40458,9 @@
               "$ref": "#/components/schemas/Group"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "TemplateContentTypes": {
         "type": "object",
@@ -39763,7 +40486,8 @@
             },
             "description": "Template locked fields"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateParameters": {
         "required": [
@@ -39787,7 +40511,8 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateParametersRoot": {
         "required": [
@@ -39798,10 +40523,44 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateParameters"
           },
-          "meta": {
-            "type": "object"
+          "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "LinkedPATemplatePostSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Template id."
+          },
+          "description": {
+            "type": "string",
+            "description": "Template description."
+          },
+          "name": {
+            "type": "string",
+            "description": "Template name."
+          },
+          "parentComponentId": {
+            "type": "string",
+            "description": "Template parent tile."
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "LinkedPATemplatePostSummaryRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/LinkedPATemplatePostSummary"
+          },
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateSummary": {
         "type": "object",
@@ -39818,7 +40577,8 @@
             "type": "string",
             "description": "Template parent tile."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateSummaryRoot": {
         "required": [
@@ -39832,10 +40592,9 @@
               "$ref": "#/components/schemas/LinkedPATemplateSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateUpdateParameters": {
         "type": "object",
@@ -39851,7 +40610,8 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateUpdateParametersRoot": {
         "required": [
@@ -39862,10 +40622,9 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateUpdateParameters"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplate": {
         "type": "object",
@@ -39897,7 +40656,8 @@
             "type": "string",
             "description": "Template parent tile."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LinkedPATemplateRoot": {
         "required": [
@@ -39908,19 +40668,16 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplate"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "NPOOptimizerStrategyOverrides": {
         "type": "object",
         "properties": {
           "objective": {
             "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            },
+            "additionalProperties": { },
             "description": "Objective parameters"
           },
           "constraints": {
@@ -39942,7 +40699,8 @@
             "type": "string",
             "description": "Alpha"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "NPOOptimizerStrategy": {
         "required": [
@@ -39957,7 +40715,8 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "NPOOptimizationParameters": {
         "required": [
@@ -39978,7 +40737,8 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "NPOOptimizationParametersRoot": {
         "type": "object",
@@ -39989,7 +40749,8 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PACalculationGroup": {
         "type": "object",
@@ -39998,7 +40759,8 @@
             "type": "string",
             "description": "FactSet-defined or User-defined Group identifier."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PACalculationColumn": {
         "type": "object",
@@ -40014,7 +40776,8 @@
             },
             "description": "Column Statistic identifier"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PACalculationParameters": {
         "required": [
@@ -40063,9 +40826,10 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "Component detail type for the PA component. It can be GROUPS or TOTALS."
+            "description": "Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PACalculationParametersRoot": {
         "type": "object",
@@ -40080,7 +40844,8 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationUnitStatus": {
         "type": "object",
@@ -40111,7 +40876,8 @@
             "type": "string",
             "description": "The progress of the calculation unit."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationStatus": {
         "type": "object",
@@ -40137,7 +40903,8 @@
             },
             "description": "Number of calculation units in batch."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationUnitStatusMeta": {
         "type": "object",
@@ -40146,7 +40913,8 @@
             "type": "string",
             "description": "The Info URL of the calculation."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationStatusMeta": {
         "type": "object",
@@ -40158,7 +40926,8 @@
             },
             "description": "Meta of calculation units in batch."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "CalculationStatusRoot": {
         "required": [
@@ -40172,7 +40941,8 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationStatusMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PubIdentifier": {
         "required": [
@@ -40188,7 +40958,8 @@
             "type": "string",
             "description": "Holdings Mode can be B&H, TBR, OMS or EXT."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PubDateParameters": {
         "required": [
@@ -40205,6 +40976,7 @@
             "description": "Calculation's end date or as of date."
           }
         },
+        "additionalProperties": false,
         "description": "The date parameters for Publisher calculation."
       },
       "PubCalculationParameters": {
@@ -40225,10 +40997,12 @@
           "dates": {
             "$ref": "#/components/schemas/PubDateParameters"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PubCalculationMeta": {
-        "type": "object"
+        "type": "object",
+        "additionalProperties": false
       },
       "PubCalculationParametersRoot": {
         "type": "object",
@@ -40243,9 +41017,252 @@
           "meta": {
             "$ref": "#/components/schemas/PubCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "QuantScreeningExpressionUniverse": {
+        "required": [
+          "universeExpr",
+          "universeType"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantUniverse"
+          }
+        ],
+        "properties": {
+          "universeExpr": {
+            "type": "string"
+          },
+          "universeType": {
+            "enum": [
+              "Equity",
+              "Debt"
+            ],
+            "type": "string"
+          },
+          "securityExpr": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantIdentifierUniverse": {
+        "required": [
+          "identifiers",
+          "universeType"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantUniverse"
+          }
+        ],
+        "properties": {
+          "universeType": {
+            "enum": [
+              "Equity",
+              "Debt"
+            ],
+            "type": "string"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantUniverse": {
+        "required": [
+          "source"
+        ],
+        "type": "object",
+        "properties": {
+          "source": {
+            "enum": [
+              "ScreeningExpressionUniverse",
+              "UniversalScreenUniverse",
+              "IdentifierUniverse"
+            ],
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantUniversalScreenUniverse": {
+        "required": [
+          "screen"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantUniverse"
+          }
+        ],
+        "properties": {
+          "screen": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantDateList": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantDate"
+          }
+        ],
+        "properties": {
+          "dates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantDate": {
+        "required": [
+          "calendar",
+          "frequency",
+          "source"
+        ],
+        "type": "object",
+        "properties": {
+          "source": {
+            "enum": [
+              "FdsDate",
+              "DateList"
+            ],
+            "type": "string"
+          },
+          "frequency": {
+            "type": "string"
+          },
+          "calendar": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantFdsDate": {
+        "required": [
+          "endDate",
+          "startDate"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantDate"
+          }
+        ],
+        "properties": {
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantFqlExpression": {
+        "required": [
+          "expr",
+          "name"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantFormula"
+          }
+        ],
+        "properties": {
+          "expr": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantUniversalScreenParameter": {
+        "required": [
+          "name",
+          "referenceName"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantFormula"
+          }
+        ],
+        "properties": {
+          "referenceName": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantAllUniversalScreenParameters": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantFormula"
+          }
+        ],
+        "additionalProperties": false
+      },
+      "QuantFormula": {
+        "required": [
+          "source"
+        ],
+        "type": "object",
+        "properties": {
+          "source": {
+            "enum": [
+              "ScreeningExpression",
+              "FqlExpression",
+              "UniversalScreenParameter",
+              "AllUniversalScreenParameters"
+            ],
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantScreeningExpression": {
+        "required": [
+          "expr",
+          "name"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/QuantFormula"
+          }
+        ],
+        "properties": {
+          "expr": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QuantScreeningExpressionUniverseObsolete": {
         "required": [
           "universeExpr",
           "universeType"
@@ -40264,10 +41281,19 @@
           },
           "securityExpr": {
             "type": "string"
+          },
+          "source": {
+            "enum": [
+              "ScreeningExpressionUniverse",
+              "UniversalScreenUniverse",
+              "IdentifierUniverse"
+            ],
+            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantUniversalScreenUniverse": {
+      "QuantUniversalScreenUniverseObsolete": {
         "required": [
           "screen"
         ],
@@ -40275,10 +41301,19 @@
         "properties": {
           "screen": {
             "type": "string"
+          },
+          "source": {
+            "enum": [
+              "ScreeningExpressionUniverse",
+              "UniversalScreenUniverse",
+              "IdentifierUniverse"
+            ],
+            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantIdentifierUniverse": {
+      "QuantIdentifierUniverseObsolete": {
         "required": [
           "identifiers",
           "universeType"
@@ -40297,10 +41332,19 @@
             "items": {
               "type": "string"
             }
+          },
+          "source": {
+            "enum": [
+              "ScreeningExpressionUniverse",
+              "UniversalScreenUniverse",
+              "IdentifierUniverse"
+            ],
+            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantFdsDate": {
+      "QuantFdsDateObsolete": {
         "required": [
           "calendar",
           "endDate",
@@ -40321,9 +41365,10 @@
           "calendar": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantDateList": {
+      "QuantDateListObsolete": {
         "required": [
           "calendar",
           "frequency"
@@ -40342,9 +41387,10 @@
           "calendar": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantScreeningExpression": {
+      "QuantScreeningExpressionObsolete": {
         "required": [
           "expr",
           "name"
@@ -40357,9 +41403,10 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantFqlExpression": {
+      "QuantFqlExpressionObsolete": {
         "required": [
           "expr",
           "name"
@@ -40372,9 +41419,10 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantUniversalScreenParameter": {
+      "QuantUniversalScreenParameterObsolete": {
         "required": [
           "name",
           "referenceName"
@@ -40387,54 +41435,84 @@
           "name": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
-      "QuantAllUniversalScreenParameters": {
-        "type": "object"
+      "QuantAllUniversalScreenParametersObsolete": {
+        "type": "object",
+        "additionalProperties": false
       },
       "QuantCalculationParameters": {
         "type": "object",
         "properties": {
-          "screeningExpressionUniverse": {
-            "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
-          },
-          "universalScreenUniverse": {
-            "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
-          },
-          "identifierUniverse": {
-            "$ref": "#/components/schemas/QuantIdentifierUniverse"
-          },
-          "fdsDate": {
-            "$ref": "#/components/schemas/QuantFdsDate"
-          },
-          "dateList": {
-            "$ref": "#/components/schemas/QuantDateList"
-          },
-          "screeningExpression": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantScreeningExpression"
+          "universe": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantIdentifierUniverse"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
+                "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
+                "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
+              }
             }
           },
-          "fqlExpression": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantFqlExpression"
+          "dates": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantFdsDate"
+              },
+              {
+                "$ref": "#/components/schemas/QuantDateList"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "FdsDate": "#/components/schemas/QuantFdsDate",
+                "DateList": "#/components/schemas/QuantDateList"
+              }
             }
           },
-          "universalScreenParameter": {
+          "formulas": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/QuantUniversalScreenParameter"
-            }
-          },
-          "allUniversalScreenParameters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/QuantScreeningExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantFqlExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantUniversalScreenParameter"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
+                  "FqlExpression": "#/components/schemas/QuantFqlExpression",
+                  "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
+                  "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              }
             }
           }
-        }
+        },
+        "additionalProperties": false
       },
       "QuantCalculationMeta": {
         "type": "object",
@@ -40487,7 +41565,8 @@
             "type": "string",
             "default": "JsonStach"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "QuantCalculationParametersRoot": {
         "type": "object",
@@ -40502,7 +41581,8 @@
           "meta": {
             "$ref": "#/components/schemas/QuantCalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARDateParameters": {
         "required": [
@@ -40525,6 +41605,7 @@
             "description": "Calculation's frequency."
           }
         },
+        "additionalProperties": false,
         "description": "The date parameters for SPAR calculation."
       },
       "SPARCalculationParameters": {
@@ -40554,7 +41635,8 @@
             "type": "string",
             "description": "Currency ISO code for calculation."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "SPARCalculationParametersRoot": {
         "type": "object",
@@ -40569,7 +41651,8 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "PAComponentData": {
         "type": "object",
@@ -40613,7 +41696,8 @@
             "type": "string",
             "description": "PA Storage type. It can be GROUPS or TOTALS or SECURITIES."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentParameters": {
         "required": [
@@ -40637,7 +41721,8 @@
           "componentData": {
             "$ref": "#/components/schemas/PAComponentData"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentParametersRoot": {
         "required": [
@@ -40648,10 +41733,43 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentParameters"
           },
-          "meta": {
-            "type": "object"
+          "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "TemplatedPAComponentPostSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentTemplateId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "TemplatedPAComponentPostSummaryRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TemplatedPAComponentPostSummary"
+          },
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentSummary": {
         "type": "object",
@@ -40668,7 +41786,8 @@
           "type": {
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentSummaryRoot": {
         "required": [
@@ -40682,10 +41801,9 @@
               "$ref": "#/components/schemas/TemplatedPAComponentSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentUpdateParameters": {
         "type": "object",
@@ -40701,7 +41819,8 @@
           "componentData": {
             "$ref": "#/components/schemas/PAComponentData"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "TemplatedPAComponentUpdateParametersRoot": {
         "required": [
@@ -40712,10 +41831,52 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentUpdateParameters"
           },
-          "meta": {
-            "type": "object"
+          "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "TemplatedPAComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "directory": {
+            "type": "string"
+          },
+          "snapshot": {
+            "type": "boolean"
+          },
+          "componentData": {
+            "$ref": "#/components/schemas/PAComponentData"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentTemplateId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "TemplatedPAComponentRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/TemplatedPAComponent"
+          },
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateParameters": {
         "required": [
@@ -40778,7 +41939,8 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateParametersRoot": {
         "required": [
@@ -40789,24 +41951,62 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateParameters"
           },
-          "meta": {
-            "type": "object"
+          "meta": { }
+        },
+        "additionalProperties": false
+      },
+      "UnlinkedPATemplatePostSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Template id."
+          },
+          "description": {
+            "type": "string",
+            "description": "Template description."
+          },
+          "name": {
+            "type": "string",
+            "description": "Template name."
+          },
+          "category": {
+            "type": "string",
+            "description": "Unlinked template category"
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "UnlinkedPATemplatePostSummaryRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/UnlinkedPATemplatePostSummary"
+          },
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateSummary": {
         "type": "object",
         "properties": {
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "Template description."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Template name."
           },
           "category": {
-            "type": "string"
+            "type": "string",
+            "description": "Unlinked template category"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateSummaryRoot": {
         "required": [
@@ -40820,10 +42020,9 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateSummary"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateUpdateParameters": {
         "type": "object",
@@ -40874,7 +42073,8 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateUpdateParametersRoot": {
         "required": [
@@ -40885,43 +42085,49 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateUpdateParameters"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplate": {
         "type": "object",
         "properties": {
-          "directory": {
-            "type": "string"
-          },
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Template id."
+          },
+          "directory": {
+            "type": "string",
+            "description": "Template directory."
           },
           "templateTypeId": {
-            "type": "string"
+            "type": "string",
+            "description": "Template type id"
           },
           "snapshot": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "snapshot."
           },
           "accounts": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PAIdentifier"
-            }
+            },
+            "description": "List of accounts"
           },
           "benchmarks": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PAIdentifier"
-            }
+            },
+            "description": "List of benchmarks"
           },
           "columns": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PACalculationColumn"
-            }
+            },
+            "description": "List of columns for the PA calculation"
           },
           "dates": {
             "$ref": "#/components/schemas/PADateParameters"
@@ -40930,27 +42136,34 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PACalculationGroup"
-            }
+            },
+            "description": "List of groupings for the PA calculation"
           },
           "currencyisocode": {
-            "type": "string"
+            "type": "string",
+            "description": "Currency ISO code for calculation."
           },
           "componentdetail": {
-            "type": "string"
+            "type": "string",
+            "description": "PA storage type. It can be GROUPS or TOTALS or SECURITIES."
           },
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "Template description."
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Template name."
           },
           "category": {
-            "type": "string"
+            "type": "string",
+            "description": "Unlinked template category"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateRoot": {
         "required": [
@@ -40961,10 +42174,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplate"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateCategoryAndType": {
         "type": "object",
@@ -40977,7 +42189,8 @@
             "type": "string",
             "description": "Unlinked template type"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateCategoryAndTypeRoot": {
         "required": [
@@ -40991,10 +42204,9 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndType"
             }
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateCategoryAndTypeDetails": {
         "type": "object",
@@ -41011,7 +42223,8 @@
             "type": "string",
             "description": "Unlinked template type"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UnlinkedPATemplateCategoryAndTypeDetailsRoot": {
         "required": [
@@ -41022,10 +42235,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetails"
           },
-          "meta": {
-            "type": "object"
-          }
-        }
+          "meta": { }
+        },
+        "additionalProperties": false
       },
       "VaultCalculationParameters": {
         "required": [
@@ -41051,9 +42263,10 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "Component detail type for the Vault component. It can be GROUPS or TOTALS."
+            "description": "Component detail type for the Vault component. It can be GROUPS or TOTALS or SECURITIES."
           }
-        }
+        },
+        "additionalProperties": false
       },
       "VaultCalculationParametersRoot": {
         "type": "object",
@@ -41068,7 +42281,8 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        }
+        },
+        "additionalProperties": false
       }
     },
     "securitySchemes": {
