@@ -4,7 +4,7 @@ env:
   USER_API_KEY: ${{ secrets.USER_API_KEY }}
   USER_EMAIL: ${{ secrets.USER_EMAIL }}
   USER: ${{ secrets.USER }}
-  OPENAPI_GENERATOR_VERSION: 5.1.0
+  OPENAPI_GENERATOR_VERSION: 5.3.1
   GITHUB_DOTNET_SDK_REPO: factset/analyticsapi-engines-dotnet-sdk
   GITHUB_PYTHON_SDK_REPO: factset/analyticsapi-engines-python-sdk
   GITHUB_JAVA_SDK_REPO: factset/analyticsapi-engines-java-sdk
