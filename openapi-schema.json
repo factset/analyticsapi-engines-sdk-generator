@@ -41447,10 +41447,7 @@
         "type": "object",
         "additionalProperties": false
       },
-      "QuantCalculationParameters": {
-        "type": "object",
-        "properties": {
-          "universe": {
+	  "DummyUniverse" : {
             "oneOf": [
               {
                 "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
@@ -41470,6 +41467,14 @@
                 "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
               }
             }
+	  
+	  },
+      "QuantCalculationParameters": {
+        "type": "object",
+        "properties": {
+          "universe": {
+		    "$ref": "#/components/schemas/DummyUniverse"
+            
           },
           "dates": {
             "oneOf": [
