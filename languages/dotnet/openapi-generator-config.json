@@ -4,6 +4,7 @@
   "packageGuid": "{D7309227-518B-45ED-896A-4853BE6A9075}",
   "targetFramework": "netstandard2.0",
   "caseInsensitiveResponseHeaders": true,
+  "useOneOfDiscriminatorLookup": true,
   "packageAuthors": "FactSet",
   "packageTitle": "FactSet Analytics Engines API",
   "packageDescription": "Allow clients to fetch Engines Analytics through APIs.",
