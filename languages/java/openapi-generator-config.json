@@ -22,6 +22,7 @@
     "useGzipFeature": false,
     "hideGenerationTimestamp": true,
     "caseInsensitiveResponseHeaders": true,
+	"legacyDiscriminatorBehavior": false,
     "library": "jersey2",
     "servers":  false,
     "httpUserAgent": "engines-api/5.2.0/java"

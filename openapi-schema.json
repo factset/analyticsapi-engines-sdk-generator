@@ -41083,11 +41083,11 @@
       },
       "QuantUniverse": {
         "required": [
-          "source"
+          "className"
         ],
         "type": "object",
         "properties": {
-          "source": {
+          "className": {
             "enum": [
               "ScreeningExpressionUniverse",
               "UniversalScreenUniverse",
@@ -41136,11 +41136,11 @@
         "required": [
           "calendar",
           "frequency",
-          "source"
+          "className"
         ],
         "type": "object",
         "properties": {
-          "source": {
+          "className": {
             "enum": [
               "FdsDate",
               "DateList"
@@ -41230,11 +41230,11 @@
       },
       "QuantFormula": {
         "required": [
-          "source"
+          "className"
         ],
         "type": "object",
         "properties": {
-          "source": {
+          "className": {
             "enum": [
               "ScreeningExpression",
               "FqlExpression",
@@ -41463,7 +41463,7 @@
               }
             ],
             "discriminator": {
-              "propertyName": "source",
+              "propertyName": "className",
               "mapping": {
                 "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
                 "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
@@ -41481,7 +41481,7 @@
               }
             ],
             "discriminator": {
-              "propertyName": "source",
+              "propertyName": "className",
               "mapping": {
                 "FdsDate": "#/components/schemas/QuantFdsDate",
                 "DateList": "#/components/schemas/QuantDateList"
@@ -41506,7 +41506,7 @@
                 }
               ],
               "discriminator": {
-                "propertyName": "source",
+                "propertyName": "className",
                 "mapping": {
                   "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
                   "FqlExpression": "#/components/schemas/QuantFqlExpression",
