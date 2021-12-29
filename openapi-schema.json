@@ -41485,32 +41485,35 @@
           }
         }
       },
+      "OneOfQuantFormulasArray": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/QuantScreeningExpression"
+          },
+          {
+            "$ref": "#/components/schemas/QuantFqlExpression"
+          },
+          {
+            "$ref": "#/components/schemas/QuantUniversalScreenParameter"
+          },
+          {
+            "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "source",
+          "mapping": {
+            "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
+            "FqlExpression": "#/components/schemas/QuantFqlExpression",
+            "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
+            "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
+          }
+        }
+      },
       "OneOfQuantFormulas": {
         "type": "array",
         "items": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/QuantScreeningExpression"
-            },
-            {
-              "$ref": "#/components/schemas/QuantFqlExpression"
-            },
-            {
-              "$ref": "#/components/schemas/QuantUniversalScreenParameter"
-            },
-            {
-              "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "source",
-            "mapping": {
-              "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
-              "FqlExpression": "#/components/schemas/QuantFqlExpression",
-              "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
-              "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
-            }
-          }
+          "$ref": "#/components/schemas/OneOfQuantFormulasArray"
         }
       },
       "QuantCalculationParameters": {
