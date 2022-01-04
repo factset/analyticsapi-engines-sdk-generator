@@ -36,7 +36,7 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_DOTNET_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION dotnet CustomCSharpNetCoreClientCodegen generator/openapi-schema-oneof-referenced-schema.json
+        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION dotnet CustomCSharpNetCoreClientCodegen ../../openapi-schema-oneof-referenced-schema.json
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_DOTNET_SDK_REPO
@@ -63,7 +63,7 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_PYTHON_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION python CustomPythonClientCodegen generator/openapi-schema.json
+        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION python CustomPythonClientCodegen ../../openapi-schema.json
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_PYTHON_SDK_REPO
@@ -90,7 +90,7 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_JAVA_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION java CustomJavaClientCodegen generator/openapi-schema-oneof-referenced-schema.json
+        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION java CustomJavaClientCodegen ../../openapi-schema-oneof-referenced-schema.json
 
       - name: Raise pull request on SDK repository
         if: env.GITHUB_JAVA_SDK_REPO
@@ -121,7 +121,7 @@ jobs:
 
       - name: Generate SDK
         if: env.GITHUB_R_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen generator/openapi-schema-oneof-referenced-schema.json
+        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen ../../openapi-schema-oneof-referenced-schema.json
 
       - name: Set up R
         if: env.GITHUB_R_SDK_REPO
