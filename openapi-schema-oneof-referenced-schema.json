@@ -38740,7 +38740,9 @@
           "data": {
             "$ref": "#/components/schemas/SPARAccounts"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -38812,7 +38814,9 @@
           "data": {
             "$ref": "#/components/schemas/AccountDirectories"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39089,7 +39093,9 @@
           "data": {
             "$ref": "#/components/schemas/CalculationInfo"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39099,8 +39105,12 @@
         ],
         "type": "object",
         "properties": {
-          "data": { },
-          "meta": { }
+          "data": {
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39239,7 +39249,9 @@
           "data": {
             "$ref": "#/components/schemas/SPARBenchmark"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39412,7 +39424,9 @@
               "$ref": "#/components/schemas/ColumnSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39450,7 +39464,9 @@
           "data": {
             "$ref": "#/components/schemas/Column"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39476,7 +39492,9 @@
               "$ref": "#/components/schemas/ColumnStatistic"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39506,7 +39524,9 @@
               "$ref": "#/components/schemas/ComponentSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39605,7 +39625,9 @@
           "data": {
             "$ref": "#/components/schemas/PAComponent"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39694,7 +39716,9 @@
           "data": {
             "$ref": "#/components/schemas/VaultComponent"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39720,7 +39744,9 @@
               "$ref": "#/components/schemas/VaultConfigurationSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39779,7 +39805,9 @@
           "data": {
             "$ref": "#/components/schemas/VaultConfiguration"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39805,7 +39833,9 @@
               "$ref": "#/components/schemas/Currency"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39832,7 +39862,9 @@
           "data": {
             "$ref": "#/components/schemas/DateParametersSummary"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -39865,7 +39897,9 @@
           "data": {
             "$ref": "#/components/schemas/DocumentDirectories"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40424,7 +40458,9 @@
               "$ref": "#/components/schemas/Frequency"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40458,7 +40494,9 @@
               "$ref": "#/components/schemas/Group"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40523,7 +40561,9 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40558,7 +40598,9 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplatePostSummary"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40592,7 +40634,9 @@
               "$ref": "#/components/schemas/LinkedPATemplateSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40622,7 +40666,9 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateUpdateParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40668,7 +40714,9 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplate"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -40677,7 +40725,9 @@
         "properties": {
           "objective": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {
+              "type": "object"
+            },
             "description": "Objective parameters"
           },
           "constraints": {
@@ -41750,7 +41800,9 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -41784,7 +41836,9 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentPostSummary"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -41818,7 +41872,9 @@
               "$ref": "#/components/schemas/TemplatedPAComponentSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -41848,7 +41904,9 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentUpdateParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -41891,7 +41949,9 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponent"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -41968,7 +42028,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42003,7 +42065,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplatePostSummary"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42037,7 +42101,9 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateSummary"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42102,7 +42168,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateUpdateParameters"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42191,7 +42259,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplate"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42221,7 +42291,9 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndType"
             }
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
@@ -42305,7 +42377,9 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetails"
           },
-          "meta": { }
+          "meta": {
+            "type": "object"
+          }
         },
         "additionalProperties": false
       },
