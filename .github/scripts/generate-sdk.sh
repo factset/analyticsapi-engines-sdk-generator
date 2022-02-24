@@ -3,6 +3,7 @@
 version=$1
 language=$2
 generatorname=$3
+openapischema=$4
 
 docker build --build-arg VERSION=$version \
   -t openapi-generator-cli-custom \
@@ -12,7 +13,7 @@ docker build --build-arg VERSION=$version \
 docker run --rm -v ${GITHUB_WORKSPACE}/generator:/generator \
   openapi-generator-cli-custom generate \
   --generator-name $generatorname \
-  --input-spec /generator/openapi-schema.json \
+  --input-spec /generator/$openapischema \
   --output /generator/languages/$language/sdk \
   --config /generator/languages/$language/openapi-generator-config.json \
   --template-dir /generator/languages/$language/templates \
