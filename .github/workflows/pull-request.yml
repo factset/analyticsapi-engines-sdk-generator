@@ -96,51 +96,52 @@ jobs:
         if: env.GITHUB_JAVA_SDK_REPO
         run: generator/.github/scripts/raise-pull-request.sh java
 
-  r:
-    runs-on: ubuntu-latest
+  #r:
+    #runs-on: ubuntu-latest
 
-    env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RSPM: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
+    #env:
+      #R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      #RSPM: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"
 
-    steps:
-      - name: Check out SDK repository
-        if: env.GITHUB_R_SDK_REPO
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ env.GITHUB_R_SDK_REPO }}
-          path: sdk
-          fetch-depth: 0
-          token: ${{ env.USER_API_KEY }}
+    #steps:
+      #- name: Check out SDK repository
+        #if: env.GITHUB_R_SDK_REPO
+        #uses: actions/checkout@v2
+        #with:
+          #repository: ${{ env.GITHUB_R_SDK_REPO }}
+          #path: sdk
+          #fetch-depth: 0
+          #token: ${{ env.USER_API_KEY }}
 
-      - name: Check out Generator repository
-        if: env.GITHUB_R_SDK_REPO
-        uses: actions/checkout@v2
-        with:
-          path: generator
+      #- name: Check out Generator repository
+        #if: env.GITHUB_R_SDK_REPO
+        #uses: actions/checkout@v2
+        #with:
+          #path: generator
 
-      - name: Generate SDK
-        if: env.GITHUB_R_SDK_REPO
-        run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen openapi-schema-oneof-referenced-schema.json
+      #- name: Generate SDK
+        #if: env.GITHUB_R_SDK_REPO
+        #run: generator/.github/scripts/generate-sdk.sh $OPENAPI_GENERATOR_VERSION r CustomRClientCodegen
 
-      - name: Set up R
-        if: env.GITHUB_R_SDK_REPO
-        uses: r-lib/actions/setup-r@v1
-        with:
-          r-version: "3.5.3"
+      #- name: Set up R
+        #if: env.GITHUB_R_SDK_REPO
+        #uses: r-lib/actions/setup-r@v1
+        #with:
+          #r-version: "3.5.3"
 
-      - name: Generate docs
-        if: env.GITHUB_R_SDK_REPO
-        run: |
-          sudo apt-get install libcurl4-openssl-dev libssl-dev
-          sudo apt-get install libprotoc-dev
-          sudo Rscript -e "install.packages('jsonlite', repos = 'http://cran.us.r-project.org')"
-          sudo Rscript -e "install.packages('httr', repos = 'http://cran.us.r-project.org')"
-          sudo Rscript -e "install.packages('base64enc', repos = 'http://cran.us.r-project.org')"
-          sudo Rscript -e "install.packages('factset.protobuf.stach', repos = 'http://cran.us.r-project.org')"
-          sudo Rscript -e "install.packages('roxygen2', repos = 'http://cran.us.r-project.org')"
-          sudo Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'namespace'), package.dir = '${GITHUB_WORKSPACE}/generator/languages/r/sdk')"
+      #- name: Generate docs
+        #if: env.GITHUB_R_SDK_REPO
+        #run: |
+          #sudo apt-get install libcurl4-openssl-dev libssl-dev
+          #sudo apt-get install libprotoc-dev
+          #sudo Rscript -e "install.packages('jsonlite', repos = 'http://cran.us.r-project.org')"
+          #sudo Rscript -e "install.packages('httr', repos = 'http://cran.us.r-project.org')"
+          #sudo Rscript -e "install.packages('base64enc', repos = 'http://cran.us.r-project.org')"
+          #sudo Rscript -e "install.packages('factset.protobuf.stach', repos = 'http://cran.us.r-project.org')"
+          #sudo Rscript -e "install.packages('roxygen2', repos = 'http://cran.us.r-project.org')"
+          #sudo Rscript -e "roxygen2::roxygenize(roclets = c('rd', 'namespace'), package.dir = '${GITHUB_WORKSPACE}/generator/languages/r/sdk')"
 
-      - name: Raise pull request on SDK repository
-        if: env.GITHUB_R_SDK_REPO
-        run: generator/.github/scripts/raise-pull-request.sh r
+      #- name: Raise pull request on SDK repository
+        #if: env.GITHUB_R_SDK_REPO
+        #run: generator/.github/scripts/raise-pull-request.sh r
+
