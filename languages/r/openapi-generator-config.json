@@ -1,11 +1,11 @@
 {
 	"packageName": "factset.analyticsapi.engines",
-	"packageVersion": "3.2.0",
+	"packageVersion": "3.3.0",
 	"hideGenerationTimestamp": "true",
 	"returnExceptionOnFailure": "true",
 	"exceptionPackage": "rlang",
 	"gitHost": "github.com",
 	"gitUserId": "factset",
 	"gitRepoId": "analyticsapi-engines-r-sdk",
-	"httpUserAgent": "engines-api/3.2.0/r"
+	"httpUserAgent": "engines-api/3.3.0/r"
 }
