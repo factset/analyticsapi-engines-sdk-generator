@@ -22921,7 +22921,7 @@
           "PACalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -22937,7 +22937,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -23025,7 +23025,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25795,7 +25795,7 @@
           "PubCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -25811,7 +25811,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25899,7 +25899,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28471,7 +28471,7 @@
           "QuantCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -28487,7 +28487,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28575,7 +28575,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31329,7 +31329,7 @@
           "SPARCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -31345,7 +31345,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31433,7 +31433,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39085,7 +39085,7 @@
           "VaultCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -39101,7 +39101,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39189,7 +39189,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -42970,6 +42970,34 @@
           "name": {
             "type": "string",
             "description": "Frequency name."
+          },
+          "periodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "nperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "iperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "inperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         },
         "additionalProperties": false
@@ -43446,6 +43474,34 @@
           "componentdetail": {
             "type": "string",
             "description": "Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES."
+          },
+          "periodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "nperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "iperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "inperiodicMultipliers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         },
         "additionalProperties": false
@@ -45172,8 +45228,8 @@
   },
   "security": [
     {
-      "Basic": [],
-      "Bearer": []
+      "Basic": [ ],
+      "Bearer": [ ]
     }
   ]
 }
