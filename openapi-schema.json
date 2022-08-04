@@ -43439,7 +43439,10 @@
           "nperiodicMultipliers": {
             "type": "array",
             "items": {
-              "type": "number",
+              "type": [
+                "number",
+                "null"
+              ],
               "format": "double"
             }
           },
@@ -43453,7 +43456,10 @@
           "inperiodicMultipliers": {
             "type": "array",
             "items": {
-              "type": "integer",
+              "type": [
+                "number",
+                "null"
+              ],
               "format": "int32"
             }
           }
