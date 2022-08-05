@@ -43498,11 +43498,20 @@
               "format": "double"
             }
           },
-		  "histRcvAssumpRates": {
+		  "dhistRcvAssumpRates": {
             "type": "array",
             "items": {
               "type": "number",
-              "nullable": true
+              "nullable": true,
+			  "format": "double"
+            }
+          },
+		  "ihistRcvAssumpRates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "nullable": true,
+			  "format": "int32"
             }
           },
           "iperiodicMultipliers": {
@@ -43574,6 +43583,22 @@
             "type": "integer",
             "description": "The points for the calculation unit.",
             "format": "int32"
+          },
+		  "dhistRcvAssumpRates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "nullable": true,
+			  "format": "double"
+            }
+          },
+		  "ihistRcvAssumpRates": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "nullable": true,
+			  "format": "int32"
+            }
           }
         },
         "additionalProperties": false
