@@ -43457,7 +43457,7 @@
 		  "ihistRcvAssumpRates": {
             "type": "array",
             "items": {
-              "type": "number",
+              "type": "integer",
               "nullable": true,
 			  "format": "int32"
             }
@@ -43543,7 +43543,7 @@
 		  "ihistRcvAssumpRates": {
             "type": "array",
             "items": {
-              "type": "number",
+              "type": "integer",
               "nullable": true,
 			  "format": "int32"
             }
