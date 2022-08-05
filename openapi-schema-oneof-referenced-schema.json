@@ -43502,17 +43502,17 @@
             "type": "array",
             "items": {
               "type": "number",
-              "nullable": true,
 			  "format": "double"
-            }
+            },
+			"nullable": true
           },
 		  "ihistRcvAssumpRates": {
             "type": "array",
             "items": {
               "type": "integer",
-              "nullable": true,
 			  "format": "int32"
-            }
+            },
+			"nullable": true
           },
           "iperiodicMultipliers": {
             "type": "array",
@@ -43588,17 +43588,17 @@
             "type": "array",
             "items": {
               "type": "number",
-              "nullable": true,
 			  "format": "double"
-            }
+            },
+			"nullable": true
           },
 		  "ihistRcvAssumpRates": {
             "type": "array",
             "items": {
               "type": "integer",
-              "nullable": true,
 			  "format": "int32"
-            }
+            },
+			"nullable": true
           }
         },
         "additionalProperties": false
