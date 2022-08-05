@@ -43498,6 +43498,20 @@
               "format": "double"
             }
           },
+		  "histCoupons": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "properties": {}
+                }
+              ],
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
           "iperiodicMultipliers": {
             "type": "array",
             "items": {
