@@ -43446,18 +43446,11 @@
               "format": "double"
             }
           },
-		  "histCoupons": {
+		  "histRcvAssumpRates": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "properties": {}
-                }
-              ],
-              "type": [
-                "number",
-                "null"
-              ]
+              "type": "number",
+              "nullable": true
             }
           },
           "iperiodicMultipliers": {
