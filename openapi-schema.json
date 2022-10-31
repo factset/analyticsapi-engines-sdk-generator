@@ -44348,86 +44348,74 @@
         "type": "object",
         "additionalProperties": false
       },
-      "OneOfQuantUniverse": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
-          },
-          {
-            "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
-          },
-          {
-            "$ref": "#/components/schemas/QuantIdentifierUniverse"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
-            "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
-            "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
-          }
-        }
-      },
-      "OneOfQuantDates": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantFdsDate"
-          },
-          {
-            "$ref": "#/components/schemas/QuantDateList"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "FdsDate": "#/components/schemas/QuantFdsDate",
-            "DateList": "#/components/schemas/QuantDateList"
-          }
-        }
-      },
-      "OneOfQuantFormulas": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantScreeningExpression"
-          },
-          {
-            "$ref": "#/components/schemas/QuantFqlExpression"
-          },
-          {
-            "$ref": "#/components/schemas/QuantUniversalScreenParameter"
-          },
-          {
-            "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
-            "FqlExpression": "#/components/schemas/QuantFqlExpression",
-            "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
-            "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
-          }
-        }
-      },
-      "OneOfQuantFormulasArray": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OneOfQuantFormulas"
-        }
-      },
       "QuantCalculationParameters": {
         "type": "object",
         "properties": {
           "universe": {
-            "$ref": "#/components/schemas/OneOfQuantUniverse"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantIdentifierUniverse"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
+                "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
+                "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
+              }
+            }
           },
           "dates": {
-            "$ref": "#/components/schemas/OneOfQuantDates"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantFdsDate"
+              },
+              {
+                "$ref": "#/components/schemas/QuantDateList"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "FdsDate": "#/components/schemas/QuantFdsDate",
+                "DateList": "#/components/schemas/QuantDateList"
+              }
+            }
           },
           "formulas": {
-            "$ref": "#/components/schemas/OneOfQuantFormulasArray"
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/QuantScreeningExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantFqlExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantUniversalScreenParameter"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
+                  "FqlExpression": "#/components/schemas/QuantFqlExpression",
+                  "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
+                  "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              }
+            }
           },
           "jobDescription": {
             "type": "string"
