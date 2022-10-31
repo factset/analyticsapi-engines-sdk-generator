@@ -4,13 +4,13 @@
     "title": "Engines API",
     "description": "Allow clients to fetch Analytics through APIs.",
     "contact": {
-      "name": "Analytics API Support",
+      "name": "FactSet Research Systems",
       "url": "https://developer.factset.com/contact",
-      "email": "analytics.api.support@factset.com"
+      "email": "api@factset.com"
     },
     "license": {
-      "name": "Apache License 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+      "name": "Apache License, Version 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
     },
     "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]"
   },
@@ -22921,7 +22921,7 @@
           "PACalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -22937,7 +22937,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -23025,7 +23025,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25795,7 +25795,7 @@
           "PubCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -25811,7 +25811,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25899,7 +25899,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28471,7 +28471,7 @@
           "QuantCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -28487,7 +28487,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28575,7 +28575,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31329,7 +31329,7 @@
           "SPARCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -31345,7 +31345,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31433,7 +31433,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39085,7 +39085,7 @@
           "VaultCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -39101,7 +39101,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39189,7 +39189,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -42581,6 +42581,149 @@
         },
         "additionalProperties": false
       },
+      "FIServicerAdvancesForSecurities": {
+        "type": "object",
+        "properties": {
+          "principal": {
+            "type": "number",
+            "description": "Principal",
+            "format": "double"
+          },
+          "interest": {
+            "type": "number",
+            "description": "Interest",
+            "format": "double"
+          },
+          "advanceType": {
+            "enum": [
+              "Advances All",
+              "Advances All But Newly Liqdtd",
+              "Does Not Advance",
+              "Principal Only",
+              "Interest Only"
+            ],
+            "type": "string",
+            "description": "Advance Type"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIPrepayLockout": {
+        "type": "object",
+        "properties": {
+          "pointsAbove": {
+            "enum": [
+              "ANY",
+              "NO_LOCKOUT",
+              "NUMERIC"
+            ],
+            "type": "string",
+            "description": "Points Above"
+          },
+          "ymAbove": {
+            "enum": [
+              "ANY",
+              "NO_LOCKOUT",
+              "NUMERIC"
+            ],
+            "type": "string",
+            "description": "Ym Above"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FICashflows": {
+        "type": "object",
+        "properties": {
+          "optionalRedemptionCallWhenUnits": {
+            "enum": [
+              "Manual",
+              "Never",
+              "ASAP",
+              "Date",
+              "Deal Closing",
+              "Settle Date"
+            ],
+            "type": "string",
+            "description": "OptionalRedemptionCallWhenUnits"
+          },
+          "optionalRedemptionCallWhen": {
+            "type": "integer",
+            "description": "OptionalRedemptionCallWhen",
+            "format": "int32"
+          },
+          "recoveryLag": {
+            "type": "integer",
+            "description": "RecoveryLag",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIBalloonExtension": {
+        "type": "object",
+        "properties": {
+          "months": {
+            "type": "integer",
+            "description": "Months",
+            "format": "int32"
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Percentage",
+            "format": "double"
+          },
+          "amortizationType": {
+            "enum": [
+              "Loan_Amort_None",
+              "Loan_Amort_Regular",
+              "Loan_Amort_Default"
+            ],
+            "type": "string",
+            "description": "Amortization Type"
+          },
+          "units": {
+            "type": "string",
+            "description": "Units"
+          },
+          "couponStepup": {
+            "type": "number",
+            "description": "Coupon Stepup",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIStructuredProductsForSecurities": {
+        "type": "object",
+        "properties": {
+          "servicerAdvances": {
+            "$ref": "#/components/schemas/FIServicerAdvancesForSecurities"
+          },
+          "ignoreFinancialGuarantee": {
+            "type": "string",
+            "description": "Ignore Financial Guarantee"
+          },
+          "cleanUpCallMethod": {
+            "type": "boolean",
+            "description": "Cleanup Call Method"
+          },
+          "doOPTRedeem": {
+            "type": "string",
+            "description": "Do OPT Redeem"
+          },
+          "prepayLockout": {
+            "$ref": "#/components/schemas/FIPrepayLockout"
+          },
+          "cashflows": {
+            "$ref": "#/components/schemas/FICashflows"
+          },
+          "balloonExtension": {
+            "$ref": "#/components/schemas/FIBalloonExtension"
+          }
+        },
+        "additionalProperties": false
+      },
       "FISecurity": {
         "required": [
           "calcFromValue",
@@ -42626,6 +42769,9 @@
             "type": "number",
             "description": "Matrix Multiplier",
             "format": "double"
+          },
+          "structuredProducts": {
+            "$ref": "#/components/schemas/FIStructuredProductsForSecurities"
           },
           "calcFromMethod": {
             "type": "string",
@@ -42696,6 +42842,53 @@
         },
         "additionalProperties": false
       },
+      "FIServicerAdvances": {
+        "type": "object",
+        "properties": {
+          "advanceType": {
+            "enum": [
+              "Advances All",
+              "Advances All But Newly Liqdtd",
+              "Does Not Advance",
+              "Principal Only",
+              "Interest Only"
+            ],
+            "type": "string",
+            "description": "Advance Type"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIStructuredProductsForJobSettings": {
+        "type": "object",
+        "properties": {
+          "servicerAdvances": {
+            "$ref": "#/components/schemas/FIServicerAdvances"
+          },
+          "ignoreFinancialGuarantee": {
+            "type": "string",
+            "description": "Ignore Financial Guarantee"
+          },
+          "cleanUpCallMethod": {
+            "type": "boolean",
+            "description": "Cleanup Call Method"
+          },
+          "doOPTRedeem": {
+            "type": "string",
+            "description": "Do OPT Redeem"
+          },
+          "prepayLockout": {
+            "$ref": "#/components/schemas/FIPrepayLockout"
+          },
+          "cashflows": {
+            "$ref": "#/components/schemas/FICashflows"
+          },
+          "balloonExtension": {
+            "$ref": "#/components/schemas/FIBalloonExtension"
+          }
+        },
+        "additionalProperties": false
+      },
       "FIJobSettings": {
         "required": [
           "asOfDate"
@@ -42740,6 +42933,9 @@
           },
           "marketEnvironment": {
             "$ref": "#/components/schemas/FIMarketEnvironment"
+          },
+          "structuredProducts": {
+            "$ref": "#/components/schemas/FIStructuredProductsForJobSettings"
           }
         },
         "additionalProperties": false
@@ -44206,86 +44402,74 @@
         "type": "object",
         "additionalProperties": false
       },
-      "OneOfQuantUniverse": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
-          },
-          {
-            "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
-          },
-          {
-            "$ref": "#/components/schemas/QuantIdentifierUniverse"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
-            "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
-            "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
-          }
-        }
-      },
-      "OneOfQuantDates": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantFdsDate"
-          },
-          {
-            "$ref": "#/components/schemas/QuantDateList"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "FdsDate": "#/components/schemas/QuantFdsDate",
-            "DateList": "#/components/schemas/QuantDateList"
-          }
-        }
-      },
-      "OneOfQuantFormulas": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/QuantScreeningExpression"
-          },
-          {
-            "$ref": "#/components/schemas/QuantFqlExpression"
-          },
-          {
-            "$ref": "#/components/schemas/QuantUniversalScreenParameter"
-          },
-          {
-            "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
-          }
-        ],
-        "discriminator": {
-          "propertyName": "source",
-          "mapping": {
-            "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
-            "FqlExpression": "#/components/schemas/QuantFqlExpression",
-            "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
-            "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
-          }
-        }
-      },
-      "OneOfQuantFormulasArray": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/OneOfQuantFormulas"
-        }
-      },
       "QuantCalculationParameters": {
         "type": "object",
         "properties": {
           "universe": {
-            "$ref": "#/components/schemas/OneOfQuantUniverse"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantUniversalScreenUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantScreeningExpressionUniverse"
+              },
+              {
+                "$ref": "#/components/schemas/QuantIdentifierUniverse"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "UniversalScreenUniverse": "#/components/schemas/QuantUniversalScreenUniverse",
+                "ScreeningExpressionUniverse": "#/components/schemas/QuantScreeningExpressionUniverse",
+                "IdentifierUniverse": "#/components/schemas/QuantIdentifierUniverse"
+              }
+            }
           },
           "dates": {
-            "$ref": "#/components/schemas/OneOfQuantDates"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/QuantFdsDate"
+              },
+              {
+                "$ref": "#/components/schemas/QuantDateList"
+              }
+            ],
+            "discriminator": {
+              "propertyName": "source",
+              "mapping": {
+                "FdsDate": "#/components/schemas/QuantFdsDate",
+                "DateList": "#/components/schemas/QuantDateList"
+              }
+            }
           },
           "formulas": {
-            "$ref": "#/components/schemas/OneOfQuantFormulasArray"
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/QuantScreeningExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantFqlExpression"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantUniversalScreenParameter"
+                },
+                {
+                  "$ref": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              ],
+              "discriminator": {
+                "propertyName": "source",
+                "mapping": {
+                  "ScreeningExpression": "#/components/schemas/QuantScreeningExpression",
+                  "FqlExpression": "#/components/schemas/QuantFqlExpression",
+                  "UniversalScreenParameter": "#/components/schemas/QuantUniversalScreenParameter",
+                  "AllUniversalScreenParameters": "#/components/schemas/QuantAllUniversalScreenParameters"
+                }
+              }
+            }
           },
           "jobDescription": {
             "type": "string"
@@ -45172,8 +45356,12 @@
   },
   "security": [
     {
-      "Basic": [],
-      "Bearer": []
+      "Basic": [ ],
+      "Bearer": [ ]
     }
-  ]
+  ],
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://developer.factset.com/api-catalog/"
+  }
 }
