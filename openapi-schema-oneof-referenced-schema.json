@@ -44134,6 +44134,9 @@
           },
           "dateOffset": {
             "type": "string"
+          },
+          "isArrayReturnType": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -44378,6 +44381,9 @@
           },
           "dateOffset": {
             "type": "string"
+          },
+          "isArrayReturnType": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
