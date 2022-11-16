@@ -4,13 +4,13 @@
     "title": "Engines API",
     "description": "Allow clients to fetch Analytics through APIs.",
     "contact": {
-      "name": "Analytics API Support",
+      "name": "FactSet Research Systems",
       "url": "https://developer.factset.com/contact",
-      "email": "analytics.api.support@factset.com"
+      "email": "api@factset.com"
     },
     "license": {
-      "name": "Apache License 2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+      "name": "Apache License, Version 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
     },
     "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]"
   },
@@ -22921,7 +22921,7 @@
           "PACalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -22937,7 +22937,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -23025,7 +23025,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25795,7 +25795,7 @@
           "PubCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -25811,7 +25811,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -25899,7 +25899,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28471,7 +28471,7 @@
           "QuantCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -28487,7 +28487,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -28575,7 +28575,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31329,7 +31329,7 @@
           "SPARCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -31345,7 +31345,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -31433,7 +31433,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39085,7 +39085,7 @@
           "VaultCalculations"
         ],
         "summary": "Get all calculations",
-        "description": "This endpoints returns all active calculation requests.",
+        "description": "This endpoints returns all calculation requests.",
         "operationId": "getAllCalculations",
         "parameters": [
           {
@@ -39101,7 +39101,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of active calculation requests.",
+            "description": "List of calculation requests.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -39189,7 +39189,7 @@
             }
           },
           "404": {
-            "description": "No active calculation.",
+            "description": "No calculation found.",
             "headers": {
               "X-DataDirect-Request-Key": {
                 "description": "FactSet's request key header.",
@@ -41162,7 +41162,7 @@
           "data": {
             "$ref": "#/components/schemas/SPARAccounts"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41234,7 +41234,7 @@
           "data": {
             "$ref": "#/components/schemas/AccountDirectories"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41511,7 +41511,7 @@
           "data": {
             "$ref": "#/components/schemas/CalculationInfo"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41521,8 +41521,8 @@
         ],
         "type": "object",
         "properties": {
-          "data": {},
-          "meta": {}
+          "data": { },
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41661,7 +41661,7 @@
           "data": {
             "$ref": "#/components/schemas/SPARBenchmark"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41834,7 +41834,7 @@
               "$ref": "#/components/schemas/ColumnSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41872,7 +41872,7 @@
           "data": {
             "$ref": "#/components/schemas/Column"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41898,7 +41898,7 @@
               "$ref": "#/components/schemas/ColumnStatistic"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -41928,7 +41928,7 @@
               "$ref": "#/components/schemas/ComponentSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42027,7 +42027,7 @@
           "data": {
             "$ref": "#/components/schemas/PAComponent"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42116,7 +42116,7 @@
           "data": {
             "$ref": "#/components/schemas/VaultComponent"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42142,7 +42142,7 @@
               "$ref": "#/components/schemas/VaultConfigurationSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42201,7 +42201,7 @@
           "data": {
             "$ref": "#/components/schemas/VaultConfiguration"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42227,7 +42227,7 @@
               "$ref": "#/components/schemas/Currency"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42254,7 +42254,7 @@
           "data": {
             "$ref": "#/components/schemas/DateParametersSummary"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42285,7 +42285,7 @@
               "$ref": "#/components/schemas/FIDiscountCurveInfo"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42318,7 +42318,7 @@
           "data": {
             "$ref": "#/components/schemas/DocumentDirectories"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42545,6 +42545,149 @@
         },
         "additionalProperties": false
       },
+      "FIServicerAdvancesForSecurities": {
+        "type": "object",
+        "properties": {
+          "principal": {
+            "type": "number",
+            "description": "Principal",
+            "format": "double"
+          },
+          "interest": {
+            "type": "number",
+            "description": "Interest",
+            "format": "double"
+          },
+          "advanceType": {
+            "enum": [
+              "Advances All",
+              "Advances All But Newly Liqdtd",
+              "Does Not Advance",
+              "Principal Only",
+              "Interest Only"
+            ],
+            "type": "string",
+            "description": "Advance Type"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIPrepayLockout": {
+        "type": "object",
+        "properties": {
+          "pointsAbove": {
+            "enum": [
+              "ANY",
+              "NO_LOCKOUT",
+              "NUMERIC"
+            ],
+            "type": "string",
+            "description": "Points Above"
+          },
+          "ymAbove": {
+            "enum": [
+              "ANY",
+              "NO_LOCKOUT",
+              "NUMERIC"
+            ],
+            "type": "string",
+            "description": "Ym Above"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FICashflows": {
+        "type": "object",
+        "properties": {
+          "optionalRedemptionCallWhenUnits": {
+            "enum": [
+              "Manual",
+              "Never",
+              "ASAP",
+              "Date",
+              "Deal Closing",
+              "Settle Date"
+            ],
+            "type": "string",
+            "description": "OptionalRedemptionCallWhenUnits"
+          },
+          "optionalRedemptionCallWhen": {
+            "type": "integer",
+            "description": "OptionalRedemptionCallWhen",
+            "format": "int32"
+          },
+          "recoveryLag": {
+            "type": "integer",
+            "description": "RecoveryLag",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIBalloonExtension": {
+        "type": "object",
+        "properties": {
+          "months": {
+            "type": "integer",
+            "description": "Months",
+            "format": "int32"
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Percentage",
+            "format": "double"
+          },
+          "amortizationType": {
+            "enum": [
+              "Loan_Amort_None",
+              "Loan_Amort_Regular",
+              "Loan_Amort_Default"
+            ],
+            "type": "string",
+            "description": "Amortization Type"
+          },
+          "units": {
+            "type": "string",
+            "description": "Units"
+          },
+          "couponStepup": {
+            "type": "number",
+            "description": "Coupon Stepup",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIStructuredProductsForSecurities": {
+        "type": "object",
+        "properties": {
+          "servicerAdvances": {
+            "$ref": "#/components/schemas/FIServicerAdvancesForSecurities"
+          },
+          "ignoreFinancialGuarantee": {
+            "type": "string",
+            "description": "Ignore Financial Guarantee"
+          },
+          "cleanUpCallMethod": {
+            "type": "boolean",
+            "description": "Cleanup Call Method"
+          },
+          "doOPTRedeem": {
+            "type": "string",
+            "description": "Do OPT Redeem"
+          },
+          "prepayLockout": {
+            "$ref": "#/components/schemas/FIPrepayLockout"
+          },
+          "cashflows": {
+            "$ref": "#/components/schemas/FICashflows"
+          },
+          "balloonExtension": {
+            "$ref": "#/components/schemas/FIBalloonExtension"
+          }
+        },
+        "additionalProperties": false
+      },
       "FISecurity": {
         "required": [
           "calcFromValue",
@@ -42590,6 +42733,9 @@
             "type": "number",
             "description": "Matrix Multiplier",
             "format": "double"
+          },
+          "structuredProducts": {
+            "$ref": "#/components/schemas/FIStructuredProductsForSecurities"
           },
           "calcFromMethod": {
             "type": "string",
@@ -42660,6 +42806,53 @@
         },
         "additionalProperties": false
       },
+      "FIServicerAdvances": {
+        "type": "object",
+        "properties": {
+          "advanceType": {
+            "enum": [
+              "Advances All",
+              "Advances All But Newly Liqdtd",
+              "Does Not Advance",
+              "Principal Only",
+              "Interest Only"
+            ],
+            "type": "string",
+            "description": "Advance Type"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FIStructuredProductsForJobSettings": {
+        "type": "object",
+        "properties": {
+          "servicerAdvances": {
+            "$ref": "#/components/schemas/FIServicerAdvances"
+          },
+          "ignoreFinancialGuarantee": {
+            "type": "string",
+            "description": "Ignore Financial Guarantee"
+          },
+          "cleanUpCallMethod": {
+            "type": "boolean",
+            "description": "Cleanup Call Method"
+          },
+          "doOPTRedeem": {
+            "type": "string",
+            "description": "Do OPT Redeem"
+          },
+          "prepayLockout": {
+            "$ref": "#/components/schemas/FIPrepayLockout"
+          },
+          "cashflows": {
+            "$ref": "#/components/schemas/FICashflows"
+          },
+          "balloonExtension": {
+            "$ref": "#/components/schemas/FIBalloonExtension"
+          }
+        },
+        "additionalProperties": false
+      },
       "FIJobSettings": {
         "required": [
           "asOfDate"
@@ -42704,6 +42897,9 @@
           },
           "marketEnvironment": {
             "$ref": "#/components/schemas/FIMarketEnvironment"
+          },
+          "structuredProducts": {
+            "$ref": "#/components/schemas/FIStructuredProductsForJobSettings"
           }
         },
         "additionalProperties": false
@@ -42950,7 +43146,7 @@
               "$ref": "#/components/schemas/Frequency"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -42984,7 +43180,7 @@
               "$ref": "#/components/schemas/Group"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43049,7 +43245,7 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43084,7 +43280,7 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplatePostSummary"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43118,7 +43314,7 @@
               "$ref": "#/components/schemas/LinkedPATemplateSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43148,7 +43344,7 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplateUpdateParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43194,7 +43390,7 @@
           "data": {
             "$ref": "#/components/schemas/LinkedPATemplate"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43203,7 +43399,7 @@
         "properties": {
           "objective": {
             "type": "object",
-            "additionalProperties": {},
+            "additionalProperties": { },
             "description": "Objective parameters"
           },
           "constraints": {
@@ -43629,7 +43825,7 @@
               "$ref": "#/components/schemas/PAPricingSource"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -43884,6 +44080,9 @@
           },
           "dateOffset": {
             "type": "string"
+          },
+          "isArrayReturnType": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -44128,6 +44327,9 @@
           },
           "dateOffset": {
             "type": "string"
+          },
+          "isArrayReturnType": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -44449,7 +44651,7 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44483,7 +44685,7 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentPostSummary"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44517,7 +44719,7 @@
               "$ref": "#/components/schemas/TemplatedPAComponentSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44547,7 +44749,7 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponentUpdateParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44590,7 +44792,7 @@
           "data": {
             "$ref": "#/components/schemas/TemplatedPAComponent"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44670,7 +44872,7 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44705,7 +44907,7 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplatePostSummary"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44739,7 +44941,7 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateSummary"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44807,7 +45009,7 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateUpdateParameters"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44899,7 +45101,7 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplate"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -44929,7 +45131,7 @@
               "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndType"
             }
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -45017,7 +45219,7 @@
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetails"
           },
-          "meta": {}
+          "meta": { }
         },
         "additionalProperties": false
       },
@@ -45082,8 +45284,12 @@
   },
   "security": [
     {
-      "Basic": [],
-      "Bearer": []
+      "Basic": [ ],
+      "Bearer": [ ]
     }
-  ]
+  ],
+  "externalDocs": {
+    "description": "API Documentation",
+    "url": "https://developer.factset.com/api-catalog/"
+  }
 }
