@@ -8750,6 +8750,325 @@
         ]
       }
     },
+    "/analytics/engines/spar/v3/components/{id}": {
+      "get": {
+        "tags": [
+          "Components"
+        ],
+        "summary": "Get SPAR component by id",
+        "description": "This endpoint returns the default settings of a SPAR component.",
+        "operationId": "getSPARComponentById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier for a SPAR component",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Unique identifier for a SPAR component"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response, returns the default settings of a SPAR component.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SPARComponentRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid SPAR component id.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Component not found.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "SPARComponentRoot"
+          }
+        ]
+      }
+    },
     "/analytics/engines/vault/v3/components": {
       "get": {
         "tags": [
@@ -22442,7 +22761,7 @@
           "PACalculations"
         ],
         "summary": "Create and Run PA calculation",
-        "description": "This endpoint runs the PA calculation specified in the POST body parameters.\r\nIt can take one or more calculation units as input.\r\n\r\nRemarks:\r\n\r\n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint runs the PA calculation specified in the POST body parameters.\r\nIt can take one or more calculation units as input.\r\n\r\nRemarks:\r\n\r\n*\tAny settings in POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H. \r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.",
         "operationId": "postAndCalculate",
         "parameters": [
           {
@@ -23240,7 +23559,7 @@
           "PACalculations"
         ],
         "summary": "Create or Update PA calculation and run it.",
-        "description": "This endpoint updates and run the PA calculation specified in the PUT body parameters. This also allows creating new PA calculations with custom ids.\r\nIt can take one or more calculation units as input.\r\n\r\nRemarks:\r\n\r\n*\tAny settings in PUT body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint updates and run the PA calculation specified in the PUT body parameters. This also allows creating new PA calculations with custom ids.\r\nIt can take one or more calculation units as input.\r\n\r\nRemarks:\r\n\r\n*\tAny settings in PUT body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.",
         "operationId": "putAndCalculate",
         "parameters": [
           {
@@ -28023,6 +28342,95 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "Expected response if the calculation has one unit and is completed with an error.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Expected response if the calculation has one unit and is completed in a short span, returns JSON in the format specified in the Calculation parameters.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
           "202": {
             "description": "Expected response, contains the poll URL in the Location header.",
             "headers": {
@@ -28071,109 +28479,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Expected response if the calculation has one unit and is completed in a short span, returns JSON in the format specified in the Calculation parameters.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectRoot"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectRoot"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Expected response if the calculation has one unit and is completed with an error.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
               }
             }
           },
@@ -28215,60 +28520,6 @@
             },
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "One or more calculation settings were unavailable.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
                 "schema": {
                   "$ref": "#/components/schemas/ClientErrorResponse"
                 }
@@ -28327,6 +28578,94 @@
                 "description": "Number of seconds remaining till rate limit resets.",
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One or more calculation settings were unavailable.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request body too large",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
                 }
               }
             }
@@ -28453,15 +28792,16 @@
         "x-are-multiple-success-responses-different": true,
         "x-success-response-types": [
           {
-            "status-code": "202",
+            "status-code": "200",
             "response-type": "CalculationStatusRoot"
           },
           {
             "status-code": "201",
-            "response-type": "ObjectRoot"
+            "response-type": null,
+            "is-file": true
           },
           {
-            "status-code": "200",
+            "status-code": "202",
             "response-type": "CalculationStatusRoot"
           }
         ]
@@ -28823,6 +29163,95 @@
           }
         },
         "responses": {
+          "200": {
+            "description": "Expected response if the calculation has one unit and is completed with an error.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculationStatusRoot"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Expected response if the calculation has one unit and is completed in a short span, returns JSON in the format specified in the Calculation parameters.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
           "202": {
             "description": "Expected response, contains the poll URL in the Location header.",
             "headers": {
@@ -28871,109 +29300,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/CalculationStatusRoot"
                 }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "Expected response if the calculation has one unit and is completed with an error.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/CalculationStatusRoot"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Expected response if the calculation has one unit and is completed in a short span, returns JSON in the format specified in the Calculation parameters.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectRoot"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ObjectRoot"
-                }
               }
             }
           },
@@ -29015,109 +29341,6 @@
             },
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "One or more calculation settings were unavailable.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Duplicate calculation exists with same parameters.",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
                 "schema": {
                   "$ref": "#/components/schemas/ClientErrorResponse"
                 }
@@ -29176,6 +29399,138 @@
                 "description": "Number of seconds remaining till rate limit resets.",
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "One or more calculation settings were unavailable.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Duplicate calculation exists with same parameters.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Request body too large",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
                 }
               }
             }
@@ -29302,16 +29657,17 @@
         "x-are-multiple-success-responses-different": true,
         "x-success-response-types": [
           {
-            "status-code": "202",
-            "response-type": "CalculationStatusRoot"
-          },
-          {
             "status-code": "200",
             "response-type": "CalculationStatusRoot"
           },
           {
             "status-code": "201",
-            "response-type": "ObjectRoot"
+            "response-type": null,
+            "is-file": true
+          },
+          {
+            "status-code": "202",
+            "response-type": "CalculationStatusRoot"
           }
         ]
       },
@@ -30289,18 +30645,6 @@
               }
             },
             "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              },
               "application/octet-stream": {
                 "schema": {
                   "type": "string",
@@ -30347,70 +30691,6 @@
             },
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/octet-stream": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/ClientErrorResponse"
                 }
@@ -30469,6 +30749,50 @@
                 "description": "Number of seconds remaining till rate limit resets.",
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
                 }
               }
             }
@@ -30611,18 +30935,6 @@
               }
             },
             "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "type": "string",
-                  "format": "binary"
-                }
-              },
               "application/octet-stream": {
                 "schema": {
                   "type": "string",
@@ -30669,70 +30981,6 @@
             },
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/octet-stream": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
-            "headers": {
-              "X-DataDirect-Request-Key": {
-                "description": "FactSet's request key header.",
-                "schema": {
-                  "type": "string",
-                  "description": "FactSet's request key header."
-                }
-              },
-              "X-FactSet-Api-Request-Key": {
-                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
-                "schema": {
-                  "type": "string",
-                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
-                }
-              },
-              "X-FactSet-Api-RateLimit-Limit": {
-                "description": "Number of allowed requests for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Remaining": {
-                "description": "Number of requests left for the time window.",
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "X-FactSet-Api-RateLimit-Reset": {
-                "description": "Number of seconds remaining till rate limit resets.",
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/x-protobuf": {
-                "schema": {
-                  "$ref": "#/components/schemas/ClientErrorResponse"
-                }
-              },
-              "application/octet-stream": {
                 "schema": {
                   "$ref": "#/components/schemas/ClientErrorResponse"
                 }
@@ -30791,6 +31039,50 @@
                 "description": "Number of seconds remaining till rate limit resets.",
                 "schema": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Calculation was already returned, provided id was not a requested calculation, or the calculation was cancelled",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
                 }
               }
             }
@@ -34975,7 +35267,7 @@
           "TemplatedPAComponents"
         ],
         "summary": "Create templated PA component",
-        "description": "This endpoint creates new component based off of linked PA template or unlinked PA template.\r\n\r\nRemarks:\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint creates new component based off of linked PA template or unlinked PA template.\r\n\r\nRemarks:\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
         "operationId": "createTemplatedPAComponents",
         "requestBody": {
           "description": "Request Parameters",
@@ -35579,7 +35871,7 @@
           "TemplatedPAComponents"
         ],
         "summary": "Update templated PA component",
-        "description": "This endpoint allows the user to change the request body from an existing templated PA component.\r\n\r\nRemarks:\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint allows the user to change the request body from an existing templated PA component.\r\n\r\nRemarks:\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H. \r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
         "operationId": "updateTemplatedPAComponents",
         "parameters": [
           {
@@ -36556,7 +36848,7 @@
           "UnlinkedPATemplates"
         ],
         "summary": "Create unlinked PA template",
-        "description": "This endpoint creates a template which is not linked to any specific PA3 tile. \r\n\r\nRemarks:\r\n\r\n*   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary. \r\n    If no mandatory fields are passed, then we can use the template as a component and skip the component creation.\r\n    \r\n*   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"datasources\", \"dates\", \"currencyisocode\" and \"componentdetail\".\r\n\r\n*   We cannot override the Locked fields when creating the Component.\r\n\r\n*   Mandatory and locked strings are mutually exclusive.\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also \r\n    overriding the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint creates a template which is not linked to any specific PA3 tile. \r\n\r\nRemarks:\r\n\r\n*   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary. \r\n    If no mandatory fields are passed, then we can use the template as a component and skip the component creation.\r\n    \r\n*   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"datasources\", \"dates\", \"currencyisocode\" and \"componentdetail\".\r\n\r\n*   We cannot override the Locked fields when creating the Component.\r\n\r\n*   Mandatory and locked strings are mutually exclusive.\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also \r\n    overriding the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
         "operationId": "createUnlinkedPATemplates",
         "requestBody": {
           "description": "Request Parameters",
@@ -37111,7 +37403,7 @@
           "UnlinkedPATemplates"
         ],
         "summary": "Update unlinked PA template",
-        "description": "This endpoint updates an existing unlinked PA template.\r\n\r\nRemarks:\r\n            \r\n*   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary. \r\n    If no mandatory fields are passed, then we can use the template as a component and skip the component creation.\r\n    \r\n*   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"datasources\", \"dates\", \"currencyisocode\" and \"componentdetail\".\r\n\r\n*   We cannot override the Locked fields when creating the Component.\r\n\r\n*   Mandatory and locked strings are mutually exclusive.\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, and totals as well but if we don't pass anything that defaults to securities.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
+        "description": "This endpoint updates an existing unlinked PA template.\r\n\r\nRemarks:\r\n            \r\n*   Mandatory fields are required to be passed in POST requests and Optional fields are not necessary. \r\n    If no mandatory fields are passed, then we can use the template as a component and skip the component creation.\r\n    \r\n*   Mandatory, optional and locked fields can be  \"accounts\", \"benchmarks\", \"groups\", \"columns\", \"datasources\", \"dates\", \"currencyisocode\" and \"componentdetail\".\r\n\r\n*   We cannot override the Locked fields when creating the Component.\r\n\r\n*   Mandatory and locked strings are mutually exclusive.\r\n\r\n*   Any settings in the POST body will act as a one-time override over the settings saved in the PA template.\r\n\r\n*   Account identifiers must have .ACCT or .ACTM extension or BENCH: prefix. Holdings mode can be optionally set for every account. \r\n    Possible values for holdings mode are B&H (Buy and Hold), TBR (Transaction based returns), OMS (Order Management System), \r\n    VLT (Vaulted returns) or EXT (External Returns Data). Default holdings mode value is B&H.\r\n\r\n*   Multi-horizon frequencies are not supported through this endpoint.\r\n\r\n*   Componentdetail supports securities, groups, groupsall, and totals levels of granularity. However, if no value is passed, the default value is 'securities'.\r\n    Additionally, while 'groupsall' returns all the group levels in the PA component,\r\n    setting componentdetail to 'groups' only returns the expanded or collapsed group levels within the PA component.\r\n\r\n*   If we are overriding the grouping with a frequency, we will be overriding the grouping saved to the original component and also overriding \r\n    the default frequency of the Beginning of Period to whatever we pass in the request body.\r\n    \r\n*   If we are overriding gouping frequency without overriding the group id it will not be applied to the default groupings saved to the original component.",
         "operationId": "updateUnlinkedPATemplates",
         "parameters": [
           {
@@ -38596,6 +38888,300 @@
           {
             "status-code": "200",
             "response-type": "UnlinkedPATemplateCategoryAndTypeDetailsRoot"
+          }
+        ]
+      }
+    },
+    "/analytics/engines/vault/v3/load/{batchId}": {
+      "post": {
+        "tags": [
+          "Vault Attribution Loader"
+        ],
+        "summary": "Vault - External Attribution Loader",
+        "description": "This endpoint loads Vault External Attributions.",
+        "operationId": "vaultAttributionLoader",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "nullable": true
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Expected response, returns a status of operation along with errors and warnings if found any.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultAttributionLoaderResponseRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultAttributionLoaderResponseRoot"
           }
         ]
       }
@@ -41137,8 +41723,7 @@
           "id": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARAccounts": {
         "type": "object",
@@ -41150,8 +41735,7 @@
             },
             "description": "List of SPAR returnsType"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARAccountsRoot": {
         "required": [
@@ -41165,8 +41749,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ErrorSource": {
         "type": "object",
@@ -41177,13 +41760,18 @@
           "parameter": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Error": {
         "type": "object",
         "properties": {
           "id": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "title": {
             "type": "string"
           },
           "detail": {
@@ -41192,8 +41780,7 @@
           "source": {
             "$ref": "#/components/schemas/ErrorSource"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ClientErrorResponse": {
         "type": "object",
@@ -41204,8 +41791,7 @@
               "$ref": "#/components/schemas/Error"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AccountDirectories": {
         "type": "object",
@@ -41224,8 +41810,7 @@
             },
             "description": "List of directories."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AccountDirectoriesRoot": {
         "required": [
@@ -41239,8 +41824,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AFIOptimizerStrategyOverrides": {
         "type": "object",
@@ -41272,8 +41856,7 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AFIOptimizerStrategy": {
         "required": [
@@ -41288,8 +41871,7 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerAccountOverrides": {
         "type": "object",
@@ -41310,8 +41892,7 @@
             "type": "string",
             "description": "Currency"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerAccount": {
         "type": "object",
@@ -41323,8 +41904,7 @@
           "overrides": {
             "$ref": "#/components/schemas/OptimizerAccountOverrides"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Optimization": {
         "type": "object",
@@ -41341,8 +41921,7 @@
             "type": "string",
             "description": "Cash flow"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerTradesList": {
         "type": "object",
@@ -41367,8 +41946,7 @@
             "type": "boolean",
             "description": "Include cash"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerOptimalHoldings": {
         "type": "object",
@@ -41397,8 +41975,7 @@
             "type": "boolean",
             "description": "Exclude zero"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimalPortfolio": {
         "type": "object",
@@ -41433,12 +42010,10 @@
             "type": "string",
             "description": "Action if ofdb date exists"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerStats": {
-        "type": "object",
-        "additionalProperties": false
+        "type": "object"
       },
       "OptimizerOutputTypes": {
         "type": "object",
@@ -41455,8 +42030,7 @@
           "stats": {
             "$ref": "#/components/schemas/OptimizerStats"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AFIOptimizationParameters": {
         "required": [
@@ -41477,12 +42051,10 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "OptimizerCalculationMeta": {
-        "type": "object",
-        "additionalProperties": false
+        "type": "object"
       },
       "AFIOptimizationParametersRoot": {
         "type": "object",
@@ -41493,8 +42065,7 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationInfo": {
         "type": "object",
@@ -41503,8 +42074,7 @@
             "type": "string",
             "description": "Calculation identifier"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationInfoRoot": {
         "required": [
@@ -41518,8 +42088,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ObjectRoot": {
         "required": [
@@ -41533,8 +42102,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AxiomaEquityOptimizerStrategyOverrides": {
         "type": "object",
@@ -41566,8 +42134,7 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AxiomaEquityOptimizerStrategy": {
         "required": [
@@ -41582,8 +42149,7 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AxiomaEquityOptimizationParameters": {
         "required": [
@@ -41604,8 +42170,7 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "AxiomaEquityOptimizationParametersRoot": {
         "type": "object",
@@ -41616,8 +42181,7 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARIdentifier": {
         "required": [
@@ -41638,7 +42202,6 @@
             "description": "Benchmark prefix."
           }
         },
-        "additionalProperties": false,
         "description": "The account/benchmark parameter for SPAR calculation."
       },
       "SPARBenchmark": {
@@ -41659,8 +42222,7 @@
             },
             "description": "List of SPAR identifiers"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARBenchmarkRoot": {
         "required": [
@@ -41674,8 +42236,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ConstraintAction": {
         "type": "object",
@@ -41690,8 +42251,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimizerStrategyAlphaOverride": {
         "type": "object",
@@ -41712,8 +42272,7 @@
           "returnMultiplier": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimizerStrategyOverrides": {
         "type": "object",
@@ -41736,8 +42295,7 @@
             "type": "string",
             "description": "Transaction cost\r\nCan be set to \"\" for local"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimizerStrategy": {
         "required": [
@@ -41752,8 +42310,7 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimization": {
         "type": "object",
@@ -41778,8 +42335,7 @@
             "type": "string",
             "description": "Cash flow"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimizationParameters": {
         "required": [
@@ -41800,8 +42356,7 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BPMOptimizationParametersRoot": {
         "type": "object",
@@ -41812,8 +42367,7 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ColumnSummary": {
         "type": "object",
@@ -41831,7 +42385,6 @@
             "description": "Column Category"
           }
         },
-        "additionalProperties": false,
         "description": "Column settings (name, directory, category)"
       },
       "ColumnSummaryRoot": {
@@ -41849,8 +42402,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Column": {
         "type": "object",
@@ -41874,8 +42426,7 @@
             "type": "string",
             "description": "Column Category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ColumnRoot": {
         "required": [
@@ -41889,8 +42440,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ColumnStatistic": {
         "type": "object",
@@ -41899,8 +42449,7 @@
             "type": "string",
             "description": "Column Statistic Name"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ColumnStatisticRoot": {
         "required": [
@@ -41917,8 +42466,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ComponentSummary": {
         "type": "object",
@@ -41931,8 +42479,7 @@
             "type": "string",
             "description": "Component category."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ComponentSummaryRoot": {
         "required": [
@@ -41949,8 +42496,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PAIdentifier": {
         "required": [
@@ -41966,8 +42512,7 @@
             "type": "string",
             "description": "Holdings Mode can be B&H, TBR, OMS or EXT."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PADateParameters": {
         "required": [
@@ -41989,7 +42534,6 @@
             "description": "Calculation's frequency."
           }
         },
-        "additionalProperties": false,
         "description": "The date parameters for PA calculation."
       },
       "PAComponent": {
@@ -42035,8 +42579,7 @@
             "type": "string",
             "description": "Component category."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PAComponentRoot": {
         "required": [
@@ -42050,8 +42593,50 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "SPARComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Component identifier."
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SPARIdentifier"
+            },
+            "description": "List of accounts in SPAR document."
+          },
+          "benchmarks": {
+            "$ref": "#/components/schemas/SPARIdentifier"
+          },
+          "currencyIsoCode": {
+            "type": "string",
+            "description": "CurrencyCode in SPAR document."
+          },
+          "path": {
+            "type": "string",
+            "description": "The path to the document"
+          },
+          "name": {
+            "type": "string",
+            "description": "Component name."
+          },
+          "category": {
+            "type": "string",
+            "description": "Component category."
+          }
+        }
+      },
+      "SPARComponentRoot": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/SPARComponent"
+          }
+        }
       },
       "VaultIdentifier": {
         "required": [
@@ -42064,7 +42649,6 @@
             "description": "User's FactSet account path OR benchmark."
           }
         },
-        "additionalProperties": false,
         "description": "The account/benchmark parameter for Vault calculation."
       },
       "VaultDateParameters": {
@@ -42087,7 +42671,6 @@
             "description": "Calculation's frequency."
           }
         },
-        "additionalProperties": false,
         "description": "The date parameters for Vault calculation"
       },
       "VaultComponent": {
@@ -42126,8 +42709,7 @@
             "type": "string",
             "description": "Component category."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultComponentRoot": {
         "required": [
@@ -42141,8 +42723,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultConfigurationSummary": {
         "type": "object",
@@ -42151,8 +42732,7 @@
             "type": "string",
             "description": "Configuration name."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultConfigurationSummaryRoot": {
         "required": [
@@ -42169,8 +42749,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "ConfigurationAccount": {
         "type": "object",
@@ -42199,8 +42778,7 @@
             "type": "string",
             "description": "Account name."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultConfiguration": {
         "type": "object",
@@ -42215,8 +42793,7 @@
               "$ref": "#/components/schemas/ConfigurationAccount"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultConfigurationRoot": {
         "required": [
@@ -42230,8 +42807,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Currency": {
         "type": "object",
@@ -42240,8 +42816,7 @@
             "type": "string",
             "description": "Name of currency."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CurrencyRoot": {
         "required": [
@@ -42258,8 +42833,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DateParametersSummary": {
         "type": "object",
@@ -42272,8 +42846,7 @@
             "type": "string",
             "description": "End date in YYYYMMDD format."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DateParametersSummaryRoot": {
         "required": [
@@ -42287,8 +42860,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIDiscountCurveInfo": {
         "type": "object",
@@ -42302,8 +42874,7 @@
           "currency": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIDiscountCurveInfoRoot": {
         "required": [
@@ -42320,8 +42891,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DocumentDirectories": {
         "type": "object",
@@ -42340,8 +42910,7 @@
             },
             "description": "List of directories."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "DocumentDirectoriesRoot": {
         "required": [
@@ -42355,8 +42924,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIABIdentifier": {
         "required": [
@@ -42368,8 +42936,7 @@
             "type": "string",
             "description": "User's FactSet account path."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIABDateParameters": {
         "required": [
@@ -42387,7 +42954,6 @@
             "description": "Calculation's end date."
           }
         },
-        "additionalProperties": false,
         "description": "The date parameters for FIAB calculations."
       },
       "FIABCalculationParameters": {
@@ -42415,8 +42981,7 @@
             "type": "string",
             "description": "FISettingsDocument (optional) - The given @FIS document will be used to\r\nconfigure analytics assumptions and settings. Expects a GUI-style path (Client:/foo/bar)"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIABCalculationStatusSummary": {
         "type": "object",
@@ -42431,8 +42996,7 @@
             "description": "Last poll time of calculation.",
             "format": "date-time"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "EventSummary": {
         "type": "object",
@@ -42450,8 +43014,7 @@
             "type": "string",
             "description": "Event's type"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIABCalculationStatus": {
         "type": "object",
@@ -42494,8 +43057,7 @@
             },
             "description": "List of batch events"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIReferencePrepay": {
         "type": "object",
@@ -42504,8 +43066,7 @@
             "type": "string",
             "description": "Reference Prepay Name"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIReferenceSecurity": {
         "type": "object",
@@ -42534,8 +43095,7 @@
             "type": "string",
             "description": "Reference Settlement Date"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIBankLoans": {
         "type": "object",
@@ -42544,8 +43104,7 @@
             "type": "boolean",
             "description": "Ignore Sinking Fund"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIMunicipalBonds": {
         "type": "object",
@@ -42558,8 +43117,7 @@
             "type": "boolean",
             "description": "Anticipate Sink Schedule"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FILoss": {
         "type": "object",
@@ -42568,8 +43126,7 @@
             "type": "string",
             "description": "Loss Name"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIPrepay": {
         "type": "object",
@@ -42578,8 +43135,7 @@
             "type": "string",
             "description": "Prepay Name"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIServicerAdvancesForSecurities": {
         "type": "object",
@@ -42605,8 +43161,7 @@
             "type": "string",
             "description": "Advance Type"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIPrepayLockout": {
         "type": "object",
@@ -42629,8 +43184,7 @@
             "type": "string",
             "description": "Ym Above"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FICashflows": {
         "type": "object",
@@ -42657,8 +43211,7 @@
             "description": "RecoveryLag",
             "format": "int32"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIBalloonExtension": {
         "type": "object",
@@ -42691,8 +43244,7 @@
             "description": "Coupon Stepup",
             "format": "double"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIStructuredProductsForSecurities": {
         "type": "object",
@@ -42721,8 +43273,42 @@
           "balloonExtension": {
             "$ref": "#/components/schemas/FIBalloonExtension"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "FIAttributionForSecurities": {
+        "type": "object",
+        "properties": {
+          "startPrice": {
+            "type": "number",
+            "description": "Start Price",
+            "format": "double"
+          },
+          "endPrice": {
+            "type": "number",
+            "description": "End Price",
+            "format": "double"
+          },
+          "startSpread": {
+            "type": "number",
+            "description": "Start Spread",
+            "format": "double"
+          },
+          "endSpread": {
+            "type": "number",
+            "description": "End Spread",
+            "format": "double"
+          },
+          "pricingMethod": {
+            "enum": [
+              "Inputted Price",
+              "Pricing Matrix",
+              "Actual Spread",
+              "OAS"
+            ],
+            "type": "string",
+            "description": "Pricing Method"
+          }
+        }
       },
       "FISecurity": {
         "required": [
@@ -42773,6 +43359,9 @@
           "structuredProducts": {
             "$ref": "#/components/schemas/FIStructuredProductsForSecurities"
           },
+          "attribution": {
+            "$ref": "#/components/schemas/FIAttributionForSecurities"
+          },
           "calcFromMethod": {
             "type": "string",
             "description": "Calculation Method.\r\nMethods : Active Spread, Actual Spread, Actual Spread To Worst Call, OAS, Price, Yield, Yield To No Call, Act/Act Yield To No Call, Bond Equivalent Yield,\r\nYield To Worst Call, Discount Yield, Discount Margin, Implied Volatility, Bullet Spread, Bullet Spread To Worst Call, Pricing Matrix"
@@ -42805,8 +43394,7 @@
             "type": "string",
             "description": "Discount curve"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIMunicipalBondsForJobSettings": {
         "type": "object",
@@ -42823,8 +43411,7 @@
             "type": "boolean",
             "description": "Anticipate Sink Schedule"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIMarketEnvironment": {
         "type": "object",
@@ -42839,8 +43426,7 @@
             "description": "Rate Path",
             "default": "FLAT & FORWARD"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIServicerAdvances": {
         "type": "object",
@@ -42856,8 +43442,7 @@
             "type": "string",
             "description": "Advance Type"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FIStructuredProductsForJobSettings": {
         "type": "object",
@@ -42886,8 +43471,20 @@
           "balloonExtension": {
             "$ref": "#/components/schemas/FIBalloonExtension"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "FIAttributionForJobSettings": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "description": "Start Date"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "End Date"
+          }
+        }
       },
       "FIJobSettings": {
         "required": [
@@ -42936,9 +43533,11 @@
           },
           "structuredProducts": {
             "$ref": "#/components/schemas/FIStructuredProductsForJobSettings"
+          },
+          "attribution": {
+            "$ref": "#/components/schemas/FIAttributionForJobSettings"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FICalculationParameters": {
         "required": [
@@ -42965,8 +43564,7 @@
           "jobSettings": {
             "$ref": "#/components/schemas/FIJobSettings"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationMeta": {
         "type": "object",
@@ -43016,8 +43614,7 @@
             "type": "string",
             "default": "JsonStach"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FICalculationParametersRoot": {
         "type": "object",
@@ -43028,8 +43625,7 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PaDoc": {
         "required": [
@@ -43041,8 +43637,7 @@
             "type": "string",
             "description": "PA document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOAccount": {
         "required": [
@@ -43060,8 +43655,7 @@
           "overrides": {
             "$ref": "#/components/schemas/OptimizerAccountOverrides"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOObjective": {
         "type": "object",
@@ -43079,8 +43673,7 @@
               "type": "string"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOOptimizerStrategyOverrides": {
         "type": "object",
@@ -43107,8 +43700,7 @@
             "type": "string",
             "description": "Transaction cost"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOOptimizerStrategy": {
         "required": [
@@ -43123,8 +43715,7 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOOptimizationParameters": {
         "required": [
@@ -43145,8 +43736,7 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FPOOptimizationParametersRoot": {
         "type": "object",
@@ -43157,8 +43747,7 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Frequency": {
         "type": "object",
@@ -43167,8 +43756,7 @@
             "type": "string",
             "description": "Frequency name."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "FrequencyRoot": {
         "required": [
@@ -43185,8 +43773,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "Group": {
         "type": "object",
@@ -43203,8 +43790,7 @@
             "type": "string",
             "description": "Group Category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "GroupRoot": {
         "required": [
@@ -43221,8 +43807,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplateContentTypes": {
         "type": "object",
@@ -43248,8 +43833,7 @@
             },
             "description": "Template locked fields"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateParameters": {
         "required": [
@@ -43273,8 +43857,7 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateParametersRoot": {
         "required": [
@@ -43288,8 +43871,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplatePostSummary": {
         "type": "object",
@@ -43310,8 +43892,7 @@
             "type": "string",
             "description": "Template parent tile."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplatePostSummaryRoot": {
         "required": [
@@ -43325,8 +43906,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateSummary": {
         "type": "object",
@@ -43343,8 +43923,7 @@
             "type": "string",
             "description": "Template parent tile."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateSummaryRoot": {
         "required": [
@@ -43361,8 +43940,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateUpdateParameters": {
         "type": "object",
@@ -43378,8 +43956,7 @@
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateUpdateParametersRoot": {
         "required": [
@@ -43393,8 +43970,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplate": {
         "type": "object",
@@ -43426,8 +44002,7 @@
             "type": "string",
             "description": "Template parent tile."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "LinkedPATemplateRoot": {
         "required": [
@@ -43441,8 +44016,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "NPOOptimizerStrategyOverrides": {
         "type": "object",
@@ -43473,8 +44047,7 @@
             "type": "string",
             "description": "Alpha"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "NPOOptimizerStrategy": {
         "required": [
@@ -43489,8 +44062,7 @@
             "type": "string",
             "description": "OptimizerStrategy document path"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "NPOOptimizationParameters": {
         "required": [
@@ -43511,8 +44083,7 @@
           "outputTypes": {
             "$ref": "#/components/schemas/OptimizerOutputTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "NPOOptimizationParametersRoot": {
         "type": "object",
@@ -43523,8 +44094,7 @@
           "meta": {
             "$ref": "#/components/schemas/OptimizerCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationGroup": {
         "type": "object",
@@ -43537,8 +44107,7 @@
             "type": "string",
             "description": "Grouping frequency"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationColumn": {
         "type": "object",
@@ -43554,8 +44123,7 @@
             },
             "description": "Column Statistic identifier"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationPricingSource": {
         "type": "object",
@@ -43564,8 +44132,7 @@
             "type": "string",
             "description": "Pricing source identifier"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationDataSources": {
         "type": "object",
@@ -43588,8 +44155,7 @@
             "type": "boolean",
             "description": "Use portfolio pricing sources for benchmark"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationParameters": {
         "required": [
@@ -43643,8 +44209,7 @@
             "type": "string",
             "description": "Component detail type for the PA component. It can be GROUPS or TOTALS or SECURITIES."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PACalculationParametersRoot": {
         "type": "object",
@@ -43659,8 +44224,7 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationUnitStatus": {
         "type": "object",
@@ -43695,9 +44259,15 @@
             "type": "integer",
             "description": "The points for the calculation unit.",
             "format": "int32"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The warnings in a calculation unit."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationStatus": {
         "type": "object",
@@ -43723,8 +44293,7 @@
             },
             "description": "Number of calculation units in batch."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationUnitStatusMeta": {
         "type": "object",
@@ -43733,8 +44302,7 @@
             "type": "string",
             "description": "The Info URL of the calculation."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationStatusMeta": {
         "type": "object",
@@ -43746,8 +44314,7 @@
             },
             "description": "Meta of calculation units in batch."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationStatusRoot": {
         "required": [
@@ -43761,8 +44328,7 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationStatusMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationsSummary": {
         "type": "object",
@@ -43792,8 +44358,7 @@
             "description": "Last poll time of calculation.",
             "format": "date-time"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PaginationInfo": {
         "type": "object",
@@ -43820,8 +44385,7 @@
           "previousPage": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PaginationMeta": {
         "type": "object",
@@ -43829,8 +44393,7 @@
           "pagination": {
             "$ref": "#/components/schemas/PaginationInfo"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "CalculationsSummaryRoot": {
         "required": [
@@ -43844,8 +44407,7 @@
           "meta": {
             "$ref": "#/components/schemas/PaginationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PAPricingSource": {
         "type": "object",
@@ -43862,8 +44424,7 @@
             "type": "string",
             "description": "Pricing source category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PAPricingSourceRoot": {
         "required": [
@@ -43880,8 +44441,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PubIdentifier": {
         "required": [
@@ -43897,8 +44457,7 @@
             "type": "string",
             "description": "Holdings Mode can be B&H, TBR, OMS or EXT."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PubDateParameters": {
         "required": [
@@ -43915,7 +44474,6 @@
             "description": "Calculation's end date or as of date."
           }
         },
-        "additionalProperties": false,
         "description": "The date parameters for Publisher calculation."
       },
       "PubCalculationParameters": {
@@ -43936,12 +44494,10 @@
           "dates": {
             "$ref": "#/components/schemas/PubDateParameters"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PubCalculationMeta": {
-        "type": "object",
-        "additionalProperties": false
+        "type": "object"
       },
       "PubCalculationParametersRoot": {
         "type": "object",
@@ -43956,8 +44512,7 @@
           "meta": {
             "$ref": "#/components/schemas/PubCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantScreeningExpressionUniverse": {
         "required": [
@@ -43984,8 +44539,7 @@
           "securityExpr": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantIdentifierUniverse": {
         "required": [
@@ -44012,8 +44566,7 @@
               "type": "string"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantUniverse": {
         "required": [
@@ -44029,8 +44582,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantUniversalScreenUniverse": {
         "required": [
@@ -44046,8 +44598,7 @@
           "screen": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantDateList": {
         "type": "object",
@@ -44063,8 +44614,7 @@
               "type": "string"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantDate": {
         "required": [
@@ -44090,8 +44640,7 @@
           "overrideUniversalScreenCalendar": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantFdsDate": {
         "required": [
@@ -44111,8 +44660,7 @@
           "endDate": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantFqlExpression": {
         "required": [
@@ -44138,8 +44686,7 @@
           "isArrayReturnType": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantUniversalScreenParameter": {
         "required": [
@@ -44159,8 +44706,7 @@
           "name": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantAllUniversalScreenParameters": {
         "type": "object",
@@ -44168,8 +44714,7 @@
           {
             "$ref": "#/components/schemas/QuantFormula"
           }
-        ],
-        "additionalProperties": false
+        ]
       },
       "QuantFormula": {
         "required": [
@@ -44186,8 +44731,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantScreeningExpression": {
         "required": [
@@ -44210,8 +44754,7 @@
           "dateOffset": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantScreeningExpressionUniverseObsolete": {
         "required": [
@@ -44241,8 +44784,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantUniversalScreenUniverseObsolete": {
         "required": [
@@ -44261,8 +44803,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantIdentifierUniverseObsolete": {
         "required": [
@@ -44292,8 +44833,7 @@
             ],
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantFdsDateObsolete": {
         "required": [
@@ -44319,8 +44859,7 @@
           "overrideUniversalScreenCalendar": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantDateListObsolete": {
         "required": [
@@ -44344,8 +44883,7 @@
           "overrideUniversalScreenCalendar": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantScreeningExpressionObsolete": {
         "required": [
@@ -44363,8 +44901,7 @@
           "dateOffset": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantFqlExpressionObsolete": {
         "required": [
@@ -44385,8 +44922,7 @@
           "isArrayReturnType": {
             "type": "boolean"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantUniversalScreenParameterObsolete": {
         "required": [
@@ -44401,12 +44937,10 @@
           "name": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantAllUniversalScreenParametersObsolete": {
-        "type": "object",
-        "additionalProperties": false
+        "type": "object"
       },
       "OneOfQuantUniverse": {
         "oneOf": [
@@ -44492,8 +45026,7 @@
           "jobDescription": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantCalculationMeta": {
         "type": "object",
@@ -44546,8 +45079,7 @@
             "type": "string",
             "default": "JsonStach"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "QuantCalculationParametersRoot": {
         "type": "object",
@@ -44562,8 +45094,7 @@
           "meta": {
             "$ref": "#/components/schemas/QuantCalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARDateParameters": {
         "required": [
@@ -44586,7 +45117,6 @@
             "description": "Calculation's frequency."
           }
         },
-        "additionalProperties": false,
         "description": "The date parameters for SPAR calculation."
       },
       "SPARCalculationParameters": {
@@ -44616,8 +45146,7 @@
             "type": "string",
             "description": "Currency ISO code for calculation."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "SPARCalculationParametersRoot": {
         "type": "object",
@@ -44632,8 +45161,7 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "PAComponentData": {
         "type": "object",
@@ -44678,10 +45206,9 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "PA Storage type. It can be GROUPS or TOTALS or SECURITIES."
+            "description": "PA Storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentParameters": {
         "required": [
@@ -44705,8 +45232,7 @@
           "componentData": {
             "$ref": "#/components/schemas/PAComponentData"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentParametersRoot": {
         "required": [
@@ -44720,8 +45246,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentPostSummary": {
         "type": "object",
@@ -44741,8 +45266,7 @@
           "type": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentPostSummaryRoot": {
         "required": [
@@ -44756,8 +45280,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentSummary": {
         "type": "object",
@@ -44774,8 +45297,7 @@
           "type": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentSummaryRoot": {
         "required": [
@@ -44792,8 +45314,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentUpdateParameters": {
         "type": "object",
@@ -44809,8 +45330,7 @@
           "componentData": {
             "$ref": "#/components/schemas/PAComponentData"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentUpdateParametersRoot": {
         "required": [
@@ -44824,8 +45344,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponent": {
         "type": "object",
@@ -44854,8 +45373,7 @@
           "type": {
             "type": "string"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "TemplatedPAComponentRoot": {
         "required": [
@@ -44869,8 +45387,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateParameters": {
         "required": [
@@ -44931,13 +45448,12 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "PA storage type. It can be GROUPS or TOTALS or SECURITIES."
+            "description": "PA storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES."
           },
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateParametersRoot": {
         "required": [
@@ -44951,8 +45467,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplatePostSummary": {
         "type": "object",
@@ -44973,8 +45488,7 @@
             "type": "string",
             "description": "Unlinked template category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplatePostSummaryRoot": {
         "required": [
@@ -44988,8 +45502,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateSummary": {
         "type": "object",
@@ -45006,8 +45519,7 @@
             "type": "string",
             "description": "Unlinked template category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateSummaryRoot": {
         "required": [
@@ -45024,8 +45536,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateUpdateParameters": {
         "type": "object",
@@ -45074,13 +45585,12 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "PA storage type. It can be GROUPS or TOTALS or SECURITIES."
+            "description": "PA storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES."
           },
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateUpdateParametersRoot": {
         "required": [
@@ -45094,8 +45604,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplate": {
         "type": "object",
@@ -45156,7 +45665,7 @@
           },
           "componentdetail": {
             "type": "string",
-            "description": "PA storage type. It can be GROUPS or TOTALS or SECURITIES."
+            "description": "PA storage type. It can be GROUPS or GROUPSALL or TOTALS or SECURITIES."
           },
           "content": {
             "$ref": "#/components/schemas/TemplateContentTypes"
@@ -45173,8 +45682,7 @@
             "type": "string",
             "description": "Unlinked template category"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateRoot": {
         "required": [
@@ -45188,8 +45696,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateCategoryAndType": {
         "type": "object",
@@ -45202,8 +45709,7 @@
             "type": "string",
             "description": "Unlinked template type"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateCategoryAndTypeRoot": {
         "required": [
@@ -45220,8 +45726,7 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateColumnDetails": {
         "type": "object",
@@ -45241,8 +45746,7 @@
             },
             "description": "Column Statistic identifier"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateGroupDetails": {
         "type": "object",
@@ -45259,8 +45763,7 @@
             "type": "string",
             "description": "Grouping frequency"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateCategoryAndTypeDetails": {
         "type": "object",
@@ -45295,8 +45798,7 @@
             "type": "string",
             "description": "Unlinked template type"
           }
-        },
-        "additionalProperties": false
+        }
       },
       "UnlinkedPATemplateCategoryAndTypeDetailsRoot": {
         "required": [
@@ -45310,8 +45812,38 @@
           "meta": {
             "type": "object"
           }
-        },
-        "additionalProperties": false
+        }
+      },
+      "VaultAttributionLoaderResponse": {
+        "type": "object",
+        "properties": {
+          "processId": {
+            "type": "string",
+            "description": "ProcessId."
+          },
+          "groupId": {
+            "type": "string",
+            "description": "GroupId."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "ObjectId."
+          }
+        }
+      },
+      "VaultAttributionLoaderResponseRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/VaultAttributionLoaderResponse"
+          },
+          "meta": {
+            "type": "object"
+          }
+        }
       },
       "VaultCalculationParameters": {
         "required": [
@@ -45339,8 +45871,7 @@
             "type": "string",
             "description": "Component detail type for the Vault component. It can be GROUPS or TOTALS or SECURITIES."
           }
-        },
-        "additionalProperties": false
+        }
       },
       "VaultCalculationParametersRoot": {
         "type": "object",
@@ -45355,8 +45886,7 @@
           "meta": {
             "$ref": "#/components/schemas/CalculationMeta"
           }
-        },
-        "additionalProperties": false
+        }
       }
     },
     "securitySchemes": {
