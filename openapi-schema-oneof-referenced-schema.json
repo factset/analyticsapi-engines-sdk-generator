@@ -12200,7 +12200,6 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the documents in",
-              "default": "",
               "example": "Client:"
             }
           }
