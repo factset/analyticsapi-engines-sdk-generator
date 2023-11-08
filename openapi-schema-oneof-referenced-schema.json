@@ -8773,7 +8773,8 @@
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Unique identifier for a SPAR component"
+              "description": "Unique identifier for a SPAR component",
+              "example": "067F5DE2E2A11F9AD734594AA8957E11B633438D0FADFCCE0F423ABEF2FC5F1D"
             }
           }
         ],
@@ -10615,12 +10616,12 @@
           {
             "name": "account",
             "in": "query",
-            "description": "Account ( Should be in Format - AccountName.ACCT )",
+            "description": "Account ( Account Name ending with .ACCT or .ACTM )",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Account ( Should be in Format - AccountName.ACCT )",
-              "example": "Account Name"
+              "description": "Account ( Account Name ending with .ACCT or .ACTM )",
+              "example": "Client:/Folder1/Folder2/AccountName.ACCT"
             }
           }
         ],
@@ -11880,7 +11881,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the documents in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -12520,7 +12521,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the documents in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -44252,7 +44253,10 @@
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/CalculationsSummary"
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CalculationsSummary"
+            }
           },
           "meta": {
             "$ref": "#/components/schemas/PaginationMeta"
