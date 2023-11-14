@@ -6,7 +6,7 @@
     "contact": {
       "name": "FactSet Research Systems",
       "url": "https://developer.factset.com/contact",
-      "email": "testapi@factset.com"
+      "email": "api@factset.com"
     },
     "license": {
       "name": "Apache License, Version 2.0",
@@ -22785,7 +22785,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "1"
             }
           },
           {

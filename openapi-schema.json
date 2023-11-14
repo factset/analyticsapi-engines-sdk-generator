@@ -22785,7 +22785,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "1"
             }
           },
           {
