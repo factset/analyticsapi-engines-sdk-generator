@@ -12,7 +12,7 @@
       "name": "Apache License, Version 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0"
     },
-    "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]"
+    "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo],v1:[fiab]"
   },
   "servers": [
     {
@@ -673,7 +673,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -1091,7 +1092,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -2677,7 +2679,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -3095,7 +3098,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -5001,7 +5005,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -5419,7 +5424,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -13822,7 +13828,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -14400,7 +14407,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -16041,7 +16049,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -16459,7 +16468,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -20781,7 +20791,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -21199,7 +21210,8 @@
             "in": "header",
             "description": "Long running deadline in seconds.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -23593,7 +23605,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -25656,7 +25669,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -26466,7 +26480,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -31289,7 +31304,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -32096,7 +32112,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -39039,6 +39056,300 @@
         ]
       }
     },
+    "/analytics/engines/vault/v3/load/{batchId}": {
+      "post": {
+        "tags": [
+          "Vault Attribution Loader"
+        ],
+        "summary": "Vault - External Attribution Loader",
+        "description": "This endpoint loads Vault External Attributions.",
+        "operationId": "vaultAttributionLoader",
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "nullable": true
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Expected response, returns a status of operation along with errors and warnings if found any.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaultAttributionLoaderResponseRoot"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid authentication.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User is forbidden with current credentials",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Unsupported Accept header. Header needs to be set to application/json.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "X-FactSet-Api-RateLimit-Limit": {
+                "description": "Number of allowed requests for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Remaining": {
+                "description": "Number of requests left for the time window.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-FactSet-Api-RateLimit-Reset": {
+                "description": "Number of seconds remaining till rate limit resets.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limit reached. Wait till the time specified in Retry-After header value to make further requests.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              },
+              "Retry-After": {
+                "description": "Time to wait in seconds before making a new request as the rate limit has reached.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error. Log the X-DataDirect-Request-Key header to assist in troubleshooting.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Request timed out. Retry the request in sometime.",
+            "headers": {
+              "X-DataDirect-Request-Key": {
+                "description": "FactSet's request key header.",
+                "schema": {
+                  "type": "string",
+                  "description": "FactSet's request key header."
+                }
+              },
+              "X-FactSet-Api-Request-Key": {
+                "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication.",
+                "schema": {
+                  "type": "string",
+                  "description": "Key to uniquely identify an Analytics API request. Only available after successful authentication."
+                }
+              }
+            }
+          }
+        },
+        "x-are-multiple-success-responses-different": false,
+        "x-success-response-types": [
+          {
+            "status-code": "200",
+            "response-type": "VaultAttributionLoaderResponseRoot"
+          }
+        ]
+      }
+    },
     "/analytics/engines/vault/v3/calculations": {
       "post": {
         "tags": [
@@ -39053,7 +39364,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -39860,7 +40172,8 @@
             "in": "header",
             "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "example": "10"
             }
           },
           {
@@ -45575,6 +45888,35 @@
         "properties": {
           "data": {
             "$ref": "#/components/schemas/UnlinkedPATemplateCategoryAndTypeDetails"
+          },
+          "meta": { }
+        }
+      },
+      "VaultAttributionLoaderResponse": {
+        "type": "object",
+        "properties": {
+          "processId": {
+            "type": "string",
+            "description": "ProcessId."
+          },
+          "groupId": {
+            "type": "string",
+            "description": "GroupId."
+          },
+          "objectId": {
+            "type": "string",
+            "description": "ObjectId."
+          }
+        }
+      },
+      "VaultAttributionLoaderResponseRoot": {
+        "required": [
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/VaultAttributionLoaderResponse"
           },
           "meta": { }
         }
