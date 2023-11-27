@@ -12,7 +12,7 @@
       "name": "Apache License, Version 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0"
     },
-    "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo],v1:[fiab]"
+    "version": "v3:[pa,spar,vault,pub,quant,fi,axp,afi,npo,bpm,fpo,others],v1:[fiab]"
   },
   "servers": [
     {
@@ -13826,7 +13826,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -14405,7 +14405,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -16047,7 +16047,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -16466,7 +16466,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -20789,7 +20789,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -21208,7 +21208,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -22795,7 +22795,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -23603,7 +23603,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -25667,7 +25667,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -26478,7 +26478,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -31302,7 +31302,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -32110,7 +32110,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -39362,7 +39362,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the POST body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the POST body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -40170,7 +40170,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds when only one unit is passed in the PUT body.",
+            "description": "Long running deadline in seconds when only one unit is passed in the PUT body. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
