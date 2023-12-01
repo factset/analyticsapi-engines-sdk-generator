@@ -671,7 +671,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -1090,7 +1090,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -2677,7 +2677,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -3096,7 +3096,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -5003,7 +5003,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -5422,7 +5422,7 @@
           {
             "name": "X-FactSet-Api-Long-Running-Deadline",
             "in": "header",
-            "description": "Long running deadline in seconds.",
+            "description": "Long running deadline in seconds. Example value is set to 10s. Please update it as per requirement before triggering a calculation.",
             "schema": {
               "type": "integer",
               "example": "10"
@@ -33833,7 +33833,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the strategy documents and sub-directories in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -34153,7 +34153,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the strategy documents and sub-directories in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -34473,7 +34473,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the strategy documents and sub-directories in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -34793,7 +34793,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the strategy documents and sub-directories in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
@@ -35113,7 +35113,7 @@
             "schema": {
               "type": "string",
               "description": "The directory to get the strategy documents and sub-directories in",
-              "default": ""
+              "example": "Client:"
             }
           }
         ],
