@@ -3,5 +3,5 @@
   "projectName": "fds.analyticsapi.engines",
   "packageVersion": "6.0.0",
   "packageUrl": "https://github.com/factset/analyticsapi-engines-python-sdk",
-  "httpUserAgent": "engines-api/5.6.0/python"
+  "httpUserAgent": "engines-api/6.0.0/python"
 }
