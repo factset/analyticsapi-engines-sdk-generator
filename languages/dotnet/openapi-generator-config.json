@@ -16,5 +16,5 @@
   "licenseId": "Apache-2.0",
   "releaseNote": "Refer to Changelog on GitHub source repository",
   "packageTags": "PA;Vault;SPAR;Engines;FactSet;FDS;API;Analytics;AnalyticsAPI",
-  "httpUserAgent": "engines-api/5.4.0/csharp"
+  "httpUserAgent": "engines-api/5.5.0/csharp"
 }
