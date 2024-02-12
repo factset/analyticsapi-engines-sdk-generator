@@ -1,6 +1,6 @@
 {
   "packageName": "FactSet.AnalyticsAPI.Engines",
-  "packageVersion": "5.5.0",
+  "packageVersion": "5.5.0-rc.1",
   "packageGuid": "{D7309227-518B-45ED-896A-4853BE6A9075}",
   "targetFramework": "netstandard2.0",
   "caseInsensitiveResponseHeaders": true,
@@ -16,5 +16,5 @@
   "licenseId": "Apache-2.0",
   "releaseNote": "Refer to Changelog on GitHub source repository",
   "packageTags": "PA;Vault;SPAR;Engines;FactSet;FDS;API;Analytics;AnalyticsAPI",
-  "httpUserAgent": "engines-api/5.5.0/csharp"
+  "httpUserAgent": "engines-api/5.5.0-rc.1/csharp"
 }
