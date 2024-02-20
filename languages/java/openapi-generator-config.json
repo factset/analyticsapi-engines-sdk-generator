@@ -4,7 +4,7 @@
     "invokerPackage": "factset.analyticsapi.engines",
     "groupId": "com.factset.analyticsapi",
     "artifactId": "engines-sdk",
-    "artifactVersion": "5.5.0-rc.1",
+    "artifactVersion": "5.5.1",
     "artifactUrl": "https://github.com/factset/analyticsapi-engines-java-sdk",
     "artifactDescription": "SDK for FactSet Analytics Engines API",
     "scmConnection": "scm:git:git://github.com/factset/analyticsapi-engines-java-sdk.git",
