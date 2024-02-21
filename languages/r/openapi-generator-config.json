@@ -1,6 +1,6 @@
 {
 	"packageName": "factset.analyticsapi.engines",
-	"packageVersion": "3.3.0",
+	"packageVersion": "3.3.1",
 	"hideGenerationTimestamp": "true",
 	"returnExceptionOnFailure": "true",
 	"exceptionPackage": "rlang",
