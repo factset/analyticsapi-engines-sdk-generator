@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Engines API",
-    "description": "Allow clients to fetch Analytics through APIs.",
+    "description": "Allow clients to fetch Analytics through API.",
     "contact": {
       "name": "FactSet Research Systems",
       "url": "https://developer.factset.com/contact",
