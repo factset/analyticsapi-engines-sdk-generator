@@ -38,7 +38,7 @@ then
     export GITHUB_USER=$USER
     export GITHUB_TOKEN=$USER_API_KEY
     #hub pull-request -m "feat(sdk): Auto-created from '$generator_repo_name' repository PR $pr_number for SDK version v$version" -h $branch_name
-    gh pr create -m "feat(sdk): Auto-created from '$generator_repo_name' repository PR $pr_number for SDK version v$version" -H $branch_name
+    gh pr create --title "feat(sdk): Auto-created from '$generator_repo_name' repository PR $pr_number for SDK version v$version" --body "SDK Changes" --base master --head $branch_name
     
   else
     echo "No changes to commit" 
