@@ -6,8 +6,7 @@
   "caseInsensitiveResponseHeaders": true,
   "packageAuthors": "FactSet",
   "packageTitle": "FactSet Analytics Engines API",
-  "packageDescription": "DEPRECATED: This library is no longer maintained.
-      Please use https://www.nuget.org/packages?q=FactSet.SDK instead.",
+  "packageDescription": "DEPRECATED: This library is no longer maintained. Please use https://www.nuget.org/packages?q=FactSet.SDK instead.",
   "packageCompany": "FactSet Research Systems Inc.",
   "packageProductName": "FactSet Analytics Engines API",
   "packageCopyright": "",
@@ -15,8 +14,7 @@
   "gitUserId": "factset",
   "gitRepoId": "analyticsapi-engines-dotnet-sdk",
   "licenseId": "Apache-2.0",
-  "releaseNote": "This package is deprecated and will be removed in the future.
-      Migrate to https://www.nuget.org/packages?q=FactSet.SDK",
+  "releaseNote": "This library is no longer maintained. Please use https://www.nuget.org/packages?q=FactSet.SDK instead.",
   "packageTags": "PA;Vault;SPAR;Engines;FactSet;FDS;API;Analytics;AnalyticsAPI",
   "httpUserAgent": "engines-api/6.1.0-rc.1/csharp"
 }
