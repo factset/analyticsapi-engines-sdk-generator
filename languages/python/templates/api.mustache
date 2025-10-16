@@ -19,6 +19,12 @@ from {{packageName}}.model_utils import (  # noqa: F401
 {{{import}}}
 {{/imports}}
 
+import warnings
+
+warnings.warn(
+    "This library is deprecated. Please use <https://pypi.org/search/?q=%22fds.sdk%22> instead.",
+    DeprecationWarning
+)
 
 {{#operations}}
 class {{classname}}(object):
