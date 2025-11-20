@@ -28,6 +28,10 @@ import java.util.Map;
 {{/fullJavaUtil}}
 {{>generatedAnnotation}}
 {{#operations}}
+/**
+ * @deprecated This library is deprecated.Please use https://central.sonatype.com/search?q=com.factset.sdk&smo=true instead.
+ */
+@Deprecated
 public class {{classname}} {
   private ApiClient apiClient;
   public {{classname}}() {
